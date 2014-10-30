@@ -5,12 +5,12 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using TAPI;
 
-namespace Avalon.NPCs.Normal
+namespace Avalon.NPCs.Normal.Worms
 {
     /// <summary>
-    /// The Verteworm's tail.
+    /// The Dark Matter Spearworm's tail.
     /// </summary>
-    public sealed class VertewormTail : ModNPC
+    public sealed class DMSpearwormTail : ModNPC
     {
         /// <summary>
         /// 
@@ -37,7 +37,6 @@ namespace Avalon.NPCs.Normal
             #endregion
 
             #region Living AI
-
             NPC toFollow = Main.npc[(int)npc.ai[toFollowSlot]];
             npc.rotation = npc.DirectionTo(toFollow.Centre).ToRotation() + MathHelper.PiOver2;
             float distancing = 18f * npc.scale;
@@ -46,25 +45,6 @@ namespace Avalon.NPCs.Normal
             npc.velocity = Vector2.Zero;
             npc.Centre = toFollow.Centre + offsetting;
             #endregion
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="hitDirection"></param>
-        /// <param name="damage"></param>
-        /// <param name="isDead"></param>
-        public override void HitEffect(int hitDirection, double damage, bool isDead)
-        {
-            if (isDead)
-                Gore.NewGore(npc.position, npc.velocity, GoreDef.gores["Avalon:Verteworm Body Gore"], 1f);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void NPCLoot()
-        {
-            if (Main.rand.Next(4) == 0)
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 1330, 1, false, 0);
         }
     }
 }

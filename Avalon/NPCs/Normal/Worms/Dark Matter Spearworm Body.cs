@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TAPI;
 using Microsoft.Xna.Framework;
 using Terraria;
-using TAPI;
 
-namespace Avalon.NPCs.Normal
+namespace Avalon.NPCs.Normal.Worms
 {
     /// <summary>
-    /// The Dark Matter Spearworm's tail.
+    /// The Dark Matter Spearworm's body.
     /// </summary>
-    public sealed class DMSpearwormTail : ModNPC
+    public sealed class DMSpearwormBody : ModNPC
     {
         /// <summary>
         /// 
@@ -26,7 +26,7 @@ namespace Avalon.NPCs.Normal
             if (npc.ai[toFollowSlot] < 0 || npc.ai[toFollowSlot] > Main.maxNPCs || !Main.npc[(int)npc.ai[toFollowSlot]].active)
                 shouldSuicide = true;
 
-            #region Suicide on realLife depletion
+            #region Suicide on realLife Depletion
             if (shouldSuicide)
             {
                 npc.life = 0;

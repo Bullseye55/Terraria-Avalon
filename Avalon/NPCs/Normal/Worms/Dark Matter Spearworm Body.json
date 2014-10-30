@@ -1,11 +1,10 @@
 {
-	"code": "NPCs.Normal.DMSpearwormHead",
+	"code": "NPCs.Normal.Worms.DMSpearwormBody",
 
 	"size": [ 30, 48 ],
 	"scale": 1.0,
-	"npcSlots": 1,
+	"npcSlots": 0,
 	"frameCount": 1,
-	"aiStyle": 6,
 	"displayName": "Dark Matter Spearworm",
 
 	"friendly": false,
@@ -13,10 +12,10 @@
 	"boss": false,
 
 	"lifeMax": 900,
-	"damage": 120,
-	"defense": 80,
+	"damage": 100,
+	"defense": 50,
 	"knockBackResist": 1.0,
-	"value": [ 0, 0, 10, 0 ],
+	"value": [ 0, 0, 0, 0 ],
 
 	"dontTakeDamage": false,
 	"lavaImmune": true,

@@ -1,11 +1,10 @@
 {
-	"code": "NPCs.Normal.VertewormHead",
+	"code": "NPCs.Normal.Worms.VertewormTail",
 
-	"size": [ 30, 26 ],
+	"size": [ 22, 18 ],
 	"scale": 1.0,
-	"npcSlots": 1,
+	"npcSlots": 0,
 	"frameCount": 1,
-	"aiStyle": 6,
 	"displayName": "Verteworm",
 
 	"friendly": false,
@@ -16,7 +15,7 @@
 	"damage": 80,
 	"defense": 50,
 	"knockBackResist": 1.0,
-	"value": [ 0, 0, 4, 0 ],
+	"value": [ 0, 0, 0, 0 ],
 
 	"dontTakeDamage": false,
 	"lavaImmune": false,
@@ -28,7 +27,7 @@
 
 	"drops": [
 		{
-			"item": "AvalonM:Vertebrae Staff",
+			"item": "Avalon:Vertebrae Staff",
 			"stack": 1,
 			"chance": 0.2
 		}

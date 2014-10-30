@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TAPI;
 using Microsoft.Xna.Framework;
 using Terraria;
+using TAPI;
 
-namespace Avalon.NPCs.Normal
+namespace Avalon.NPCs.Normal.Worms
 {
     /// <summary>
-    /// The Dark Matter Spearworm's body.
+    /// The Verteworm's body.
     /// </summary>
-    public sealed class DMSpearwormBody : ModNPC
+    public sealed class VertewormBody : ModNPC
     {
         /// <summary>
         /// 
@@ -45,6 +45,14 @@ namespace Avalon.NPCs.Normal
             npc.velocity = Vector2.Zero;
             npc.Centre = toFollow.Centre + offsetting;
             #endregion
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(4) == 0)
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, (int)npc.width, (int)npc.height, 1330, 1, false, 0);
         }
     }
 }

@@ -1,19 +1,19 @@
 {
-	"code": "NPCs.Normal.VertewormTail",
+	"code": "NPCs.Normal.Worms.DMSpearwormTail",
 
-	"size": [ 22, 18 ],
+	"size": [ 30, 48 ],
 	"scale": 1.0,
 	"npcSlots": 0,
 	"frameCount": 1,
-	"displayName": "Verteworm",
+	"displayName": "Dark Matter Spearworm",
 
 	"friendly": false,
 	"townNPC": false,
 	"boss": false,
 
-	"lifeMax": 450,
-	"damage": 80,
-	"defense": 50,
+	"lifeMax": 900,
+	"damage": 10,
+	"defense": 0,
 	"knockBackResist": 1.0,
 	"value": [ 0, 0, 0, 0 ],
 
@@ -22,14 +22,6 @@
 	"noGravity": true,
 	"noTileCollide": true,
 	"behindTiles": true,
-	"soundHit": 2,
-	"soundKilled": 19,
-
-	"drops": [
-		{
-			"item": "Avalon:Vertebrae Staff",
-			"stack": 1,
-			"chance": 0.2
-		}
-	]
+	"soundHit": 9,
+	"soundKilled": 5
 }

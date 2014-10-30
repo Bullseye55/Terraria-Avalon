@@ -1,0 +1,36 @@
+{
+	"code": "NPCs.Normal.Worms.VertewormHead",
+
+	"size": [ 30, 26 ],
+	"scale": 1.0,
+	"npcSlots": 1,
+	"frameCount": 1,
+	"aiStyle": 6,
+	"displayName": "Verteworm",
+
+	"friendly": false,
+	"townNPC": false,
+	"boss": false,
+
+	"lifeMax": 450,
+	"damage": 80,
+	"defense": 50,
+	"knockBackResist": 1.0,
+	"value": [ 0, 0, 4, 0 ],
+
+	"dontTakeDamage": false,
+	"lavaImmune": false,
+	"noGravity": true,
+	"noTileCollide": true,
+	"behindTiles": true,
+	"soundHit": 2,
+	"soundKilled": 19,
+
+	"drops": [
+		{
+			"item": "AvalonM:Vertebrae Staff",
+			"stack": 1,
+			"chance": 0.2
+		}
+	]
+}

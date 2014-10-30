@@ -4,12 +4,12 @@ using System.Linq;
 using Terraria;
 using TAPI;
 
-namespace Avalon.NPCs.Normal
+namespace Avalon.NPCs.Normal.Worms
 {
     /// <summary>
-    /// The Veteworm's head NPC.
+    /// The Dark Matter Spearworm's head.
     /// </summary>
-    public sealed class VertewormHead : ModNPC
+    public sealed class DMSpearwormHead : ModNPC
     {
         bool hasTail = false;
 
@@ -24,26 +24,22 @@ namespace Avalon.NPCs.Normal
 
                 for (int i = 0; i < 14; i++)
                 {
-                    NPC segment = Main.npc[NPC.NewNPC((int)npc.Centre.X, (int)npc.Centre.Y , NPCDef.byName["Avalon:Verteworm " + ((i >= 0 && i < 13) ? "Body" : "Tail")].type, npc.whoAmI)];
+                    // Leaves four segments for a tail, for the unique look.
+                    NPC segment = Main.npc[NPC.NewNPC((int)npc.Centre.X, (int)npc.Centre.Y, NPCDef.byName["Avalon:Dark Matter Spearworm " + ((i >= 0 && i < 10) ? "Body" : "Tail")].type, npc.whoAmI)];
 
                     segment.realLife = npc.whoAmI;
                     segment.ai[2] = npc.whoAmI;
                     segment.ai[1] = prev.whoAmI;
+
                     prev.ai[0] = segment.whoAmI;
 
                     NetMessage.SendData(23, -1, -1, String.Empty, segment.whoAmI, 0f, 0f, 0f, 0);
 
                     prev = segment;
                 }
+
                 hasTail = true;
             }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void NPCLoot()
-        {
-            Gore.NewGore(npc.position, npc.velocity, GoreDef.gores["Avalon:Verteworm Head Gore"], 1f);
         }
         /// <summary>
         /// 
@@ -55,7 +51,7 @@ namespace Avalon.NPCs.Normal
         /// <returns></returns>
         public override bool CanSpawn(int x, int y, int type, Player p)
         {
-            return p.zoneBlood /*&& Main.rand.Next(13) == 0*/;
+            return /*Main.player[Main.myPlayer].zoneBlood && Main.hardMode && Main.rand.Next(7) == 1*/ false;
         }
     }
 }
