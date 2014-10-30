@@ -20,6 +20,9 @@ namespace Avalon.Tiles.Blocks
             base.Initialize();
 
             ToSpread = TileDef.byName["Avalon:Dark Matter Soil"];
+            IsGrass = IsStone = false;
+            PlaceStyle = 0;
+            SpreadRatio = 120; // temp, obviously
         }
     }
 }

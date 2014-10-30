@@ -44,10 +44,30 @@ namespace Avalon.API.Biomes
             get;
             protected set;
         }
+        /// <summary>
+        /// Gets whether the tile to spread is grass or not.
+        /// </summary>
+        public bool IsGrass
+        {
+            get;
+            protected set;
+        }
+        /// <summary>
+        /// Gets whether the tile to spread is stone or not.
+        /// </summary>
+        public bool IsStone
+        {
+            get;
+            protected set;
+        }
 
         bool CanSpreadOn(Point pos)
         {
-            return Main.tile[pos.X, pos.Y].active() && Main.tile[pos.X, pos.Y].type != ToSpread && !TileDef.breaksByCut[Main.tile[pos.X, pos.Y].type];
+            int type = Main.tile[pos.X, pos.Y].type;
+            return Main.tile[pos.X, pos.Y].active() && type != ToSpread
+                && !TileDef.breaksByCut[type] && TileDef.solid[type] && !TileDef.door[type] && !TileDef.alchemyFlower[type] && !TileDef.brick[type]
+                && !TileDef.chair[type] && !TileDef.noAttach[type] && !TileDef.platform[type] && !TileDef.rope[type] && !TileDef.table[type]
+                && !(TileDef.stone[type] && IsStone) && !TileDef.tileDungeon[type] && !TileDef.tileFlame[type] && !(TileDef.grass[type] && IsGrass);
         }
 
         /// <summary>
