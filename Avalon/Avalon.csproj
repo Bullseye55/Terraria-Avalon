@@ -45,10 +45,6 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\Ionic.Zip.Reduced.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -64,13 +60,13 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="tAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\tAPI.exe</HintPath>
+    <Reference Include="tAPI">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\tAPI.exe</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Biomes\SpreadingTile.cs" />
     <Compile Include="API\Events\DateEvent.cs" />
     <Compile Include="API\Events\IEvent.cs" />
     <Compile Include="API\ExtendedSpawning.cs" />
@@ -79,6 +75,7 @@
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
     <Compile Include="Buffs\Freeze.cs" />
+    <Compile Include="World\DarkMatter.cs" />
     <Compile Include="Items\Accessories\Bag of Blood.cs" />
     <Compile Include="Items\Accessories\Bag of Fire.cs" />
     <Compile Include="Items\Accessories\Bag of Shadow.cs" />
@@ -115,6 +112,7 @@
     <Compile Include="Items\Weapons\Ranged\Guns\Ichorthrower.cs" />
     <Compile Include="MNet.cs" />
     <Compile Include="MPlayer_AccEffects.cs" />
+    <Compile Include="Tiles\Blocks\Dark Matter Soil.cs" />
     <Compile Include="UI\MUI.cs" />
     <Compile Include="NPCs\Baits\Lava Mite.cs" />
     <Compile Include="NPCs\Normal\Armoured Crimslime.cs" />
@@ -147,7 +145,7 @@
     <Compile Include="Projectiles\FromPlayer\Arrows\Vertebrae Rivet.cs" />
     <Compile Include="Projectiles\FromPlayer\Bullets\Zapper Bullet.cs" />
     <Compile Include="UI\AccessorySlotLayer.cs" />
-    <Compile Include="API\Biomes\Attributes.cs" />
+    <Compile Include="API\World\Attributes.cs" />
     <Compile Include="API\Items\Attributes.cs" />
     <Compile Include="API\Items\Mystical Tomes\Attributes.cs" />
     <Compile Include="API\Items\Mystical Tomes\SkillManager.cs" />
@@ -176,6 +174,7 @@
     <Compile Include="UI\TomeSlotLayer.cs" />
     <Compile Include="World\DynamicTask.cs" />
     <Compile Include="World\Gen.cs" />
+    <Compile Include="World\Wraiths.cs" />
     <Compile Include="_MCTImport\Content\ObjectLoader.cs" />
     <Compile Include="_MCTImport\Invasion.cs" />
     <Compile Include="_MCTImport\Net\NetHelper.cs" />
@@ -496,6 +495,7 @@
     <Folder Include="Items\Weapons\Ranged\Crossbows\" />
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
+    <Folder Include="Wavebanks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
@@ -773,7 +773,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rem Build the mod. The directory must be the one where the ModInfo.json file resides in. The directory to the csproj is given in the ModInfo.json file.
-mct -inv compile "%25userprofile%25\Dropbox\Avalon\Avalon tAPI Solution\Avalon"
+mct -inv compile "Avalon-Bullseye55"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

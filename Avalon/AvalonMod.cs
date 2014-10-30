@@ -7,12 +7,13 @@ using Terraria;
 using TAPI;
 using PoroCYon.MCT;
 using PoroCYon.MCT.Content;
+using Avalon.API.Events;
 using Avalon.API.Items.MysticalTomes;
 using Avalon.API.World;
 using Avalon.Items.Other;
 using Avalon.NPCs;
 using Avalon.UI.Menus;
-using Avalon.API.Events;
+using Avalon.World;
 
 namespace Avalon
 {
@@ -43,7 +44,7 @@ namespace Avalon
 		static bool addedWings = false;
 
 		internal static List<BossSpawn> spawns = new List<BossSpawn>();
-        readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
+        internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -75,7 +76,7 @@ namespace Avalon
 		}
 
 		/// <summary>
-		/// Gets the Wraiths invasion instance.
+		/// Gets the Wraiths <see cref="Invasion" /> instance.
 		/// </summary>
 		public static Invasion Wraiths
         {
@@ -83,12 +84,20 @@ namespace Avalon
             internal set;
         }
         /// <summary>
-        /// Gets wether the game is in superhardmode or not.
+        /// Gets whether the game is in superhardmode or not.
         /// </summary>
         public static bool IsInSuperHardmode
         {
             get;
             internal set;
+        }
+        /// <summary>
+        /// Gets the Dark Matter <see cref="Biome" /> instance.
+        /// </summary>
+        public static Biome DarkMatter
+        {
+            get;
+            private set;
         }
 
 		/// <summary>
@@ -179,6 +188,12 @@ namespace Avalon
         {
             Instance = null;
 
+            Wraiths    = null;
+            DarkMatter = null;
+            IsInSuperHardmode = false;
+
+            GoldenWings = 0;
+
             spawns.Clear();
 
             Invasion.invasions    .Clear();
@@ -210,7 +225,7 @@ namespace Avalon
             }
         }
 
-        static void LoadBiomes()
+        static void LoadBiomes   ()
         {
             #region edit vanilla
             //Biome.Biomes["Dungeon"].typesIncrease.Add(TileDef.type["Avalon:Dungeon Orange Brick"]);
@@ -222,16 +237,18 @@ namespace Avalon
             ////        && Biome.Biomes["Ocean"].typesIncrease.Contains(Main.tile[x, y].type);
             ////};
 
-            //Biome.Biomes["Overworld"].TileValid += /* add! */ (x, y, pid) =>
-            //{
-            //    Player p = Main.player[pid];
+            Biome.Biomes["Overworld"].TileValid += /* add! */ (x, y, pid) =>
+            {
+                Player p = Main.player[pid];
 
-            //    return !p.zone["Avalon:Tropics"] && !p.zone["Avalon:Comet"] && !p.zone["Avalon:Ice Cave"]
-            //        && !p.zone["Avalon:Hellcastle"] && !p.zone["Avalon:Sky Fortress"];
-            //};
+                return /*!p.zone["Avalon:Tropics"] && !p.zone["Avalon:Comet"] && !p.zone["Avalon:Ice Cave"]
+                    && !p.zone["Avalon:Hellcastle"] && !p.zone["Avalon:Sky Fortress"]*/ !p.zone["Avalon:Dark Matter"];
+            };
             #endregion
 
             #region custom ones
+            (DarkMatter = new DarkMatter()).AddToGame();
+
             //new Biome("Avalon:Comet", new List<int> { TileDef.type["Avalon:Ever Ice"] }, EmptyIntList, 50).AddToGame();
 
             //new Biome("Avalon:Tropics", new List<int>
@@ -261,7 +278,7 @@ namespace Avalon
         {
             Invasion.Load(Instance, "Wraiths", Wraiths = new WraithInvasion());
         }
-        static void LoadSpawns()
+        static void LoadSpawns   ()
         {
             RegisterBossSpawn(new BossSpawn()
             {
@@ -305,56 +322,6 @@ namespace Avalon
         public static void RegisterBossSpawn(BossSpawn bs)
         {
             spawns.Add(bs);
-        }
-    }
-
-    class WraithInvasion : Invasion
-    {
-        public override string DisplayName
-        {
-            get
-            {
-                return "Wraiths";
-            }
-        }
-
-        public override string ArrivedText
-        {
-            get
-            {
-                return "The " + DisplayName + " have arrived!";
-            }
-        }
-        public override string DefeatedText
-        {
-            get
-            {
-                return "The " + DisplayName + " have been arrived!";
-            }
-        }
-
-        internal WraithInvasion()
-            : base()
-        {
-            StartText = d => DisplayName + " are coming from the " + d + "!";
-        }
-    }
-    class WraithSpawn : BossSpawn
-    {
-        public override bool ShouldSpawn(int rate, Player p)
-        {
-            bool ret = Main.rand.Next(10) == 0 && Main.time == 0;
-
-            if (!MWorld.oldNight || Main.dayTime)
-                ret = false;
-
-            MWorld.oldNight = !Main.dayTime;
-
-            return ret;
-        }
-        public override void Spawn(int pid)
-        {
-            AvalonMod.Wraiths.Start();
         }
     }
 }

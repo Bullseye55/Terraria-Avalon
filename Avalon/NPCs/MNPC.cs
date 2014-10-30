@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using TAPI;
-using Avalon.API.Biomes;
+using Avalon.API.World;
 
 namespace Avalon.NPCs
 {

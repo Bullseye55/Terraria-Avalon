@@ -44,7 +44,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="tAPI">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\tAPI.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\tAPI.exe</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
