@@ -1,0 +1,33 @@
+{
+	"displayName": "Reinforced Snowball Cannon",
+	"size": [74,28],
+	"rare": 4,
+	"value": [ 0, 0, 54, 0 ],
+	"consumable": false,
+	"autoReuse": true,
+	"shoot": 166,
+	"channel": false,
+	"useStyle": 5,
+	"useTime": 15,
+	"useAnimation": 15,
+	"useSound": 11,
+	"useAmmo": 949,
+	"shootSpeed": 12,
+	"knockback": 1,
+	"damage": 23,
+	"ranged": true,
+	"noMelee": true,
+	"maxStack": 1,
+	"tooltip": "Fires snowballs at a higher rate",
+	"recipes": [
+		{
+			"items": {
+				"Dirt Block": 1
+			},
+			"tiles": [
+				"Work Bench"
+			],
+			"creates": 1
+		}
+	]
+}
