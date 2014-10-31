@@ -3,7 +3,7 @@
     "size": [ 30, 24 ],
     "maxStack": 999,
     "rare": 6,
-    "value": [ 0, 9, 45, 0 ],
+    "value": [ 0, 9, 45, 0 ]/*,
 
     "recipes": [
         {
@@ -11,9 +11,9 @@
                 "Avalon:Dark Matter Ooze": 9
             },
             "tiles": [
-                "Caesium Forge"
+                "Avalon:Caesium Forge"
             ],
             "creates": 1
         }
-    ]
+    ]*/
 }

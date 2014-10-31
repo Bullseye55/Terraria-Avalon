@@ -10,7 +10,7 @@
 	"MSBuild": true,
 	"msBuildFile": "Avalon.csproj",
 
-	"dllReferences": [ 
+	"dllReferences": [
 		"References/NVorbis.dll"
 	],
 

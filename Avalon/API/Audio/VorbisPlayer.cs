@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Xna.Framework.Audio;
 using PoroCYon.Extensions.Collections;
 using TAPI;
@@ -15,85 +16,25 @@ namespace Avalon.API.Audio
     /// </summary>
     public static class VorbisPlayer
     {
-        readonly static string OggExt = ".OGG";
-
-        internal static Dictionary<string   , OggVorbis          > cache     = new Dictionary<string   , OggVorbis          >();
-        internal static Dictionary<OggVorbis, SoundEffectInstance> instCache = new Dictionary<OggVorbis, SoundEffectInstance>();
-
         /// <summary>
         /// Handles music-related things.
         /// </summary>
         public static class Music
         {
             static SoundEffectInstance music;
-            static float bakVolume;
-            static string old;
 
-            static OggVorbis GetTrack(string name, string modName, string fileName)
+            static void  StopOgg()
             {
-                if (cache.ContainsKey(name))
-                    return cache[name];
+                if (music != null)
+                {
+                    if (music.State != SoundState.Stopped)
+                        music.Stop();
 
-                Mod mod = Mods.mods.FirstOrDefault(m => m.InternalName == modName);
-
-                if (mod == null || !mod.modBase.includes.ContainsKey(fileName))
-                    return null;
-
-                return new OggVorbis(mod.modBase.includes[fileName]);
+                    music = null;
+                }
             }
-            static SoundEffectInstance GetInstance(OggVorbis track)
+            static void StartOgg()
             {
-                if (!instCache.ContainsKey(track))
-                {
-                    SoundEffectInstance inst = track.Effect.CreateInstance();
-                    instCache.Add(track, inst);
-                    return inst;
-                }
-
-                return instCache[track];
-            }
-
-            internal static void Update(ref string current)
-            {
-                old = WavebankDef.current;
-
-                string[] split = current.Split(':');
-                string
-                    mod  = split[0],
-                    name = split.Skip(1).Join(String.Empty);
-
-                if (!name.ToUpperInvariant().EndsWith(OggExt))
-                {
-                    if (music != null)
-                    {
-                        if (music.State != SoundState.Stopped)
-                            music.Stop();
-
-                        music = null;
-                    }
-
-                    return;
-                }
-
-                OggVorbis track = GetTrack(current, mod, name);
-
-                if (track == null)
-                {
-                    if (music != null)
-                    {
-                        if (music.State != SoundState.Stopped)
-                            music.Stop();
-
-                        music = null;
-                    }
-
-                    return;
-                }
-
-                current = String.Empty;
-
-                music = GetInstance(track);
-
                 if (music.State != SoundState.Playing)
                 {
                     if (!music.IsLooped)
@@ -101,6 +42,38 @@ namespace Avalon.API.Audio
 
                     music.Play();
                 }
+            }
+
+            internal static void Update(ref string current)
+            {
+                string[] split = current.Split(':');
+                string
+                    mod  = split[0],
+                    name = split.Skip(1).Join(String.Empty);
+
+                if (!name.ToUpperInvariant().EndsWith(OggExt))
+                {
+                    StopOgg();
+
+                    return;
+                }
+
+                OggVorbis track = GetTrack(mod, name);
+
+                if (track == null)
+                {
+                    StopOgg();
+
+                    return;
+                }
+
+                WavebankDef.fade[current = WavebankDef.current] = 0f;
+
+                music = GetInstance(track);
+
+                StartOgg();
+
+                music.Volume = Main.musicVolume;
             }
             internal static void UpdateInactive()
             {
@@ -122,6 +95,61 @@ namespace Avalon.API.Audio
             {
                 return Main.PlaySound(vorbis.Effect);
             }
+        }
+        
+        readonly static string OggExt = ".OGG";
+
+        internal static Dictionary<string   , OggVorbis          > cache     = new Dictionary<string   , OggVorbis          >();
+        internal static Dictionary<OggVorbis, SoundEffectInstance> instCache = new Dictionary<OggVorbis, SoundEffectInstance>();
+
+        readonly static string Colon = ":";
+
+        static OggVorbis GetTrack(string modName, string fileName)
+        {
+            string name = modName + Colon + fileName;
+            if (cache.ContainsKey(name))
+                return cache[name];
+
+            Mod mod = Mods.mods.FirstOrDefault(m => m.InternalName == modName);
+
+            if (mod == null || !mod.modBase.includes.ContainsKey(fileName))
+                return null;
+
+            OggVorbis ret = new OggVorbis(mod.modBase.includes[fileName]);
+
+            cache.Add(name, ret);
+
+            return ret;
+        }
+        static SoundEffectInstance GetInstance(OggVorbis track)
+        {
+            if (!instCache.ContainsKey(track))
+            {
+                SoundEffectInstance inst = track.Effect.CreateInstance();
+                instCache.Add(track, inst);
+                return inst;
+            }
+
+            return instCache[track];
+        }
+
+        /// <summary>
+        /// Loads an <see cref="OggVorbis" /> and caches it.
+        /// </summary>
+        /// <param name="resourceName">The name of the resource that contains the OGG Vorbis tack.</param>
+        /// <param name="base">The <see cref="ModBase" /> that owns the resource. Default is the <see cref="ModBase" /> of the calling mod.</param>
+        /// <returns>The <see cref="OggVorbis" /> track loaded from the resource.</returns>
+        public static OggVorbis LoadTrack(string resourceName, ModBase @base = null)
+        {
+            Mod mod = Mods.mods.FirstOrDefault(m => m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
+            byte[] data = (@base ?? (mod == null ? AvalonMod.Instance : mod.modBase)).includes[resourceName];
+
+            if (mod == null)
+                mod = AvalonMod.Instance.mod;
+
+            OggVorbis track = GetTrack(mod.InternalName, resourceName);
+            GetInstance(track);
+            return track;
         }
 
         internal static RefAction<string> Update = Music.Update;

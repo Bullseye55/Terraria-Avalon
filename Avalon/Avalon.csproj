@@ -554,7 +554,7 @@
     <Content Include="Items\Placeables\Dark Matter Wood.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Music\-Ogg-Dark Matter %28temp%29.ogg" />
+    <Content Include="Resources\Music\Dark Matter %28temp%29.ogg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Items\Materials\Heartstone.json" />

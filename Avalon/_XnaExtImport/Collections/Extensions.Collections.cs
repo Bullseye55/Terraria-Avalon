@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -66,6 +67,7 @@ namespace PoroCYon.Extensions.Collections
         /// <param name="collection">The collection of <typeparamref name="TObject"/>s.</param>
         /// <param name="getField">A function with a <typeparamref name="TObject"/> as parameter and returns a <typeparamref name="TField"/>.</param>
         /// <returns>A collection of <typeparamref name="TField"/>s.</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<TField> Fields<TObject, TField>(this IEnumerable<TObject> collection, Func<TObject, TField> getField)
         {
             List<TField> ret = new List<TField>();
@@ -83,6 +85,7 @@ namespace PoroCYon.Extensions.Collections
         /// <param name="collection">The collection of elements to cast.</param>
         /// <param name="converter">A converter used to cast a <typeparamref name="TOld"/> to a <typeparamref name="TNew"/>.</param>
         /// <returns>A collection of <typeparamref name="TNew"/>s.</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<TNew> CastAll<TOld, TNew>(this IEnumerable<TOld> collection, Converter<TOld, TNew> converter)
         {
             List<TNew> ret = new List<TNew>();
@@ -100,6 +103,7 @@ namespace PoroCYon.Extensions.Collections
         /// <param name="joinWith">The string to join the collection with.</param>
         /// <remarks>If you're using a commonly-used value for <paramref name="joinWith"/>, use a field from <see cref="CommonJoinValues" />.</remarks>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static string Join<T>(this IEnumerable<T> collection, string joinWith = null)
         {
             return Join(collection, (e, i) => joinWith ?? String.Empty);
@@ -111,6 +115,7 @@ namespace PoroCYon.Extensions.Collections
         /// <param name="collection">The collection to join.</param>
         /// <param name="join">The string to join the collection with.</param>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static string Join<T>(this IEnumerable<T> collection, Func<T, int, string> join = null)
         {
             bool first = true;

@@ -12,4 +12,9 @@ The Dungeon will be transformed into the Dark Matter Womb. Much tougher enemies 
 The Jungle grass and mud will be trasformed into Dark Matter Wastelands. The Wastelands grows a wide variety of junk.
 This junk can then be recycled for resources, most resources coming from a pre-Dark Matter world. This biome is essential.
 
+Dark Eye: An eye tile that spawns on the walls, floors, and celings on the Dark Matter Womb.
+The direction it is looking determines what direction it fires if the player stands in its line of sight.
+In essentially, a tile that attacks the player on its own, and can't be deactivated by snipping the wire.
+They grow in the Womb.
+
 More info coming later. I've gave you the basics, Poro.

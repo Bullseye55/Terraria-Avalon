@@ -46,7 +46,7 @@ namespace Avalon
 		internal static List<BossSpawn> spawns = new List<BossSpawn>();
         internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
 
-        bool isInactive;
+        //bool isInactive;
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -63,7 +63,7 @@ namespace Avalon
 			}
 		}
 		/// <summary>
-		/// Gets or sets the <see cref="ShadowMirror" /> hotkey.
+		/// Gets or sets the <!--<see cref="ShadowMirror" />--> hotkey.
 		/// </summary>
 		public static Keys ShadowMirrorHotkey
 		{
@@ -218,8 +218,8 @@ namespace Avalon
         {
             base.ChooseTrack(ref current);
 
-            if (Main.gameMenu && Menu.currentPage == "Main Menu")
-                current = "Avalon:Dark Matter (temp).ogg";
+            if (Main.gameMenu && Menu.currentPage == "Main Menu" && Menu.currentPage != "Crash Page")
+                current = "Avalon:Resources/Music/Dark Matter (temp).ogg";
 
             VorbisPlayer.Update(ref current);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using Microsoft.Xna.Framework.Audio;
 using NVorbis;
 using TAPI;
@@ -39,44 +40,93 @@ namespace Avalon.API.Audio
         /// <param name="data">The OGG Vorbis data of the audio.</param>
         public OggVorbis(byte[] data)
         {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                Effect = CreateEffect(ms, false);
-            }
+            Effect = CreateEffect(new MemoryStream(data));
         }
 
-        static byte[] GetByteFromResource(string res, ModBase @base)
+        internal static byte[] GetByteFromResource(string res, ModBase @base)
         {
             Mod mod = Mods.mods.FirstOrDefault(m => m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
             return (@base ?? (mod == null ? AvalonMod.Instance : mod.modBase)).includes[res];
         }
 
-        static Stream CreateWave(AudioChannels channels, int rate, float[] data)
+        static void   SwapEndianness(byte[] data)
+        {
+            byte temp;
+            int len = (int)Math.Floor(data.Length / 2d);
+
+            for (int i = 0; i < len; i++)
+            {
+                temp = data[i];
+                data[i] = data[data.Length - i];
+            }
+
+            temp = data[0];
+            data[0] = data[3];
+            data[3] = data[0];
+        }
+        static uint   SwapEndianness(uint   data)
+        {
+            return
+                ((data & 0x000000FF) << 24) |
+                ((data & 0x0000FF00) << 8) |
+                ((data & 0x00FF0000) >> 8) |
+                ((data & 0xFF000000) >> 24)
+            ;
+        }
+        static  int   SwapEndianness( int   data)
+        {
+            return BitConverter.IsLittleEndian ? data : (data >> 24 | data << 24 | (data & 65280) << 8 | (data & 16711680) >> 8);
+        }
+        static ushort SwapEndianness(ushort data)
+        {
+            return (ushort)(
+                ((data & 0x00FF) << 8) |
+                ((data & 0xFF00) >> 8)
+            );
+        }
+        static  short SwapEndianness( short data)
+        {
+            return unchecked((short)SwapEndianness((ushort)data));
+        }
+
+        static MemoryStream CreateWave(AudioChannels channels, int rate, float[] data)
         {
             MemoryStream ms = new MemoryStream();
 
-            using (BinaryWriter w = new BinaryWriter(ms))
+            BinaryWriter w = new BinaryWriter(ms, Encoding.UTF8);
+
+            unchecked // MEEP MOOP
             {
-                w.Write(new char[4] { 'R', 'I', 'F', 'F' });
-                w.Write(36 + data.Length);
-                w.Write(new char[4] { 'W', 'A', 'V', 'E' });
+                // --- RIFF header ---
+                w.Write(new[] { 'R', 'I', 'F', 'F' });
+                w.Write(data.Length * sizeof(ushort) + 36); // chunck size (dword)
+                w.Write(new[] { 'W', 'A', 'V', 'E' });
 
-                w.Write(new char[4] { 'f', 'm', 't', ' ' });
+                // --- format data ---
+                w.Write(new[] { 'f', 'm', 't', ' ' });
+                // 16-bit PCM (big endian) (dword)
                 w.Write(16);
-                w.Write((short)1);
-                w.Write((short)((int)channels & 0xFFFF));
-                w.Write(rate);
-                w.Write((rate * ((16 * (int)channels) / 8)));
-                w.Write((short)(((16 * (int)channels) / 8)) & 0xFFFF);
-                w.Write((short)16);
+                // format type (PCM=1) (big endian) (word)
+                w.Write((ushort)       1);
+                w.Write((ushort)channels);
+                // sample rate (big endian) (dword)
+                w.Write((uint  )rate);
+                // byte rate   (big endian) (dword)
+                w.Write((uint  )(rate * (int)channels * sizeof(ushort)));
+                // block align (big endian) ( word)
+                w.Write((ushort)(       (int)channels * sizeof(ushort)));
+                w.Write((ushort)16);
 
-                w.Write(new char[4] { 'd', 'a', 't', 'a' });
-                w.Write(data.Length);
+                // --- (actual) wave data ---
+                w.Write(new[] { 'd', 'a', 't', 'a' });
 
-                for (long i = 0L; i < data.LongLength; i++)
-                    w.Write(data[i]);
+                w.Write(data.Length * sizeof(ushort)); // data length
+
+                for (int i = 0; i < data.Length; i++)
+                    w.Write((short)(data[i] < 0f ? data[i] * 32768f : data[i] * 32767f));
             }
 
+            ms.Position = 0L;
             return ms;
         }
 
@@ -94,7 +144,10 @@ namespace Avalon.API.Audio
 
                 r.ReadSamples(data, 0, (int)r.TotalSamples);
 
-                return SoundEffect.FromStream(CreateWave((AudioChannels)r.Channels, r.SampleRate, data));
+                using (MemoryStream ms = CreateWave((AudioChannels)r.Channels, r.SampleRate, data))
+                {
+                    return SoundEffect.FromStream(ms);
+                }
             }
         }
 

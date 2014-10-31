@@ -22,7 +22,7 @@ namespace Avalon
         /// </summary>
         SetMusicBox,
         /// <summary>
-        /// Request tiles when teleporting with the <see cref="Items.Other.ShadowMirror" />.
+        /// Request tiles when teleporting with the <!--<see cref="Items.Other.ShadowMirror" />-->.
         /// </summary>
         RequestTiles,
         /// <summary>
