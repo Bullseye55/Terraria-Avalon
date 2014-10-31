@@ -1,0 +1,16 @@
+{
+	"displayName": "Dark Matter Wood",
+	"size": [ 16, 16 ],
+	"maxStack": 999,
+	"value": [ 0, 0, 0, 0 ],
+	"rare": 4,
+	"useStyle": 1,
+	"useAnimation": 15,
+	"useTime": 10,
+	"autoReuse": true,
+	"useTurn": true,
+	"tooltip": "Wood that has a dark aura",
+	"createTile": "Avalon:Dark Matter Wood",
+	"consumable": true,
+	"tileBoost": 0
+}

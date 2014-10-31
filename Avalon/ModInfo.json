@@ -1,14 +1,18 @@
 ﻿{
-    "displayName" : "Avalon",
-    "author" : "Avalon Team",
-    "info" : "tAPI Avalon mod",
-    "version": "0.0.0.0",
-    
-    "internalName": "Avalon",
-    "includePDB":  true,
+	"displayName": "Avalon",
+	"author": "Avalon Team",
+	"info": "tAPI Avalon mod",
+	"version": "0.0.0.0",
 
-    "MSBuild": true,
-    "msBuildFile":  "Avalon.csproj",
+	"internalName": "Avalon",
+	"includePDB": true,
+
+	"MSBuild": true,
+	"msBuildFile": "Avalon.csproj",
+
+	"dllReferences": [ 
+		"References/NVorbis.dll"
+	]
 
     "outputName": "Avalon-Bullseye55"
 }

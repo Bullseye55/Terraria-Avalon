@@ -428,7 +428,7 @@ namespace Avalon
         {
             base.WorldGenModifyHardmodeTaskList(list);
 
-            list.Add(new DynamicTask("Avalon:Heartstone", Gen.GenerateHeartstone));
+            //list.Add(new DynamicTask("Avalon:Heartstone", Gen.GenerateHeartstone));
         }
 
         /// <summary>

@@ -10,10 +10,10 @@ using PoroCYon.MCT.Content;
 using Avalon.API.Events;
 using Avalon.API.Items.MysticalTomes;
 using Avalon.API.World;
-using Avalon.Items.Other;
 using Avalon.NPCs;
 using Avalon.UI.Menus;
 using Avalon.World;
+using Avalon.API.Audio;
 
 namespace Avalon
 {
@@ -201,7 +201,21 @@ namespace Avalon
 
             DateEvent.events.Clear();
 
+            VorbisPlayer.cache.Clear();
+
             base.OnUnload();
+        }
+
+        /// <summary>
+        /// Chooses the music track to play.
+        /// </summary>
+        /// <param name="current">The music track to play.</param>
+        [CallPriority(Single.NegativeInfinity)]
+        public override void ChooseTrack(ref string current)
+        {
+            base.ChooseTrack(ref current);
+
+            VorbisPlayer.Update(ref current);
         }
 
         /// <summary>

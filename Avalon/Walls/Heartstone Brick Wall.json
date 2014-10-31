@@ -1,8 +1,0 @@
-{
-	"house": true,
-	"dungeon": false,
-	"light": false,
-	"blend": 0,
-	"drop": "AvalonMod:Heartstone Brick Wall",
-	"dust": 60
-}

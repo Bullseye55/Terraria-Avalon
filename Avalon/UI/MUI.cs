@@ -19,7 +19,7 @@ namespace Avalon.UI
             base.ModifyInterfaceLayerList(list);
 
             InterfaceLayer.Add(list, MWorld.AccessoryLayer = new AccessorySlotLayer(), InterfaceLayer.LayerInventory, false);
-            InterfaceLayer.Add(list, MWorld.TomeSlotLayer  = new TomeSlotLayer     (),         MWorld.AccessoryLayer, false);
+            //InterfaceLayer.Add(list, MWorld.TomeSlotLayer  = new TomeSlotLayer     (),         MWorld.AccessoryLayer, false);
         }
     }
 }

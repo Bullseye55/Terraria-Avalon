@@ -1,0 +1,19 @@
+﻿{
+    "displayName": "Dark Matter Wood",
+
+    "size": [ 1, 1 ],
+    "sheetRows": 15,
+    "sheetColumns": 16,
+    "rateAxe": 1.4,
+    "minAxe": 40,
+    "breaksByAxe": true,
+    "mergeDirt": false,
+    "solid": true,
+    "blocksLight": true,
+    "blocksSun": true,
+    "shines": true,
+    "shineChance": 400,
+    "dust": 1,
+
+    "drop": "Avalon:Dark Matter Wood"
+}

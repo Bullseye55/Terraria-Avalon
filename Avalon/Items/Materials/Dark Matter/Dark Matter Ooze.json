@@ -1,0 +1,14 @@
+﻿{
+    "displayName": "Dark Matter Ooze",
+    "size": [ 26, 20 ],
+    "useStyle": 1,
+    "useTime": 10,
+    "useAnimation": 15,
+    "maxStack": 999,
+    "createTile": "Avalon:Dark Matter Ooze",
+    "consumable": true,
+    "autoReuse": true,
+    "useTurn": true,
+    "rare": 6,
+    "value": [ 0, 2, 0, 0 ]
+}

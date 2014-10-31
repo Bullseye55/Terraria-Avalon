@@ -50,6 +50,10 @@
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="NVorbis, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\NVorbis.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -66,6 +70,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Audio\OggVorbis.cs" />
+    <Compile Include="API\Audio\VorbisPlayer.cs" />
     <Compile Include="API\Biomes\SpreadingTile.cs" />
     <Compile Include="API\Events\DateEvent.cs" />
     <Compile Include="API\Events\IEvent.cs" />
@@ -74,7 +80,6 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
-    <Compile Include="Buffs\Freeze.cs" />
     <Compile Include="World\DarkMatter.cs" />
     <Compile Include="Items\Accessories\Bag of Blood.cs" />
     <Compile Include="Items\Accessories\Bag of Fire.cs" />
@@ -88,19 +93,6 @@
     <Compile Include="Items\DevItems\Bullseye55\Bullseye55 Leggings.cs" />
     <Compile Include="Items\DevItems\DEV_DATA.cs" />
     <Compile Include="Items\DevItems\Bullseye55\Hard Swap.cs" />
-    <Compile Include="Items\Mystical Tomes\Adventures and Mishaps.cs" />
-    <Compile Include="Items\Mystical Tomes\Tome of the River Spirit.cs" />
-    <Compile Include="Items\Mystical Tomes\Tome of Distance.cs" />
-    <Compile Include="Items\Mystical Tomes\The Voidlands.cs" />
-    <Compile Include="Items\Mystical Tomes\Tale of the Red Lotus.cs" />
-    <Compile Include="Items\Mystical Tomes\Tale of the Dolt.cs" />
-    <Compile Include="Items\Mystical Tomes\Misty Peach Blossoms.cs" />
-    <Compile Include="Items\Mystical Tomes\Mediation%27s Flame.cs" />
-    <Compile Include="Items\Mystical Tomes\Love Up and Down.cs" />
-    <Compile Include="Items\Mystical Tomes\Flanker%27s Tome.cs" />
-    <Compile Include="Items\Mystical Tomes\Creator%27s Tome.cs" />
-    <Compile Include="Items\Mystical Tomes\Christmas Tome.cs" />
-    <Compile Include="Items\Mystical Tomes\Burning Desire.cs" />
     <Compile Include="Items\Armour\Dark Matter\Dark Matter Chest.cs" />
     <Compile Include="Items\Potions\Brain in a Bottle.cs" />
     <Compile Include="Items\Potions\Medicine Bottle.cs" />
@@ -150,10 +142,6 @@
     <Compile Include="API\Items\Mystical Tomes\Attributes.cs" />
     <Compile Include="API\Items\Mystical Tomes\SkillManager.cs" />
     <Compile Include="API\World\BossSpawn.cs" />
-    <Compile Include="Buffs\Shadows.cs" />
-    <Compile Include="Items\Materials\Souls\Soul.cs" />
-    <Compile Include="Items\Other\Shadow Mirror.cs" />
-    <Compile Include="Items\Potions\Shadow Potion.cs" />
     <Compile Include="Items\Weapons\Melee\Flails\Mythril Flail.cs" />
     <Compile Include="Items\Weapons\Melee\Flails\Heaven%27s Tear.cs" />
     <Compile Include="Items\Weapons\Melee\Flails\Eclipse%27s Waning.cs" />
@@ -166,7 +154,6 @@
     <Compile Include="Items\Weapons\Melee\Flails\Sporalash.cs" />
     <Compile Include="Items\Weapons\Melee\Flails\Silver Flail.cs" />
     <Compile Include="Items\Weapons\Melee\Flails\Caesium Flail.cs" />
-    <Compile Include="Items\Weapons\Magic\Spells\Impulse Strike.cs" />
     <Compile Include="UI\ExtraAccessorySlot.cs" />
     <Compile Include="UI\Menus\StarterSetDisplayer.cs" />
     <Compile Include="UI\MysticalTomeSlot.cs" />
@@ -190,12 +177,10 @@
     <Compile Include="Projectiles\FromPlayer\Spells\Impulse Bolt.cs" />
     <Compile Include="Projectiles\FromPlayer\Spells\Impulse Trail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tiles\Crafting Stations\Hallowed Altar.cs" />
+    <Compile Include="_XnaExtImport\Collections\Extensions.Collections.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buffs\Brain Follower.png" />
-    <Content Include="Buffs\Freeze.png" />
-    <Content Include="Buffs\Shadows.png" />
     <Content Include="Gores\Armoured Crimslime Gore 1.png" />
     <Content Include="Gores\Armoured Crimslime Gore 2.png" />
     <Content Include="Gores\Black Lancer Gore 1.png" />
@@ -245,63 +230,10 @@
     <Content Include="Items\Placeables\Dark Matter Bush.png" />
     <Content Include="Items\Placeables\Dark Matter Soil.png" />
     <Content Include="Items\Placeables\Dark Matter Wood.png" />
-    <Content Include="Items\Placeables\DarkMatterBrick.png" />
     <Content Include="Items\Placeables\Flesh Tendril.png" />
-    <Content Include="Items\Placeables\Crafting Stations\Adamantite Anvil.json" />
-    <Content Include="Items\Placeables\Crafting Stations\Berserker Anvil.png" />
-    <Content Include="Items\Placeables\Crafting Stations\Caesium Forge.json" />
-    <Content Include="Items\Placeables\Crafting Stations\Hallowed Altar.png" />
-    <Content Include="Items\Placeables\Crafting Stations\Navigator%27s Array.png" />
-    <Content Include="Items\Placeables\Crafting Stations\Resistant Work Bench.png" />
     <Content Include="Items\Placeables\Crafting Stations\Vertebrae Workbench.png" />
-    <Content Include="Items\Materials\Berserker\Berserker Bar.png" />
-    <Content Include="Items\Materials\Berserker\Berserker Ore.png" />
-    <Content Include="Items\Materials\Corrupted\Corrupted Bar.png" />
-    <Content Include="Items\Materials\Corrupted\Corrupted Ore.png" />
     <Content Include="Items\Materials\Dark Matter\Dark Matter Bar.png" />
-    <Content Include="Items\Materials\Dark Matter\Dark Matter Ore.png" />
-    <Content Include="Items\Materials\Hallowstone Block.png" />
-    <Content Include="Items\Materials\Heartstone.png" />
-    <Content Include="Items\Materials\Illegal Weapon Instructions.png" />
-    <Content Include="Items\Materials\Jungle\Jungle Ore.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Carbon Steel.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Dew of Herbs.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Dew Orb.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Dragon Orb.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Element Diamond.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Element Dust.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Fine Lumber.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Gravel.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Mysterious Page.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Mystical Totem.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Rubybead Herb.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Sandstone.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Scroll of Tome.png" />
-    <Content Include="Items\Materials\Mystical Tomes\Strong Venom.png" />
-    <Content Include="Items\Materials\Shards\Fire Shard.png" />
-    <Content Include="Items\Materials\Shards\Jungle Shard.png" />
-    <Content Include="Items\Materials\Jungle\Jungle Bar.png" />
-    <Content Include="Items\Materials\Magmatic\Magmatic Bar.png" />
-    <Content Include="Items\Materials\Magmatic\Magmatic Ore.png" />
-    <Content Include="Items\Materials\Resistant Wood.png" />
-    <Content Include="Items\Materials\Souls\Soul of Blight.png" />
-    <Content Include="Items\Materials\Souls\Soul of Plight.png" />
-    <Content Include="Items\Materials\Souls\Soul of Vigor.png" />
-    <Content Include="Items\Mystical Tomes\Adventures and Mishaps.png" />
-    <Content Include="Items\Mystical Tomes\Burning Desire.png" />
-    <Content Include="Items\Mystical Tomes\Christmas Tome.png" />
-    <Content Include="Items\Mystical Tomes\Creator%27s Tome.png" />
-    <Content Include="Items\Mystical Tomes\Flanker%27s Tome.png" />
-    <Content Include="Items\Mystical Tomes\Love Up and Down.png" />
-    <Content Include="Items\Mystical Tomes\Mediation%27s Flame.png" />
-    <Content Include="Items\Mystical Tomes\Misty Peach Blossoms.png" />
-    <Content Include="Items\Mystical Tomes\Tale of the Dolt.png" />
-    <Content Include="Items\Mystical Tomes\Tale of the Red Lotus.png" />
-    <Content Include="Items\Mystical Tomes\The Voidlands.png" />
-    <Content Include="Items\Mystical Tomes\Tome of Distance.png" />
-    <Content Include="Items\Mystical Tomes\Tome of the River Spirits.png" />
-    <Content Include="Items\Other\Shadow Mirror.png" />
-    <Content Include="Items\Placeables\Heartstone Brick.png" />
+    <Content Include="Items\Materials\Dark Matter\Dark Matter Ooze.png" />
     <Content Include="Items\Placeables\Vertebrae Block.png" />
     <Content Include="Items\Placeables\Furniture\Vertebrae Bookshelf.png" />
     <Content Include="Items\Placeables\Furniture\Vertebrae Chest.png" />
@@ -309,13 +241,10 @@
     <Content Include="Items\Placeables\Furniture\Vertebrae Tomb.png" />
     <Content Include="Items\Placeables\Walls\Dark Matter Brick Wall.png" />
     <Content Include="Items\Placeables\Walls\Dark Matter Wood Wall.png" />
-    <Content Include="Items\Placeables\Walls\Heartstone Brick Wall.png" />
     <Content Include="Items\Placeables\Walls\Vertebrae Wall.png" />
     <Content Include="Items\Potions\Brain in a Bottle.png" />
     <Content Include="Items\Potions\Frog Legs.png" />
     <Content Include="Items\Potions\Medicine Bottle.png" />
-    <Content Include="Items\Potions\Shadow Potion.png" />
-    <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
     <Content Include="Items\Weapons\Melee\Flails\Berserker Nightmare.png" />
     <Content Include="Items\Weapons\Melee\Flails\Caesium Flail.json" />
     <Content Include="Items\Weapons\Melee\Flails\Cobalt Flail.png" />
@@ -326,13 +255,7 @@
     <Content Include="Items\Weapons\Melee\Flails\Mythril Flail.png" />
     <Content Include="Items\Weapons\Melee\Flails\Quad Sunfury.png" />
     <Content Include="Items\Weapons\Melee\Flails\Silver Flail.png" />
-    <Content Include="Items\Materials\Caesium\Caesium Bar.json" />
-    <Content Include="Items\Materials\Caesium\Caesium Ore.json" />
-    <Content Include="Items\Materials\Coal.json" />
-    <Content Include="Items\Materials\Steel\Steel Bar.json" />
-    <Content Include="Items\Materials\Steel\Steel Chain.json" />
     <Content Include="Items\Weapons\Melee\Flails\Sporalash.png" />
-    <Content Include="Items\Weapons\Magic\Spells\Impulse Strike.png" />
     <Content Include="Items\Weapons\Magic\Staffs\Vertebrae Staff.png" />
     <Content Include="Items\Weapons\Melee\Throwable\Explosive Knife.png" />
     <Content Include="Items\Weapons\Melee\Throwable\Ichor Grenade.png" />
@@ -394,55 +317,34 @@
     <Content Include="Projectiles\FromPlayer\Throwables\Throwing Paladin%27s Hammer.png" />
     <Content Include="Projectiles\FromPlayer\Arrows\Vertebrae Rivet.png" />
     <Content Include="Projectiles\FromPlayer\Bullets\Zapper Bullet.png" />
+    <Content Include="References\NVorbis.dll" />
+    <Content Include="References\NVorbis.xml" />
     <Content Include="Sounds\Electronic 1.wav" />
     <Content Include="Sounds\Vertebrae Cannon.wav" />
-    <Content Include="Tiles\Blocks\Dark Matter Brick.png" />
+    <Content Include="Tiles\Bricks\Dark Matter Brick.png" />
     <Content Include="Tiles\Blocks\Dark Matter Bush 2.png" />
     <Content Include="Tiles\Blocks\Dark Matter Bush.png" />
     <Content Include="Tiles\Blocks\Dark Matter Soil.png" />
     <Content Include="Tiles\Blocks\Dark Matter Wood.png" />
     <Content Include="Tiles\Blocks\Flesh Tendril.png" />
-    <Content Include="Tiles\Blocks\Hallowstone Block.png" />
-    <Content Include="Tiles\Blocks\Heartstone Brick.png" />
-    <Content Include="Tiles\Blocks\Resistant Wood.png" />
+    <Content Include="Tiles\Bricks\Heartstone Brick.png" />
     <Content Include="Tiles\Blocks\Vertebrae Block.png" />
     <Content Include="Tiles\Blocks\Vertebrae Platform.png" />
-    <Content Include="Tiles\Crafting Stations\Berserker Anvil.png" />
-    <Content Include="Tiles\Crafting Stations\Navigator%27s Array.png" />
-    <Content Include="Tiles\Crafting Stations\Resistant Work Bench.png" />
     <Content Include="Tiles\Crafting Stations\Vertebrae Workbench.png" />
     <Content Include="Tiles\Furniture\Vertebrae Bookshelf.png" />
     <Content Include="Tiles\Furniture\Vertebrae Chest.png" />
     <Content Include="Tiles\Furniture\Vertebrae Dresser.png" />
     <Content Include="Tiles\Furniture\Vertebrae Tomb Tile.png" />
-    <Content Include="Tiles\Ores\Berserker Ore.png" />
-    <Content Include="Tiles\Crafting Stations\Hallowed Altar.png" />
-    <Content Include="Tiles\Ores\Corrupted Ore.png" />
-    <Content Include="Tiles\Ores\Dark Matter Ore.png" />
-    <Content Include="Tiles\Ores\Heartstone.png" />
-    <Content Include="Tiles\Ores\Jungle Ore.png" />
-    <Content Include="Tiles\Ores\Magmatic Ore.png" />
+    <Content Include="Tiles\Ores\Dark Matter Ooze.png" />
     <Content Include="Walls\Dark Matter Brick Wall.png" />
     <Content Include="Walls\Dark Matter Wood Wall.png" />
-    <Content Include="Walls\Heartstone Brick Wall.png" />
     <Content Include="Walls\Vertebrae Wall.png" />
     <Content Include="ModInfo.json" />
     <Content Include="Projectiles\FromPlayer\Flails\Adamantite Ball.json" />
     <Content Include="Projectiles\FromPlayer\Flails\Cursed Ball.json" />
-    <Content Include="Tiles\Crafting Stations\Adamantite Anvil.json" />
-    <Content Include="Tiles\Crafting Stations\Caesium Forge.json" />
-    <Content Include="Tiles\Ores\Caesium Ore.json" />
-    <Content Include="Tiles\Ores\Coal.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Placeables\Crafting Stations\Adamantite Anvil.png" />
-    <Content Include="Items\Placeables\Crafting Stations\Caesium Forge.png" />
     <Content Include="Items\Weapons\Melee\Flails\Caesium Flail.png" />
-    <Content Include="Items\Materials\Caesium\Caesium Bar.png" />
-    <Content Include="Items\Materials\Caesium\Caesium Ore.png" />
-    <Content Include="Items\Materials\Coal.png" />
-    <Content Include="Items\Materials\Steel\Steel Bar.png" />
-    <Content Include="Items\Materials\Steel\Steel Chain.png" />
     <Content Include="Projectiles\FromPlayer\Flails\Adamantite Ball.png" />
     <Content Include="Projectiles\FromPlayer\Flails\Cursed Ball.png" />
     <Content Include="Resources\Chains\Adamantite Chain.png" />
@@ -468,10 +370,6 @@
     <Content Include="Resources\Misc\MermanHead.png" />
     <Content Include="Resources\Misc\MermanLegs.png" />
     <Content Include="Resources\Wings\Golden Wings.png" />
-    <Content Include="Tiles\Crafting Stations\Adamantite Anvil.png" />
-    <Content Include="Tiles\Crafting Stations\Caesium Forge.png" />
-    <Content Include="Tiles\Ores\Caesium Ore.png" />
-    <Content Include="Tiles\Ores\Coal.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Items\Weapons\Melee\Flails\Adamantite Flail.png" />
@@ -495,40 +393,9 @@
     <Folder Include="Items\Weapons\Ranged\Crossbows\" />
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
-    <Folder Include="Wavebanks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Berserker\Berserker Bar.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Berserker\Berserker Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Placeables\Crafting Stations\Berserker Anvil.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Placeables\Crafting Stations\Hallowed Altar.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Hallowstone Block.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Blocks\Hallowstone Block.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Souls\Soul of Plight.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Crafting Stations\Hallowed Altar.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Ores\Berserker Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Crafting Stations\Berserker Anvil.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Items\Weapons\Melee\Flails\Cobalt Flail.json" />
@@ -561,49 +428,10 @@
     <Content Include="Projectiles\FromPlayer\Flails\Mythril Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Materials\Illegal Weapon Instructions.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Souls\Soul of Blight.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Corrupted\Corrupted Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Corrupted\Corrupted Bar.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Ores\Corrupted Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Placeables\Crafting Stations\Resistant Work Bench.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Crafting Stations\Resistant Work Bench.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Resistant Wood.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Blocks\Resistant Wood.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Items\Weapons\Melee\Flails\Sporalash.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Sporalash Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Shards\Jungle Shard.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Jungle\Jungle Bar.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Jungle\Jungle Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Ores\Jungle Ore.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Items\Weapons\Melee\Flails\Meteor Masher.json" />
@@ -615,80 +443,26 @@
     <Content Include="Items\Weapons\Melee\Flails\Quad Sunfury.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Materials\Magmatic\Magmatic Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Materials\Magmatic\Magmatic Bar.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Ores\Magmatic Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Quad Ball.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Mega Quad Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Other\Shadow Mirror.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Items\Materials\Dark Matter\Dark Matter Bar.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Materials\Dark Matter\Dark Matter Ore.json" />
+    <Content Include="Items\Materials\Dark Matter\Dark Matter Ooze.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tiles\Ores\Dark Matter Ore.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tiles\Crafting Stations\Navigator%27s Array.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Placeables\Crafting Stations\Navigator%27s Array.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Items\Potions\Shadow Potion.json" />
+    <Content Include="Tiles\Ores\Dark Matter Ooze.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buffs\Brain Follower.json" />
-    <Content Include="Buffs\Freeze.json" />
-    <Content Include="Buffs\Shadows.json" />
-    <Content Include="Items\Weapons\Magic\Spells\Impulse Strike.json" />
     <Content Include="Projectiles\FromPlayer\Spells\Impulse Bolt.json" />
     <Content Include="Projectiles\FromPlayer\Spells\Impulse Trail.json" />
-    <Content Include="Items\Materials\Souls\Soul of Vigor.json" />
-    <Content Include="Items\Materials\Shards\Fire Shard.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Carbon Steel.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Dew of Herbs.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Dew Orb.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Dragon Orb.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Element Diamond.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Element Dust.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Fine Lumber.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Gravel.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Mysterious Page.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Mystical Totem.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Rubybead Herb.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Sandstone.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Scroll of Tome.json" />
-    <Content Include="Items\Materials\Mystical Tomes\Strong Venom.json" />
-    <Content Include="Items\Mystical Tomes\Adventures and Mishaps.json" />
-    <Content Include="Items\Mystical Tomes\Burning Desire.json" />
-    <Content Include="Items\Mystical Tomes\Christmas Tome.json" />
-    <Content Include="Items\Mystical Tomes\Creator%27s Tome.json" />
-    <Content Include="Items\Mystical Tomes\Flanker%27s Tome.json" />
-    <Content Include="Items\Mystical Tomes\Love Up and Down.json" />
-    <Content Include="Items\Mystical Tomes\Mediation%27s Flame.json" />
-    <Content Include="Items\Mystical Tomes\Misty Peach Blossoms.json" />
-    <Content Include="Items\Mystical Tomes\Tale of the Dolt.json" />
-    <Content Include="Items\Mystical Tomes\Tale of the Red Lotus.json" />
-    <Content Include="Items\Mystical Tomes\The Voidlands.json" />
-    <Content Include="Items\Mystical Tomes\Tome of Distance.json" />
-    <Content Include="Items\Mystical Tomes\Tome of the River Spirits.json" />
     <Content Include="ModOptions.json" />
     <Content Include="Items\Baits\Lava Mite.json" />
-    <Content Include="Items\Materials\Heartstone.json" />
     <Content Include="Items\Accessories\Bag of Blood.json" />
     <Content Include="Items\Accessories\Bag of Fire.json" />
     <Content Include="Items\Accessories\Bag of Shadow.json" />
@@ -709,13 +483,10 @@
     <Content Include="Items\Placeables\Dark Matter Soil.json" />
     <Content Include="Items\Placeables\Flesh Tendril.json" />
     <Content Include="Items\Placeables\Furniture\Vertebrae Bookshelf.json" />
-    <Content Include="Items\Placeables\Heartstone Brick.json" />
     <Content Include="Items\Placeables\Vertebrae Platform.json" />
-    <Content Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
     <Content Include="Items\Placeables\Walls\Vertebrae Wall.json" />
     <Content Include="Items\Potions\Brain in a Bottle.json" />
     <Content Include="Items\Potions\Medicine Bottle.json" />
-    <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
     <Content Include="Items\Weapons\Magic\Staffs\Vertebrae Staff.json" />
     <Content Include="Items\Weapons\Melee\Throwable\Ichor Grenade.json" />
     <Content Include="Items\Weapons\Melee\Throwable\Spike Ball.json" />
@@ -761,14 +532,21 @@
     <Content Include="Projectiles\FromPlayer\Bullets\Zapper Bullet.json" />
     <Content Include="Tiles\Blocks\Dark Matter Soil.json" />
     <Content Include="Tiles\Blocks\Flesh Tendril.json" />
-    <Content Include="Tiles\Blocks\Heartstone Brick.json" />
-    <Content Include="Tiles\Ores\Heartstone.json" />
+    <Content Include="Tiles\Bricks\Heartstone Brick.json" />
     <Content Include="Items\Weapons\Melee\Throwable\Throwing Paladin%27s Hammer.json" />
     <Content Include="Tiles\Blocks\Vertebrae Block.json" />
     <Content Include="Tiles\Furniture\Vertebrae Bookshelf.json" />
     <Content Include="Tiles\Blocks\Vertebrae Platform.json" />
-    <Content Include="Walls\Heartstone Brick Wall.json" />
     <Content Include="Walls\Vertebrae Wall.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tiles\Blocks\Dark Matter Wood.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Items\Placeables\Dark Matter Wood.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Music\-Ogg-Dark Matter %28temp%29.ogg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

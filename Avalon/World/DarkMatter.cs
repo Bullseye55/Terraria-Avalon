@@ -14,7 +14,8 @@ namespace Avalon.World
                 TileDef.byName["Avalon:Dark Matter Soil"]
             }, AvalonMod.EmptyIntList, 150 /* temp value */)
         {
-            // biomeMusic = ...?
+            biomeMusic = "Avalon:Dark Matter (temp).ogg";
+            biomeMusicPriority = MusicPriority.Med;
         }
     }
 }
