@@ -41,10 +41,12 @@ namespace Avalon
 			tomeSkillHotkey   ,
 			shadowMirrorHotkey;
 
-		static bool addedWings = false;
+		bool addedWings = false;
 
 		internal static List<BossSpawn> spawns = new List<BossSpawn>();
         internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
+
+        bool isInactive;
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -201,7 +203,8 @@ namespace Avalon
 
             DateEvent.events.Clear();
 
-            VorbisPlayer.cache.Clear();
+            VorbisPlayer.cache    .Clear();
+            VorbisPlayer.instCache.Clear();
 
             base.OnUnload();
         }
@@ -215,7 +218,21 @@ namespace Avalon
         {
             base.ChooseTrack(ref current);
 
+            if (Main.gameMenu && Menu.currentPage == "Main Menu")
+                current = "Avalon:Dark Matter (temp).ogg";
+
             VorbisPlayer.Update(ref current);
+        }
+
+        /// <summary>
+        /// Called at the end of <see cref="Main" />.Update.
+        /// </summary>
+        public override void PostGameUpdate()
+        {
+            if (!Main.hasFocus)
+                VorbisPlayer.Music.UpdateInactive();
+
+            base.PostGameUpdate();
         }
 
         /// <summary>

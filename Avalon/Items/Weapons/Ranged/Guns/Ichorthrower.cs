@@ -4,7 +4,7 @@ using System.Linq;
 using Terraria;
 using TAPI;
 
-namespace Avalon.Weapons.Ranged.Guns
+namespace Avalon.Items.Weapons.Ranged.Guns
 {
     /// <summary>
     /// The Ichorthrower.

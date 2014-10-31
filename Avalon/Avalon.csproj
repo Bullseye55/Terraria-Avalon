@@ -142,18 +142,18 @@
     <Compile Include="API\Items\Mystical Tomes\Attributes.cs" />
     <Compile Include="API\Items\Mystical Tomes\SkillManager.cs" />
     <Compile Include="API\World\BossSpawn.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Mythril Flail.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Heaven%27s Tear.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Eclipse%27s Waning.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Cobalt Flail.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Adamantite Flail.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Berserker Nightmare.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Moonfury.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Meteor Masher.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Quad Sunfury.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Sporalash.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Silver Flail.cs" />
-    <Compile Include="Items\Weapons\Melee\Flails\Caesium Flail.cs" />
+    <Compile Include="_ForRevision\Flails\Mythril Flail.cs" />
+    <Compile Include="_ForRevision\Flails\Heaven%27s Tear.cs" />
+    <Compile Include="_ForRevision\Flails\Eclipse%27s Waning.cs" />
+    <Compile Include="_ForRevision\Flails\Cobalt Flail.cs" />
+    <Compile Include="_ForRevision\Flails\Adamantite Flail.cs" />
+    <Compile Include="_ForRevision\Flails\Berserker Nightmare.cs" />
+    <Compile Include="_ForRevision\Flails\Moonfury.cs" />
+    <Compile Include="_ForRevision\Flails\Meteor Masher.cs" />
+    <Compile Include="_ForRevision\Flails\Quad Sunfury.cs" />
+    <Compile Include="_ForRevision\Flails\Sporalash.cs" />
+    <Compile Include="_ForRevision\Flails\Silver Flail.cs" />
+    <Compile Include="_ForRevision\Flails\Caesium Flail.cs" />
     <Compile Include="UI\ExtraAccessorySlot.cs" />
     <Compile Include="UI\Menus\StarterSetDisplayer.cs" />
     <Compile Include="UI\MysticalTomeSlot.cs" />
@@ -225,6 +225,7 @@
     <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings.png" />
     <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings_Legs.png" />
     <Content Include="Items\DevItems\Bullseye55\Hard Swap.png" />
+    <Content Include="Items\Materials\Heartstone.png" />
     <Content Include="Items\Placeables\Dark Matter Brick.png" />
     <Content Include="Items\Placeables\Dark Matter Bush 2.png" />
     <Content Include="Items\Placeables\Dark Matter Bush.png" />
@@ -234,6 +235,7 @@
     <Content Include="Items\Placeables\Crafting Stations\Vertebrae Workbench.png" />
     <Content Include="Items\Materials\Dark Matter\Dark Matter Bar.png" />
     <Content Include="Items\Materials\Dark Matter\Dark Matter Ooze.png" />
+    <Content Include="Items\Placeables\Heartstone Brick.png" />
     <Content Include="Items\Placeables\Vertebrae Block.png" />
     <Content Include="Items\Placeables\Furniture\Vertebrae Bookshelf.png" />
     <Content Include="Items\Placeables\Furniture\Vertebrae Chest.png" />
@@ -241,21 +243,24 @@
     <Content Include="Items\Placeables\Furniture\Vertebrae Tomb.png" />
     <Content Include="Items\Placeables\Walls\Dark Matter Brick Wall.png" />
     <Content Include="Items\Placeables\Walls\Dark Matter Wood Wall.png" />
+    <Content Include="Items\Placeables\Walls\Heartstone Brick Wall.png" />
     <Content Include="Items\Placeables\Walls\Vertebrae Wall.png" />
     <Content Include="Items\Potions\Brain in a Bottle.png" />
     <Content Include="Items\Potions\Frog Legs.png" />
     <Content Include="Items\Potions\Medicine Bottle.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Berserker Nightmare.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Caesium Flail.json" />
-    <Content Include="Items\Weapons\Melee\Flails\Cobalt Flail.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Eclipse%27s Waning.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Heaven%27s Tear.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Meteor Masher.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Moonfury.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Mythril Flail.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Quad Sunfury.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Silver Flail.png" />
-    <Content Include="Items\Weapons\Melee\Flails\Sporalash.png" />
+    <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
+    <Content Include="Walls\Heartstone Brick Wall.png" />
+    <Content Include="_ForRevision\Flails\Berserker Nightmare.png" />
+    <Content Include="_ForRevision\Flails\Caesium Flail.json" />
+    <Content Include="_ForRevision\Flails\Cobalt Flail.png" />
+    <Content Include="_ForRevision\Flails\Eclipse%27s Waning.png" />
+    <Content Include="_ForRevision\Flails\Heaven%27s Tear.png" />
+    <Content Include="_ForRevision\Flails\Meteor Masher.png" />
+    <Content Include="_ForRevision\Flails\Moonfury.png" />
+    <Content Include="_ForRevision\Flails\Mythril Flail.png" />
+    <Content Include="_ForRevision\Flails\Quad Sunfury.png" />
+    <Content Include="_ForRevision\Flails\Silver Flail.png" />
+    <Content Include="_ForRevision\Flails\Sporalash.png" />
     <Content Include="Items\Weapons\Magic\Staffs\Vertebrae Staff.png" />
     <Content Include="Items\Weapons\Melee\Throwable\Explosive Knife.png" />
     <Content Include="Items\Weapons\Melee\Throwable\Ichor Grenade.png" />
@@ -319,6 +324,7 @@
     <Content Include="Projectiles\FromPlayer\Bullets\Zapper Bullet.png" />
     <Content Include="References\NVorbis.dll" />
     <Content Include="References\NVorbis.xml" />
+    <Content Include="Resources\Backpacks\Ichorthrower Backpack.png" />
     <Content Include="Sounds\Electronic 1.wav" />
     <Content Include="Sounds\Vertebrae Cannon.wav" />
     <Content Include="Tiles\Bricks\Dark Matter Brick.png" />
@@ -336,6 +342,7 @@
     <Content Include="Tiles\Furniture\Vertebrae Dresser.png" />
     <Content Include="Tiles\Furniture\Vertebrae Tomb Tile.png" />
     <Content Include="Tiles\Ores\Dark Matter Ooze.png" />
+    <Content Include="Tiles\Ores\Heartstone.png" />
     <Content Include="Walls\Dark Matter Brick Wall.png" />
     <Content Include="Walls\Dark Matter Wood Wall.png" />
     <Content Include="Walls\Vertebrae Wall.png" />
@@ -344,7 +351,7 @@
     <Content Include="Projectiles\FromPlayer\Flails\Cursed Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Caesium Flail.png" />
+    <Content Include="_ForRevision\Flails\Caesium Flail.png" />
     <Content Include="Projectiles\FromPlayer\Flails\Adamantite Ball.png" />
     <Content Include="Projectiles\FromPlayer\Flails\Cursed Ball.png" />
     <Content Include="Resources\Chains\Adamantite Chain.png" />
@@ -372,22 +379,23 @@
     <Content Include="Resources\Wings\Golden Wings.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Adamantite Flail.png" />
+    <Content Include="_ForRevision\Flails\Adamantite Flail.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Adamantite Flail.json" />
+    <Content Include="_ForRevision\Flails\Adamantite Flail.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Silver Flail.json" />
+    <Content Include="_ForRevision\Flails\Silver Flail.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Silver Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Berserker Nightmare.json" />
+    <Content Include="_ForRevision\Flails\Berserker Nightmare.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Items\Weapons\Melee\Broadswords\" />
+    <Folder Include="Items\Weapons\Melee\Flails\" />
     <Folder Include="Items\Weapons\Melee\Shortswords\" />
     <Folder Include="Items\Weapons\Minion\" />
     <Folder Include="Items\Weapons\Ranged\Crossbows\" />
@@ -398,49 +406,49 @@
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Cobalt Flail.json" />
+    <Content Include="_ForRevision\Flails\Cobalt Flail.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Cobalt Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Eclipse%27s Waning.json" />
+    <Content Include="_ForRevision\Flails\Eclipse%27s Waning.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Eclipse Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Moonfury.json" />
+    <Content Include="_ForRevision\Flails\Moonfury.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Moonfury Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Heaven%27s Tear.json" />
+    <Content Include="_ForRevision\Flails\Heaven%27s Tear.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Heaven Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Mythril Flail.json" />
+    <Content Include="_ForRevision\Flails\Mythril Flail.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Mythril Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Sporalash.json" />
+    <Content Include="_ForRevision\Flails\Sporalash.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Sporalash Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Meteor Masher.json" />
+    <Content Include="_ForRevision\Flails\Meteor Masher.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Meteor Ball.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Weapons\Melee\Flails\Quad Sunfury.json" />
+    <Content Include="_ForRevision\Flails\Quad Sunfury.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Quad Ball.json" />
@@ -547,6 +555,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Music\-Ogg-Dark Matter %28temp%29.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Items\Materials\Heartstone.json" />
+    <None Include="Items\Placeables\Heartstone Brick.json" />
+    <None Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
+    <None Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
+    <None Include="Tiles\Ores\Heartstone.json" />
+    <None Include="Walls\Heartstone Brick Wall.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

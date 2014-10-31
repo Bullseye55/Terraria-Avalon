@@ -1,5 +1,5 @@
 {
-	"code": "Items.Weapons.Ranged.GunsGatlineater",
+	"code": "Items.Weapons.Ranged.Guns.Gatlineater",
 	"displayName": "Gatlineater",
 	"size": [ 56, 24 ],
 	"rare": 5,

@@ -1,0 +1,31 @@
+{
+	"displayName": "Freeze Bolt",
+	"size": [ 28, 30 ],
+	"rare": 4,
+	"value": [ 0, 0, 54, 0 ],
+	"consumable": false,
+	"shoot": "Avalon:Freeze Bolt",
+	"autoReuse": true,
+	"useStyle": 5,
+	"useTime": 17,
+	"useAnimation": 17,
+	"mana": 14,
+	"useSound": 21,
+	"shootSpeed": 7,
+	"knockback": 5,
+	"damage": 48,
+	"magic": true,
+	"maxStack": 1,
+	"tooltip": "Bouncing spell that freezes on hit",
+	"recipes": [
+		{
+			"items": {
+				"Dirt Block": 1
+			},
+			"tiles": [
+				"Work Bench"
+			],
+			"creates": 1
+		}
+	]
+}

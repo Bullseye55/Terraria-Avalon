@@ -17,25 +17,40 @@ namespace Avalon.API.Audio
     {
         readonly static string OggExt = ".OGG";
 
-        internal static Dictionary<string, OggVorbis> cache = new Dictionary<string, OggVorbis>();
+        internal static Dictionary<string   , OggVorbis          > cache     = new Dictionary<string   , OggVorbis          >();
+        internal static Dictionary<OggVorbis, SoundEffectInstance> instCache = new Dictionary<OggVorbis, SoundEffectInstance>();
 
         /// <summary>
         /// Handles music-related things.
         /// </summary>
         public static class Music
         {
-            static OggVorbis music;
+            static SoundEffectInstance music;
             static float bakVolume;
             static string old;
 
-            static OggVorbis GetTrack(string name)
+            static OggVorbis GetTrack(string name, string modName, string fileName)
             {
                 if (cache.ContainsKey(name))
                     return cache[name];
 
+                Mod mod = Mods.mods.FirstOrDefault(m => m.InternalName == modName);
 
+                if (mod == null || !mod.modBase.includes.ContainsKey(fileName))
+                    return null;
 
-                return null;
+                return new OggVorbis(mod.modBase.includes[fileName]);
+            }
+            static SoundEffectInstance GetInstance(OggVorbis track)
+            {
+                if (!instCache.ContainsKey(track))
+                {
+                    SoundEffectInstance inst = track.Effect.CreateInstance();
+                    instCache.Add(track, inst);
+                    return inst;
+                }
+
+                return instCache[track];
             }
 
             internal static void Update(ref string current)
@@ -44,16 +59,53 @@ namespace Avalon.API.Audio
 
                 string[] split = current.Split(':');
                 string
-                    completeName = current,
                     mod  = split[0],
                     name = split.Skip(1).Join(String.Empty);
 
                 if (!name.ToUpperInvariant().EndsWith(OggExt))
+                {
+                    if (music != null)
+                    {
+                        if (music.State != SoundState.Stopped)
+                            music.Stop();
+
+                        music = null;
+                    }
+
                     return;
+                }
+
+                OggVorbis track = GetTrack(current, mod, name);
+
+                if (track == null)
+                {
+                    if (music != null)
+                    {
+                        if (music.State != SoundState.Stopped)
+                            music.Stop();
+
+                        music = null;
+                    }
+
+                    return;
+                }
 
                 current = String.Empty;
 
+                music = GetInstance(track);
 
+                if (music.State != SoundState.Playing)
+                {
+                    if (!music.IsLooped)
+                        music.IsLooped = true;
+
+                    music.Play();
+                }
+            }
+            internal static void UpdateInactive()
+            {
+                if (music != null && music.State == SoundState.Playing)
+                    music.Pause();
             }
         }
         /// <summary>

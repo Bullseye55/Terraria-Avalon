@@ -1,0 +1,28 @@
+{
+	"displayName": "Heartstone",
+	"size": [ 20, 20 ],
+	"maxStack": 999,
+	"value": [ 0, 0, 1, 0 ],
+	"rare": 4,
+	"useStyle": 1,
+	"useAnimation": 15,
+	"useTime": 10,
+	"autoReuse": true,
+	"useTurn": true,
+	"tooltip": "A shiny heart of Heartstone",
+	"createTile": "Avalon:Heartstone",
+	"consumable": true,
+	"tileBoost": 0,
+	"recipes": /*Remove in final version.*/
+	[
+		{
+			"items": {
+				"Dirt Block": 1
+			},
+			"tiles": [
+				"Work Bench"
+			],
+			"creates": 1
+		}
+	]
+}

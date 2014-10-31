@@ -12,7 +12,7 @@
 
 	"dllReferences": [ 
 		"References/NVorbis.dll"
-	]
+	],
 
     "outputName": "Avalon-Bullseye55"
 }

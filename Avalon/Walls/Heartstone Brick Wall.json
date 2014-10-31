@@ -3,6 +3,6 @@
 	"dungeon": false,
 	"light": false,
 	"blend": 0,
-	"drop": "Avalon:Vertebrae Wall",
-	"dust": 5
+	"drop": "Avalon:Heartstone Brick Wall",
+	"dust": 60
 }

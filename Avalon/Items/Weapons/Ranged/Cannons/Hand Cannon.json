@@ -1,5 +1,5 @@
 {
-	"code": "HandCannon",
+	"code": "Items.Weapons.Ranged.Cannons.HandCannon",
 	"displayName": "Hand Cannon",
 	"rare": 6,
 	"value": [ 0, 0, 54, 0 ],
