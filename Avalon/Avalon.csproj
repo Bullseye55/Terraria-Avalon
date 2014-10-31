@@ -249,6 +249,7 @@
     <Content Include="Items\Potions\Frog Legs.png" />
     <Content Include="Items\Potions\Medicine Bottle.png" />
     <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
+    <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
     <Content Include="Walls\Heartstone Brick Wall.png" />
     <Content Include="_ForRevision\Flails\Berserker Nightmare.png" />
     <Content Include="_ForRevision\Flails\Caesium Flail.json" />
@@ -561,6 +562,7 @@
     <None Include="Items\Placeables\Heartstone Brick.json" />
     <None Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
     <None Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
+    <None Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
     <None Include="Tiles\Ores\Heartstone.json" />
     <None Include="Walls\Heartstone Brick Wall.json" />
   </ItemGroup>
