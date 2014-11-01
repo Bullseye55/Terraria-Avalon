@@ -80,6 +80,7 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
+    <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="World\DarkMatter.cs" />
     <Compile Include="Items\Accessories\Bag of Blood.cs" />
     <Compile Include="Items\Accessories\Bag of Fire.cs" />
@@ -104,7 +105,7 @@
     <Compile Include="Items\Weapons\Ranged\Guns\Ichorthrower.cs" />
     <Compile Include="MNet.cs" />
     <Compile Include="MPlayer_AccEffects.cs" />
-    <Compile Include="Tiles\Blocks\Dark Matter Soil.cs" />
+    <Compile Include="Tiles\Dark Matter\Dark Matter Soil.cs" />
     <Compile Include="UI\MUI.cs" />
     <Compile Include="NPCs\Baits\Lava Mite.cs" />
     <Compile Include="NPCs\Normal\Armoured Crimslime.cs" />
@@ -329,10 +330,10 @@
     <Content Include="Sounds\Electronic 1.wav" />
     <Content Include="Sounds\Vertebrae Cannon.wav" />
     <Content Include="Tiles\Bricks\Dark Matter Brick.png" />
-    <Content Include="Tiles\Blocks\Dark Matter Bush 2.png" />
-    <Content Include="Tiles\Blocks\Dark Matter Bush.png" />
-    <Content Include="Tiles\Blocks\Dark Matter Soil.png" />
-    <Content Include="Tiles\Blocks\Dark Matter Wood.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Bush 2.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Bush.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Soil.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Wood.png" />
     <Content Include="Tiles\Blocks\Flesh Tendril.png" />
     <Content Include="Tiles\Bricks\Heartstone Brick.png" />
     <Content Include="Tiles\Blocks\Vertebrae Block.png" />
@@ -342,7 +343,7 @@
     <Content Include="Tiles\Furniture\Vertebrae Chest.png" />
     <Content Include="Tiles\Furniture\Vertebrae Dresser.png" />
     <Content Include="Tiles\Furniture\Vertebrae Tomb Tile.png" />
-    <Content Include="Tiles\Ores\Dark Matter Ooze.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Ooze.png" />
     <Content Include="Tiles\Ores\Heartstone.png" />
     <Content Include="Walls\Dark Matter Brick Wall.png" />
     <Content Include="Walls\Dark Matter Wood Wall.png" />
@@ -464,7 +465,7 @@
     <Content Include="Items\Materials\Dark Matter\Dark Matter Ooze.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tiles\Ores\Dark Matter Ooze.json" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Ooze.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buffs\Brain Follower.json" />
@@ -539,7 +540,7 @@
     <Content Include="Projectiles\FromPlayer\Throwables\Throwing Paladin%27s Hammer.json" />
     <Content Include="Projectiles\FromPlayer\Arrows\Vertebrae Rivet.json" />
     <Content Include="Projectiles\FromPlayer\Bullets\Zapper Bullet.json" />
-    <Content Include="Tiles\Blocks\Dark Matter Soil.json" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Soil.json" />
     <Content Include="Tiles\Blocks\Flesh Tendril.json" />
     <Content Include="Tiles\Bricks\Heartstone Brick.json" />
     <Content Include="Items\Weapons\Melee\Throwable\Throwing Paladin%27s Hammer.json" />
@@ -549,7 +550,7 @@
     <Content Include="Walls\Vertebrae Wall.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tiles\Blocks\Dark Matter Wood.json" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Wood.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Items\Placeables\Dark Matter Wood.json" />
