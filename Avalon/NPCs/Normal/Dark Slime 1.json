@@ -1,0 +1,43 @@
+{
+	"code": "NPCs.Normal.DarkSlime",
+
+	"size": [ 32,24 ],
+	"scale": 1.0,
+	"npcSlots": 1,
+	"frameCount": 2,
+	"animationType": 1,
+	"aiStyle": 1,
+	"displayName": "Dark Slime",
+
+	"friendly": false,
+	"townNPC": false,
+	"boss": false,
+
+	"lifeMax": 750,
+	"damage": 120,
+	"defense": 20,
+	"knockBackResist": 0.4,
+	"value": [ 0, 0, 4, 29 ],
+
+	"dontTakeDamage": false,
+	"lavaImmune": false,
+	"noGravity": false,
+	"noTileCollide": false,
+	"behindTiles": false,
+	"soundHit": 9,
+	"soundKilled": 17,
+
+	"drops": [
+		{
+			"item": "Gel",
+			"stack": [ 1, 12 ],
+			"chance": 1.0
+		},
+		{
+			"item": "Dark Matter Ooze",
+			"stack": [ 0, 4 ],
+			"chance": 1.00
+		}
+
+	]
+}

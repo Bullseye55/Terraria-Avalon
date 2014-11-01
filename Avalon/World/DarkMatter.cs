@@ -11,7 +11,7 @@ namespace Avalon.World
         internal DarkMatter()
             : base("Avalon:Dark Matter", new List<int>()
             {
-                TileDef.byName["Avalon:Dark Matter Soil"]
+                TileDef.byName["Avalon:Dark Matter Ooze"]
             }, AvalonMod.EmptyIntList, 150 /* temp value */)
         {
             biomeMusic = "Avalon:Resources/Music/Dark Matter (temp).ogg";
