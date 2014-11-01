@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Terraria;
@@ -45,8 +46,6 @@ namespace Avalon
 
 		internal static List<BossSpawn> spawns = new List<BossSpawn>();
         internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
-
-        //bool isInactive;
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -152,7 +151,7 @@ namespace Avalon
 					MWorld.accessories[i][j] = new Item();
 			}
 
-			// insert all graphical/UI-related stuff AFTER this check!
+			// insert all audio/graphical/UI-related stuff AFTER this check!
 			if (Main.dedServ)
 				return;
 
@@ -169,9 +168,11 @@ namespace Avalon
 				GoldenWings = Main.dedServ ? Main.wingsTexture.Count : ObjectLoader.AddWingsToGame(gWings);
 
 				addedWings = true;
-			}
+            }
 
-			StarterSetSelectionHandler.Init();
+            VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (temp).ogg", this);
+
+            StarterSetSelectionHandler.Init();
 		}
         /// <summary>
         /// Called when all mods are loaded.
@@ -182,6 +183,10 @@ namespace Avalon
             base.OnAllModsLoaded();
 
             VanillaDrop.InitDrops();
+
+            // insert all audio/graphical/UI-related stuff AFTER this check!
+            if (Main.dedServ)
+                return;
         }
         /// <summary>
         /// Called when the mod is unloaded.
@@ -203,6 +208,36 @@ namespace Avalon
 
             DateEvent.events.Clear();
 
+            // insert all audio/graphical/UI-related stuff AFTER this check!
+            if (Main.dedServ)
+            {
+                base.OnUnload();
+
+                VorbisPlayer.Music.music = null;
+
+                VorbisPlayer.cache    .Clear();
+                VorbisPlayer.instCache.Clear();
+
+                return;
+            }
+
+            VorbisPlayer.Music.StopOgg(true);
+
+            foreach (OggVorbis track in VorbisPlayer.cache.Values)
+                if (!track.IsDisposed)
+                    track.Dispose();
+
+            foreach (SoundEffectInstance inst in VorbisPlayer.instCache.Values)
+            {
+                if (inst.IsDisposed)
+                    continue;
+
+                if (inst.State != SoundState.Stopped)
+                    inst.Stop();
+
+                inst.Dispose();
+            }
+
             VorbisPlayer.cache    .Clear();
             VorbisPlayer.instCache.Clear();
 
@@ -216,9 +251,11 @@ namespace Avalon
         [CallPriority(Single.NegativeInfinity)]
         public override void ChooseTrack(ref string current)
         {
+            // not ran on dedServ
+
             base.ChooseTrack(ref current);
 
-            if (Main.gameMenu && Menu.currentPage == "Main Menu" && Menu.currentPage != "Crash Page")
+            if (Main.gameMenu && Menu.currentPage == "Main Menu" && Menu.currentPage != "Crash Page") // temp, if not obvious enough
                 current = "Avalon:Resources/Music/Dark Matter (temp).ogg";
 
             VorbisPlayer.Update(ref current);

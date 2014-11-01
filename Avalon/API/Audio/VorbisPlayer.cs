@@ -21,14 +21,20 @@ namespace Avalon.API.Audio
         /// </summary>
         public static class Music
         {
-            static SoundEffectInstance music;
+            internal static SoundEffectInstance music;
 
-            static void  StopOgg()
+            internal static void  StopOgg(bool dispose = false)
             {
                 if (music != null)
                 {
-                    if (music.State != SoundState.Stopped)
-                        music.Stop();
+                    if (!music.IsDisposed)
+                    {
+                        if (music.State == SoundState.Playing)
+                            music.Pause();
+
+                        if (dispose)
+                            music.Dispose();
+                    }
 
                     music = null;
                 }
@@ -141,7 +147,7 @@ namespace Avalon.API.Audio
         /// <returns>The <see cref="OggVorbis" /> track loaded from the resource.</returns>
         public static OggVorbis LoadTrack(string resourceName, ModBase @base = null)
         {
-            Mod mod = Mods.mods.FirstOrDefault(m => m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
+            Mod mod = Mods.mods.FirstOrDefault(m => m != null && m.Loaded && m.modBase != null && m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
             byte[] data = (@base ?? (mod == null ? AvalonMod.Instance : mod.modBase)).includes[resourceName];
 
             if (mod == null)

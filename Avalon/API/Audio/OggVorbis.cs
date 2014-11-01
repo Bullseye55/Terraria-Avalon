@@ -23,6 +23,16 @@ namespace Avalon.API.Audio
             get;
             private set;
         }
+        /// <summary>
+        /// Gets whether the <see cref="OggVorbis" /> instance is disposed or not.
+        /// </summary>
+        public bool IsDisposed
+        {
+            get
+            {
+                return Effect.IsDisposed;
+            }
+        }
 
         /// <summary>
         /// Creates a new instance of the <see cref="OggVorbis" /> class.
@@ -45,7 +55,7 @@ namespace Avalon.API.Audio
 
         internal static byte[] GetByteFromResource(string res, ModBase @base)
         {
-            Mod mod = Mods.mods.FirstOrDefault(m => m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
+            Mod mod = Mods.mods.FirstOrDefault(m => m != null && m.Loaded && m.modBase != null && m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
             return (@base ?? (mod == null ? AvalonMod.Instance : mod.modBase)).includes[res];
         }
 
