@@ -21,25 +21,37 @@ namespace Avalon.API.Audio
         /// </summary>
         public static class Music
         {
-            internal static Dictionary<string, float> bakFade = new Dictionary<string, float>();
+            // keep out. you will break things.
+
+            const float CRESC_VOLUME = 0.005f;
+
+            internal static Dictionary<string, float>
+                origFade = new Dictionary<string, float>(),
+                overFade = new Dictionary<string, float>();
             internal static SoundEffectInstance music;
+            internal static float musicFade = 0f;
 
-            internal static void  StopOgg(bool dispose = false)
+            internal static void StopOgg(bool dispose = false)
             {
-                if (music != null)
-                {
-                    if (!music.IsDisposed)
-                    {
-                        if (dispose)
-                        {
-                            if (music.State != SoundState.Stopped)
-                                music.Stop();
+                if (music == null || music.IsDisposed)
+                    return;
 
-                            music.Dispose();
-                        }
-                        else if (music.State == SoundState.Playing)
-                            music.Pause();
-                    }
+                if (dispose)
+                {
+                    if (music.State != SoundState.Stopped)
+                        music.Stop();
+
+                    music.Dispose();
+
+                    musicFade = 0f;
+
+                    music = null;
+                }
+                else if (musicFade > 0f)
+                    musicFade = Math.Max(musicFade - CRESC_VOLUME, 0f);
+                else if (music.State == SoundState.Playing)
+                {
+                    music.Pause();
 
                     music = null;
                 }
@@ -57,10 +69,15 @@ namespace Avalon.API.Audio
 
             static void RestoreFade(string current)
             {
-                if (!String.IsNullOrEmpty(current) && bakFade.ContainsKey(current))
+                if (String.IsNullOrEmpty(current) || !origFade.ContainsKey(current))
+                    return;
+
+                if (overFade[current] < origFade[current])
+                    WavebankDef.fade[current] = overFade[current] = Math.Min(overFade[current] + CRESC_VOLUME, origFade[current]);
+                else
                 {
-                    WavebankDef.fade[current] = bakFade[current];
-                    bakFade.Remove(current);
+                    origFade.Remove(current);
+                    overFade.Remove(current);
                 }
             }
 
@@ -95,17 +112,28 @@ namespace Avalon.API.Audio
 
                 if (!String.IsNullOrEmpty(current = WavebankDef.current))
                 {
-                    if (!bakFade.ContainsKey(current))
-                        bakFade.Add(current, WavebankDef.fade[current]);
+                    if (!origFade.ContainsKey(current))
+                    {
+                        origFade.Add(current, WavebankDef.fade[current]);
+                        overFade.Add(current, WavebankDef.fade[current]);
+                    }
+                    else
+                    {
+                        if (overFade[current] > 0f)
+                            overFade[current] = Math.Max(overFade[current] - CRESC_VOLUME, -CRESC_VOLUME); // it is increased with CRESC_VOLUME after ChangeTrack in WavebankDef.UpdateMusic
 
-                    WavebankDef.fade[current] = 0f;
+                        WavebankDef.fade[current] = overFade[current];
+                    }
                 }
 
                 music = GetInstance(track);
 
                 StartOgg();
 
-                music.Volume = Main.musicVolume;
+                if (musicFade < 1f)
+                    musicFade = Math.Min(musicFade + CRESC_VOLUME, 1f);
+
+                music.Volume = Main.musicVolume * musicFade;
             }
             internal static void UpdateInactive()
             {

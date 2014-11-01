@@ -8,13 +8,13 @@ using Terraria;
 using TAPI;
 using PoroCYon.MCT;
 using PoroCYon.MCT.Content;
+using Avalon.API.Audio;
 using Avalon.API.Events;
 using Avalon.API.Items.MysticalTomes;
 using Avalon.API.World;
 using Avalon.NPCs;
 using Avalon.UI.Menus;
 using Avalon.World;
-using Avalon.API.Audio;
 
 namespace Avalon
 {
@@ -208,6 +208,8 @@ namespace Avalon
 
             DateEvent.events.Clear();
 
+            VorbisPlayer.Music.overFade.Clear();
+
             // insert all audio/graphical/UI-related stuff AFTER this check!
             if (Main.dedServ)
             {
@@ -217,7 +219,8 @@ namespace Avalon
                 VorbisPlayer.instCache.Clear();
 
                 VorbisPlayer.Music.music = null;
-                VorbisPlayer.Music.bakFade.Clear();
+
+                VorbisPlayer.Music.origFade.Clear();
 
                 return;
             }
@@ -242,11 +245,11 @@ namespace Avalon
             VorbisPlayer.cache    .Clear();
             VorbisPlayer.instCache.Clear();
 
-            foreach (KeyValuePair<string, float> kvp in VorbisPlayer.Music.bakFade)
+            foreach (KeyValuePair<string, float> kvp in VorbisPlayer.Music.origFade)
                 if (WavebankDef.fade.ContainsKey(kvp.Key))
                     WavebankDef.fade[kvp.Key] = kvp.Value;
 
-            VorbisPlayer.Music.bakFade.Clear();
+            VorbisPlayer.Music.origFade.Clear();
 
             base.OnUnload();
         }
@@ -262,7 +265,9 @@ namespace Avalon
 
             base.ChooseTrack(ref current);
 
-            if (Main.gameMenu && Menu.currentPage == "Main Menu" && Menu.currentPage != "Crash Page") // temp, if not obvious enough
+            // temp, if not obvious enough
+            if (Main.gameMenu && WavebankDef.current == "Vanilla:Music_6"
+                    && Menu.currentPage == "Main Menu" && Menu.currentPage != "Crash Page")
                 current = "Avalon:Resources/Music/Dark Matter (temp).ogg";
 
             VorbisPlayer.Update(ref current);
