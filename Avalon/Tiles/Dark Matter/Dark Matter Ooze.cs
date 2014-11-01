@@ -26,8 +26,20 @@ namespace Avalon.Tiles.DarkMatter
             base.Initialize();
 
             ToSpread = TileDef.byName["Avalon:Dark Matter Ooze"];
+            SpreadOn += pt => AvalonMod.DarkMatter.CountNum() < 350;
             PlaceStyle = 0;
             SpreadRatio = 120; // temp, obviously
         }
+
+        ///// <summary>
+        ///// Updates the tile.
+        ///// </summary>
+        //public override void Update()
+        //{
+        //    base.Update();
+
+        //    if (AvalonMod.DarkMatter.CountNum() >= 350)
+        //        World.DarkMatter.Reinforce();
+        //}
     }
 }
