@@ -80,6 +80,7 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
+    <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="World\DarkMatter.cs" />
     <Compile Include="Items\Accessories\Bag of Blood.cs" />
@@ -565,6 +566,8 @@
     <None Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
     <None Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
     <None Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
+    <None Include="NPCs\Normal\Dark Slime 1.json" />
+    <None Include="NPCs\Normal\Dark Slime 2.json" />
     <None Include="Tiles\Ores\Heartstone.json" />
     <None Include="Walls\Heartstone Brick Wall.json" />
   </ItemGroup>

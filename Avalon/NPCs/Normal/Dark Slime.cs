@@ -22,18 +22,17 @@ namespace Avalon.NPCs.Normal
         /// <returns></returns>
         public override bool CanSpawn(int x, int y, int type, Player p)
         {
-            return Biome.Biomes["Avalon:Dark Matter"].Check(p) && Main.hardMode && Main.rand.Next(7) == 1;
+            return AvalonMod.DarkMatter.Check(p) && Main.hardMode && Main.rand.Next(7) == 1;
         }
-
         /// <summary>
         /// 
         /// </summary>
         public override void NPCLoot()
         {
-            const int amt = -1, dmg = -1, owner = -1;
+            const int amt = -1;//, dmg = -1, owner = -1;
             Vector2 spawnAt = Vector2.Zero;
             string projName = String.Empty;
-            const float kb = -1f, maxRange = 32f;
+            //const float kb = -1f, maxRange = 32f;
 
             for (int i = 0; i < amt; i++)
             {
@@ -45,7 +44,6 @@ namespace Avalon.NPCs.Normal
                 Dust d = Main.dust[Dust.NewDust(spawnAt, velocity, 58)];
                 //d.timeLeft = (int)(maxRange / velocity.Length()); // in ticks, x is in px, v is in px/tick
             }
-
         }
     }
 }
