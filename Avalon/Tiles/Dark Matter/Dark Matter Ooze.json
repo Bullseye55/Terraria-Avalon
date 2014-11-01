@@ -1,6 +1,7 @@
 ﻿{
+	"code": "Tiles.DarkMatter.DarkMatterOoze",
+
     "displayName": "Dark Matter Ooze",
-	
     "size": [1, 1],
     "sheetRows": 15,
     "sheetColumns": 16,

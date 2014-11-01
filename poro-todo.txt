@@ -18,4 +18,13 @@ The direction it is looking determines what direction it fires if the player sta
 In essentially, a tile that attacks the player on its own, and can't be deactivated by snipping the wire.
 They grow in the Womb.
 
+[ NOT COPIED DIRECTLY, EDIT THIS IF I USE THE WRONG WORDS, Bullseye55 ]
+    - Poro
+
+The whole Dark Matter biome should look like a black blob on the minimap, to make it look like it is undiscoverable
+(maybe ask for a hook/API for controlling the map, only possible to hack it in right now).
+Some tiles/walls should be animated, and/or partially transparent.
+
+[ --- ]
+
 More info coming later. I've gave you the basics, Poro.

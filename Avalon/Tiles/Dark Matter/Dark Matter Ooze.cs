@@ -5,13 +5,19 @@ using Terraria;
 using TAPI;
 using Avalon.API.Biomes;
 
-namespace Avalon.Tiles.Blocks
+namespace Avalon.Tiles.DarkMatter
 {
-    /// <summary>
-    /// The Dark Matter Soil tile.
-    /// </summary>
-    public sealed class DarkMatterSoil : SpreadingTile
+    class DarkMatterOoze : SpreadingTile
     {
+        /// <summary>
+        /// Creates a new instance of the <see cref="DarkMatterOoze" /> class.
+        /// </summary>
+        public DarkMatterOoze()
+            : base(TileCategory.Dirt | TileCategory.Stone)
+        {
+
+        }
+
         /// <summary>
         /// Initializes the <see cref="Tile" />.
         /// </summary>
@@ -19,8 +25,7 @@ namespace Avalon.Tiles.Blocks
         {
             base.Initialize();
 
-            ToSpread = TileDef.byName["Avalon:Dark Matter Soil"];
-            IsGrass = IsStone = false;
+            ToSpread = TileDef.byName["Avalon:Dark Matter Ooze"];
             PlaceStyle = 0;
             SpreadRatio = 120; // temp, obviously
         }
