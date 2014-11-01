@@ -21,6 +21,7 @@ namespace Avalon.API.Audio
         /// </summary>
         public static class Music
         {
+            internal static Dictionary<string, float> bakFade = new Dictionary<string, float>();
             internal static SoundEffectInstance music;
 
             internal static void  StopOgg(bool dispose = false)
@@ -29,11 +30,15 @@ namespace Avalon.API.Audio
                 {
                     if (!music.IsDisposed)
                     {
-                        if (music.State == SoundState.Playing)
-                            music.Pause();
-
                         if (dispose)
+                        {
+                            if (music.State != SoundState.Stopped)
+                                music.Stop();
+
                             music.Dispose();
+                        }
+                        else if (music.State == SoundState.Playing)
+                            music.Pause();
                     }
 
                     music = null;
@@ -50,6 +55,15 @@ namespace Avalon.API.Audio
                 }
             }
 
+            static void RestoreFade(string current)
+            {
+                if (!String.IsNullOrEmpty(current) && bakFade.ContainsKey(current))
+                {
+                    WavebankDef.fade[current] = bakFade[current];
+                    bakFade.Remove(current);
+                }
+            }
+
             internal static void Update(ref string current)
             {
                 string[] split = current.Split(':');
@@ -57,8 +71,11 @@ namespace Avalon.API.Audio
                     mod  = split[0],
                     name = split.Skip(1).Join(String.Empty);
 
+                // no OGG music to be played
                 if (!name.ToUpperInvariant().EndsWith(OggExt))
                 {
+                    RestoreFade(current);
+
                     StopOgg();
 
                     return;
@@ -66,14 +83,23 @@ namespace Avalon.API.Audio
 
                 OggVorbis track = GetTrack(mod, name);
 
+                // invalid track
                 if (track == null)
                 {
+                    RestoreFade(current);
+
                     StopOgg();
 
                     return;
                 }
 
-                WavebankDef.fade[current = WavebankDef.current] = 0f;
+                if (!String.IsNullOrEmpty(current = WavebankDef.current))
+                {
+                    if (!bakFade.ContainsKey(current))
+                        bakFade.Add(current, WavebankDef.fade[current]);
+
+                    WavebankDef.fade[current] = 0f;
+                }
 
                 music = GetInstance(track);
 

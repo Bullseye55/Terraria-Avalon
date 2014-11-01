@@ -213,10 +213,11 @@ namespace Avalon
             {
                 base.OnUnload();
 
-                VorbisPlayer.Music.music = null;
-
                 VorbisPlayer.cache    .Clear();
                 VorbisPlayer.instCache.Clear();
+
+                VorbisPlayer.Music.music = null;
+                VorbisPlayer.Music.bakFade.Clear();
 
                 return;
             }
@@ -240,6 +241,12 @@ namespace Avalon
 
             VorbisPlayer.cache    .Clear();
             VorbisPlayer.instCache.Clear();
+
+            foreach (KeyValuePair<string, float> kvp in VorbisPlayer.Music.bakFade)
+                if (WavebankDef.fade.ContainsKey(kvp.Key))
+                    WavebankDef.fade[kvp.Key] = kvp.Value;
+
+            VorbisPlayer.Music.bakFade.Clear();
 
             base.OnUnload();
         }
