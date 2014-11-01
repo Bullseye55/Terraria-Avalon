@@ -1,14 +1,4 @@
 
-
-
-
-
-                                                       issue #9
-
-
-
-
-
 Dark Matter Biome:
 
 Dark Matter Ooze never spawns more than 250 in a given biome area of effect.
