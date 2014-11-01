@@ -1,21 +1,20 @@
 ﻿{
     "displayName": "Dark Matter Ooze",
-
-    "size": [ 1, 1 ],
+	
+    "size": [1, 1],
     "sheetRows": 15,
     "sheetColumns": 16,
     "ratePick": 0.1,
-    "minPick": 300,
+    "minPick": 210,
     "breaksByPick": true,
     "mergeDirt": false,
     "solid": true,
     "blocksLight": true,
     "blocksSun": true,
-    "shines": true,
-    "shineChance": 850,
-    "sound": 1,
-    "soundGroup": 21,
-    "dust": 27,
-
+    "shines": false,
+    "sound": 8,
+    "soundGroup": 3,
+    "dust": 58,
+	
     "drop": "Avalon:Dark Matter Ooze"
 }

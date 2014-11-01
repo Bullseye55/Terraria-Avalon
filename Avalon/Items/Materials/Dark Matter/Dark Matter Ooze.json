@@ -10,5 +10,17 @@
     "autoReuse": true,
     "useTurn": true,
     "rare": 6,
-    "value": [ 0, 2, 0, 0 ]
+    "value": [ 0, 2, 0, 0 ],
+	/*Test Recipe for testing quickly*/
+	    "recipes": [
+        {
+            "items": {
+                "Dirt Block": 1
+            },
+            "tiles": [
+                "Work Bench"
+            ],
+            "creates": 20
+        }
+    ]
 }
