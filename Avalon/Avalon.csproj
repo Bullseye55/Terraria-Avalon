@@ -80,6 +80,7 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
+    <Compile Include="ModClasses\MTileType.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="World\DarkMatter.cs" />
@@ -104,8 +105,8 @@
     <Compile Include="Items\Weapons\Ranged\Guns\Cursed Flamethrower.cs" />
     <Compile Include="Items\Weapons\Ranged\Guns\Gatlineater.cs" />
     <Compile Include="Items\Weapons\Ranged\Guns\Ichorthrower.cs" />
-    <Compile Include="MNet.cs" />
-    <Compile Include="MPlayer_AccEffects.cs" />
+    <Compile Include="ModClasses\MNet.cs" />
+    <Compile Include="ModClasses\MPlayer_AccEffects.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Soil.cs" />
     <Compile Include="UI\MUI.cs" />
     <Compile Include="NPCs\Baits\Lava Mite.cs" />
@@ -169,8 +170,8 @@
     <Compile Include="_MCTImport\Net\NetHelper.cs" />
     <Compile Include="NPCs\MNPC.cs" />
     <Compile Include="AvalonMod.cs" />
-    <Compile Include="MPlayer.cs" />
-    <Compile Include="MWorld.cs" />
+    <Compile Include="ModClasses\MPlayer.cs" />
+    <Compile Include="ModClasses\MWorld.cs" />
     <Compile Include="Projectiles\FromPlayer\Flails\Heaven Ball.cs" />
     <Compile Include="Projectiles\FromPlayer\Flails\Sporalash Ball.cs" />
     <Compile Include="Projectiles\FromPlayer\Flails\Moonfury Ball.cs" />
@@ -252,6 +253,7 @@
     <Content Include="Items\Potions\Medicine Bottle.png" />
     <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
     <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
+    <Content Include="Resources\Misc\Dark Matter Sun.png" />
     <Content Include="Walls\Heartstone Brick Wall.png" />
     <Content Include="_ForRevision\Flails\Berserker Nightmare.png" />
     <Content Include="_ForRevision\Flails\Caesium Flail.json" />
@@ -562,12 +564,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Items\Materials\Heartstone.json" />
+    <None Include="Items\Placeables\Dark Matter Brick.json" />
     <None Include="Items\Placeables\Heartstone Brick.json" />
     <None Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
     <None Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
     <None Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
     <None Include="NPCs\Normal\Dark Slime 1.json" />
     <None Include="NPCs\Normal\Dark Slime 2.json" />
+    <None Include="Tiles\Bricks\Dark Matter Brick.json" />
     <None Include="Tiles\Ores\Heartstone.json" />
     <None Include="Walls\Heartstone Brick Wall.json" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TAPI;
+using Avalon.ModClasses;
 
 namespace Avalon.UI
 {

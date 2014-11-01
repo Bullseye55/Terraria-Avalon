@@ -5,7 +5,7 @@ using PoroCYon.MCT.Net;
 using TAPI;
 using Terraria;
 
-namespace Avalon
+namespace Avalon.ModClasses
 {
 	partial class MPlayer
 	{

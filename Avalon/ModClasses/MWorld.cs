@@ -9,7 +9,7 @@ using Avalon.API.Items.MysticalTomes;
 using Avalon.UI;
 using Avalon.World;
 
-namespace Avalon
+namespace Avalon.ModClasses
 {
     /// <summary>
     /// Global world stuff

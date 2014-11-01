@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
-using TAPI;
 using TAPI.UIKit;
 using Avalon.API.Items.MysticalTomes;
+using Avalon.ModClasses;
 
 namespace Avalon.UI
 {

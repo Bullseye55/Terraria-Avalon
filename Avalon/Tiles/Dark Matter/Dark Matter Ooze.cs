@@ -7,7 +7,10 @@ using Avalon.API.Biomes;
 
 namespace Avalon.Tiles.DarkMatter
 {
-    class DarkMatterOoze : SpreadingTile
+    /// <summary>
+    /// The Dark Matter Ooze tile.
+    /// </summary>
+    public sealed class DarkMatterOoze : SpreadingTile
     {
         /// <summary>
         /// Creates a new instance of the <see cref="DarkMatterOoze" /> class.

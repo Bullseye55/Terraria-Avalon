@@ -12,6 +12,7 @@ using Avalon.API.Audio;
 using Avalon.API.Events;
 using Avalon.API.Items.MysticalTomes;
 using Avalon.API.World;
+using Avalon.ModClasses;
 using Avalon.NPCs;
 using Avalon.UI.Menus;
 using Avalon.World;
@@ -46,6 +47,8 @@ namespace Avalon
 
 		internal static List<BossSpawn> spawns = new List<BossSpawn>();
         internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
+
+        static Texture2D sunBak;
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -96,6 +99,15 @@ namespace Avalon
         /// Gets the Dark Matter <see cref="Biome" /> instance.
         /// </summary>
         public static Biome DarkMatter
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the texture of the sun in the <see cref="World.DarkMatter" /> biome.
+        /// </summary>
+        public static Texture2D DarkMatterSun
         {
             get;
             private set;
@@ -154,6 +166,9 @@ namespace Avalon
 			// insert all audio/graphical/UI-related stuff AFTER this check!
 			if (Main.dedServ)
 				return;
+
+            sunBak = Main.sunTexture;
+            DarkMatterSun = textures["Resources/Misc/Dark Matter Sun"];
 
 			Texture2D gWings = textures["Resources/Wings/Golden Wings"];
 			foreach (Texture2D t in Main.wingsTexture.Values)
@@ -290,6 +305,19 @@ namespace Avalon
                 VorbisPlayer.Music.UpdateInactive();
 
             base.PostGameUpdate();
+        }
+        /// <summary>
+        /// Called before the game is drawn.
+        /// </summary>
+        /// <param name="sb">The <see cref="SpriteBatch" /> used to draw the game.</param>
+        public override void PreGameDraw(SpriteBatch sb)
+        {
+            base.PreGameDraw(sb);
+
+            if (Main.dedServ)
+                return;
+
+            Main.sunTexture = DarkMatter.Check(Main.localPlayer) ? DarkMatterSun : sunBak;
         }
 
         /// <summary>

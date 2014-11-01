@@ -156,6 +156,8 @@ namespace Avalon.API.Biomes
         /// </summary>
         public override void Update()
         {
+            // hook not called .__.
+
             base.Update();
 
             Point pt;

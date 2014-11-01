@@ -8,27 +8,22 @@ using PoroCYon.MCT.Net;
 using Avalon.API.Items;
 using Avalon.API.StarterSets;
 
-namespace Avalon
+namespace Avalon.ModClasses
 {
     /// <summary>
-    /// Global player stuff
+    /// Global player stuff.
     /// </summary>
     public sealed partial class MPlayer : ModPlayer
 	{
+        const int DARKEN_MINIMAP_CD_MAX = 2;
+
 #pragma warning disable 414
 #pragma warning disable 169
-		static float rot = 0f;
-        static bool
-            isImmuneToSlimes = false,
-            LavaMerman = false,
-            goblinTB = false,
-            allTB = false,
-            runonce = true;
-        static int
-            hook = 0,
-            jungleChestId,
-            hellfireChestId,
-            skillCD = 0;
+		float rot = 0f;
+        bool LavaMerman = false;
+        int
+            skillCD = 0,
+            darkenMinimapCD = 0;
         readonly static int[] MUSIC_BOXES = new int[] { -1, 0, 1, 2, 4, 5, -1, 6, 7, 9, 8, 11, 10, 12 };
 #pragma warning restore 414
 #pragma warning restore 169
@@ -63,16 +58,20 @@ namespace Avalon
         /// </summary>
         public override void MidUpdate()
         {
+            if (Main.gameMenu) // this is sometimes called when the world is still being loaded
+                return;
+
             base.MidUpdate();
 
             U_SetChainTexture();
-            // U_GetAchievements();
-            U_SpawnBosses();
-            U_ExtraAccs();
-            U_LavaMerman();
-			//U_Chests();
-            //U_TileInteract();
-            U_MysticalTomes();
+            //U_GetAchievements();
+            U_SpawnBosses    ();
+            U_ExtraAccs      ();
+            U_LavaMerman     ();
+			//U_Chests         ();
+            //U_TileInteract   ();
+            U_MysticalTomes  ();
+            U_HideDarkMatter ();
         }
 		#region MidUpdate submethods
 		void U_SetChainTexture()
@@ -246,6 +245,25 @@ namespace Avalon
 
                 skillCD = MWorld.localManager.Cooldown;
             }
+        }
+        void U_HideDarkMatter ()
+        {
+            if (Main.dedServ || player.whoAmI != Main.myPlayer || !AvalonMod.DarkMatter.Check(player) || ++darkenMinimapCD < DARKEN_MINIMAP_CD_MAX)
+                return;
+
+            int
+                startX = (int)(Main.screenPosition.X / 16f) - 5,
+                startY = (int)(Main.screenPosition.Y / 16f) - 5,
+                lenX   = startX + Main.screenWidth  / 16 + 10,
+                lenY   = startY + Main.screenHeight / 16 + 10;
+
+            // prefetchure; Y first
+            for (int y = startY; y < lenY; y++)
+                for (int x = startX; x < lenX; x++)
+                    if (Main.map[x, y] != null)
+                        Main.map[x, y].light = 0;
+
+            darkenMinimapCD = 0;
         }
         #endregion
 

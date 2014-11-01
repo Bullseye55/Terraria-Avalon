@@ -4,6 +4,7 @@ using System.Linq;
 using Terraria;
 using PoroCYon.MCT;
 using Avalon.API.World;
+using Avalon.ModClasses;
 
 namespace Avalon.World
 {

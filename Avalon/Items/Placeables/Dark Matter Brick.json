@@ -16,7 +16,7 @@
 	"recipes": [
 		{
 			"items": {
-				"Dark Matter Ooze": 5
+				"Avalon:Dark Matter Ooze": 5
 			},
 			"tiles": [
 				"Furnace"
