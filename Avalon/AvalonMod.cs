@@ -185,6 +185,12 @@ namespace Avalon
             VanillaDrop.InitDrops();
 
             TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Soil"]][TileDef.byName["Avalon:Dark Matter Ooze"]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Soil"]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Ooze"]] = true;
+
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze"]][TileDef.byName["Avalon:Dark Matter Soil"]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Soil"]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze"]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
 
             // insert all audio/graphical/UI-related stuff AFTER this check!
             if (Main.dedServ)

@@ -29,6 +29,7 @@ namespace Avalon.Tiles.DarkMatter
             base.Initialize();
 
             ToSpread = TileDef.byName["Avalon:Dark Matter Soil"];
+            SpreadOn += pt => AvalonMod.DarkMatter.CountNum() < 350;
             PlaceStyle = 0;
             SpreadRatio = 120; // temp, obviously
         }

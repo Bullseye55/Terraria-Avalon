@@ -1,6 +1,7 @@
 {
 	"code": "NPCs.Normal.NormalBarrel",
 
+	"displayName": "Barrel",
 	"size": [ 44, 32 ],
 	"scale": 1.0,
 	"npcSlots": 1,
@@ -29,15 +30,11 @@
 		{
 			"choose": [
 				{
-					"item": "Silver Coin",
-					"stack": [ 1, 20 ]
-				},
-				{
-					"item": "Torch",
+					"item": "Vanilla:Torch",
 					"stack": [ 1, 30 ]
 				},
 				{
-					"item": "Rope",
+					"item": "Vanilla:Rope",
 					"stack": [ 1, 60 ]
 				}
 
