@@ -1,6 +1,6 @@
 {
 	"displayName": "Brain Follower",
-	"code": "NPCs.Normal.BrainFollower",
+	"code": "NPCs.Pets.BrainFollower",
 	"frameCount": 4,
 	"size": [ 20, 20 ],
 	"lifeMax": 100,

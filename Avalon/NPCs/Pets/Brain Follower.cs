@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using TAPI;
 
-namespace Avalon.NPCs.Normal
+namespace Avalon.NPCs.Pets
 {
     /// <summary>
     /// The Brain Follower.
