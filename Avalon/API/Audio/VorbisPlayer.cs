@@ -148,7 +148,12 @@ namespace Avalon.API.Audio
         public static OggVorbis LoadTrack(string resourceName, ModBase @base = null)
         {
             Mod mod = Mods.mods.FirstOrDefault(m => m != null && m.Loaded && m.modBase != null && m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
-            byte[] data = (@base ?? (mod == null ? AvalonMod.Instance : mod.modBase)).includes[resourceName];
+            ModBase actualBase = (@base ?? (mod == null ? AvalonMod.Instance : mod.modBase));
+
+            if (!actualBase.includes.ContainsKey(resourceName))
+                return null;
+
+            byte[] data = actualBase.includes[resourceName];
 
             if (mod == null)
                 mod = AvalonMod.Instance.mod;

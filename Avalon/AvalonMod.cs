@@ -170,7 +170,7 @@ namespace Avalon
 				addedWings = true;
             }
 
-            //VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (temp).ogg", this);
+            VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (temp).ogg", this);
 
             StarterSetSelectionHandler.Init();
 		}
