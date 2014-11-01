@@ -184,6 +184,8 @@ namespace Avalon
 
             VanillaDrop.InitDrops();
 
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Soil"]][TileDef.byName["Avalon:Dark Matter Ooze"]] = true;
+
             // insert all audio/graphical/UI-related stuff AFTER this check!
             if (Main.dedServ)
                 return;
