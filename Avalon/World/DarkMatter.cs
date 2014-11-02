@@ -33,7 +33,7 @@ namespace Avalon.World
         /// <summary>
         /// Reinforces all Dark Matter tiles. Not implemented yet.
         /// </summary>
-        [Obsolete("This method is not implemented yet.")]
+        //[Obsolete("This method is not implemented yet.")]
         public static void Reinforce()
         {
 

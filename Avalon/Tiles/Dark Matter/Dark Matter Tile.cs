@@ -24,15 +24,15 @@ namespace Avalon.Tiles.DarkMatter
             ToSpread = type;
         }
 
-        ///// <summary>
-        ///// Updates the tile.
-        ///// </summary>
-        //public override void Update()
-        //{
-        //    base.Update();
+        /// <summary>
+        /// Updates the tile.
+        /// </summary>
+        public override void Update()
+        {
+            base.Update();
 
-        //    if (AvalonMod.DarkMatter.CountNum() >= World.DarkMatter.MINIMUM_TILES)
-        //        World.DarkMatter.Reinforce();
-        //}
+            if (AvalonMod.DarkMatter.CountNum() >= World.DarkMatter.MINIMUM_TILES)
+                World.DarkMatter.Reinforce();
+        }
     }
 }

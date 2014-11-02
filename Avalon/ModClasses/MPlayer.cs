@@ -39,7 +39,7 @@ namespace Avalon.ModClasses
         }
 
         /// <summary>
-        /// Called when the Player spawns for the first time in the world
+        /// Called when the Player spawns for the first time in the world.
         /// </summary>
         public override void Initialize()
         {
@@ -49,8 +49,25 @@ namespace Avalon.ModClasses
             //hellfireChestId = TileDef.type["Avalon:Hellfire Chest"];
         }
 
+        ///// <summary>
+        ///// Called before the Player is updated.
+        ///// </summary>
+        //public override void PreUpdate()
+        //{
+        //    if (player.whoAmI == Main.myPlayer && !Main.dedServ && AvalonMod.DarkMatter.Check(player))
+        //    {
+        //        Lighting.brightness = 0.3f;
+
+        //        //Main.tileColor = new Color(52, 0, 91);
+        //        //Main.bgColor = new Color(52, 0, 91);
+        //        //Main.backColor = new Color(52, 0, 91);
+        //        //Main.trueBackColor = new Color(52, 0, 91);
+        //    }
+
+        //    base.PreUpdate();
+        //}
         /// <summary>
-        /// Called when the Player is updated
+        /// Called when the Player is updated.
         /// </summary>
         public override void MidUpdate()
         {
@@ -257,7 +274,7 @@ namespace Avalon.ModClasses
             for (int y = startY; y < lenY; y++)
                 for (int x = startX; x < lenX; x++)
                     if (Main.map[x, y] != null)
-                        Main.map[x, y].light = 0;
+                        Main.map[x, y].light = 0; // 'actual' colour is #050403, not #000000...
         }
         #endregion
 

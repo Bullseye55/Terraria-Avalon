@@ -80,7 +80,6 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
-    <Compile Include="ModClasses\MTileType.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />

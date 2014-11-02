@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -48,7 +49,9 @@ namespace Avalon
 		internal static List<BossSpawn> spawns = new List<BossSpawn>();
         internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
 
-        static Texture2D sunBak;
+        bool setBg = false;
+
+        internal static Texture2D sunBak;
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -314,6 +317,7 @@ namespace Avalon
 
             base.PostGameUpdate();
         }
+
         /// <summary>
         /// Called before the game is drawn.
         /// </summary>
@@ -324,6 +328,18 @@ namespace Avalon
 
             if (Main.dedServ || Main.gameMenu)
                 return;
+
+            // doesn't work .__.
+            if (!setBg && !Main.dedServ && AvalonMod.DarkMatter.Check(Main.localPlayer))
+            {
+                //Lighting.brightness = 0.3f;
+
+                Main.bgColor = new Color(52, 0, 91);
+
+                // + DM bg drawing?
+
+                setBg = true;
+            }
 
             Main.sunTexture = DarkMatter.Check(Main.localPlayer) ? DarkMatterSun : sunBak;
         }

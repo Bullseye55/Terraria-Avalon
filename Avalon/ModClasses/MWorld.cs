@@ -272,51 +272,6 @@ namespace Avalon.ModClasses
             if (!AvalonMod.IsInSuperHardmode && !UltraOblivionDowned)
                 return;
 
-            NPC n, n2;
-
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                n = Main.npc[i];
-
-                if (n.type == 94 && n.active && AvalonMod.IsInSuperHardmode)
-                    for (int j = 0; j < Main.npc.Length; j++)
-                    {
-                        n2 = Main.npc[j];
-
-                        if (n2.type == NPCDef.byName["Avalon:Hallowor"].type && n2.active && n.Hitbox.Intersects(n2.Hitbox))
-                        {
-                            Make3x3Circle((int)n.position.X / 16, (int)n.position.Y / 16, TileDef.byName["Oblivion Ore"]);
-
-                            n.active = n2.active = false;
-                            n.NPCLoot();
-                            Main.PlaySound(4, (int)n.position.X, (int)n.position.Y, n.soundKilled);
-                            n2.NPCLoot();
-                            Main.PlaySound(4, (int)n2.position.X, (int)n2.position.Y, n2.soundKilled);
-
-                            NetHelper.SendText("Dark and light have been obliterated...", new Color(135, 78, 0));
-                        }
-                    }
-
-                if (n.type == NPCDef.byName["Avalon:Guardian Corruptor"].type && n.active && UltraOblivionDowned)
-                    for (int j = 0; j < Main.npc.Length; j++)
-                    {
-                        n2 = Main.npc[j];
-
-                        if (n2.type == NPCDef.byName["Avalon:Aegis Hallowor"].type && n2.active && n.Hitbox.Intersects(n2.Hitbox))
-                        {
-                            Make3x3Circle((int)n.position.X / 16, (int)n.position.Y / 16, TileDef.byName["Berserker Ore"]);
-
-                            n.active = n2.active = false;
-                            n.NPCLoot();
-                            Main.PlaySound(4, (int)n.position.X, (int)n.position.Y, n.soundKilled);
-                            n2.NPCLoot();
-                            Main.PlaySound(4, (int)n2.position.X, (int)n2.position.Y, n2.soundKilled);
-
-                            NetHelper.SendText("Dark and light have been annihilated...", new Color(135, 78, 0));
-                        }
-                    }
-            }
-
             if (WraithsDowned >= 200)
                 AvalonMod.Wraiths.Stop();
         }
@@ -334,6 +289,9 @@ namespace Avalon.ModClasses
 				Array.Resize(ref accessories, 1);
 				Array.Resize(ref tomes      , 1);
 			}
+
+            if (!Main.dedServ)
+                Main.sunTexture = AvalonMod.sunBak;
 
             base.Save(bb);
 

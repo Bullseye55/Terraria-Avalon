@@ -1,7 +1,7 @@
 Do these steps in order:
 
 1. Get the black hole what I have commited in the Worlds Folder named "Dark Matter Background". Use this to code in the Dark Matter's background!
-    - No hook?
+    - No hook!
 
 2. Fix newest issue from 11/1-2/2014. Reloading mods error.
     - Fixed
