@@ -15,8 +15,8 @@
 	"lifeMax": 50,
 	"damage": 0,
 	"defense": 4,
-	"knockbackResist": 0,
-	"value": [ 0, 0, 0, 0 ],
+	"knockbackResist": 1.0,
+	"value": [ 0, 0, 65, 0 ],
 
 	"dontTakeDamage": false,
 	"lavaImmune": false,
@@ -24,22 +24,5 @@
 	"noTileCollide": false,
 	"behindTiles": false,
 	"soundHit": 13,
-	"soundKilled": 19,
-
-	"drops": [
-		{
-			"choose": [
-				{
-					"item": "Vanilla:Torch",
-					"stack": [ 1, 30 ]
-				},
-				{
-					"item": "Vanilla:Rope",
-					"stack": [ 1, 60 ]
-				}
-
-			],
-			"chance": 1.0
-		}
-	]
+	"soundKilled": 19
 }

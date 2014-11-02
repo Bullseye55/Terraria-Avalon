@@ -11,31 +11,35 @@ namespace Avalon.NPCs.Normal.Worms
     /// </summary>
     public sealed class VertewormHead : ModNPC
     {
-        bool hasTail = false;
-
+        bool TailSpawned = false;
+        int Counter = 0;
         /// <summary>
         /// 
         /// </summary>
         public override void AI()
         {
-            if (!hasTail)
+            if (!TailSpawned)
             {
-                NPC prev = npc;
-
-                for (int i = 0; i < 14; i++)
+                int Previous = npc.whoAmI;
+                for (int Counter = 0; Counter < 14; Counter++)
                 {
-                    NPC segment = Main.npc[NPC.NewNPC((int)npc.Centre.X, (int)npc.Centre.Y , NPCDef.byName["Avalon:Verteworm " + ((i >= 0 && i < 13) ? "Body" : "Tail")].type, npc.whoAmI)];
-
-                    segment.realLife = npc.whoAmI;
-                    segment.ai[2] = npc.whoAmI;
-                    segment.ai[1] = prev.whoAmI;
-                    prev.ai[0] = segment.whoAmI;
-
-                    NetMessage.SendData(23, -1, -1, String.Empty, segment.whoAmI, 0f, 0f, 0f, 0);
-
-                    prev = segment;
+                    int spawn = 0;
+                    if (Counter >= 0 && Counter < 13)
+                    {
+                        spawn = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), NPCDef.byName["Avalon:Verteworm Body"].type, npc.whoAmI);
+                    }
+                    else
+                    {
+                        spawn = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), NPCDef.byName["Avalon:Verteworm Tail"].type, npc.whoAmI);
+                    }
+                    Main.npc[spawn].realLife = npc.whoAmI;
+                    Main.npc[spawn].ai[2] = (float)npc.whoAmI;
+                    Main.npc[spawn].ai[1] = (float)Previous;
+                    Main.npc[Previous].ai[0] = (float)spawn;
+                    NetMessage.SendData(23, -1, -1, "", spawn, 0f, 0f, 0f, 0);
+                    Previous = spawn;
                 }
-                hasTail = true;
+                TailSpawned = true;
             }
         }
         /// <summary>
@@ -55,7 +59,7 @@ namespace Avalon.NPCs.Normal.Worms
         /// <returns></returns>
         public override bool CanSpawn(int x, int y, int type, Player p)
         {
-            return p.zoneBlood && Main.rand.Next(13) == 0;
+            return Main.player[Main.myPlayer].zoneBlood && Main.hardMode && Main.rand.Next(7) == 1;
         }
     }
 }

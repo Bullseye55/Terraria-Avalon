@@ -43,7 +43,7 @@ namespace Avalon.NPCs.Normal.Worms
             Vector2 offsetting = npc.DirectionFrom(toFollow.Centre) * distancing;
 
             npc.velocity = Vector2.Zero;
-            npc.Centre = toFollow.Centre + offsetting;
+            npc.Center = toFollow.Center + offsetting;
             #endregion
         }
     }
