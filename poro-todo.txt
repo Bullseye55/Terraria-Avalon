@@ -1,3 +1,25 @@
+Do these steps in order:
+
+1. Get the black hole what I have commited in the Worlds Folder named "Dark Matter Background". Use this to code in the Dark Matter's background!
+
+2. Fix newest issue from 11/1-2/2014. Reloading mods error.
+
+3. Take a gander at my Worm  spawning code again, and see where you messed up on your formatting. (Kidding. :P )
+
+4. Remove the minimap blacking code, make it a constant so the black always appears at the Dark Matter, but does not flash constantly like it does now.
+
+5. Anything else we talked about earlier.
+
+6. Wait for me to get online, and then we'll code and talk more. :P
+
+
+
+
+
+
+
+
+
 
 Dark Matter Biome:
 
