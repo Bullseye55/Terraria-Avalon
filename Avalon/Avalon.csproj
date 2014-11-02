@@ -254,7 +254,8 @@
     <Content Include="Items\Potions\Medicine Bottle.png" />
     <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
     <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
-    <Content Include="Resources\Misc\Dark Matter Sun.png" />
+    <Content Include="Resources\Dark Matter\Background.png" />
+    <Content Include="Resources\Dark Matter\Sun.png" />
     <Content Include="Walls\Heartstone Brick Wall.png" />
     <Content Include="_ForRevision\Flails\Berserker Nightmare.png" />
     <Content Include="_ForRevision\Flails\Caesium Flail.json" />

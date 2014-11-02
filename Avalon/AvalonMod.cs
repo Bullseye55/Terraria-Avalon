@@ -112,6 +112,14 @@ namespace Avalon
             get;
             private set;
         }
+        /// <summary>
+        /// Gets the texture of the background in the <see cref="World.DarkMatter" /> biome.
+        /// </summary>
+        public static Texture2D DarkMatterBackground
+        {
+            get;
+            private set;
+        }
 
 		/// <summary>
 		/// Gets the ID of the Golden Wings texture.
@@ -168,7 +176,7 @@ namespace Avalon
 				return;
 
             sunBak = Main.sunTexture;
-            DarkMatterSun = textures["Resources/Misc/Dark Matter Sun"];
+            DarkMatterSun = textures["Resources/Dark Matter/Sun"];
 
 			Texture2D gWings = textures["Resources/Wings/Golden Wings"];
 			foreach (Texture2D t in Main.wingsTexture.Values)

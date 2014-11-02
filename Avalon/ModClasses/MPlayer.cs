@@ -15,15 +15,11 @@ namespace Avalon.ModClasses
     /// </summary>
     public sealed partial class MPlayer : ModPlayer
 	{
-        const int DARKEN_MINIMAP_CD_MAX = 2;
-
 #pragma warning disable 414
 #pragma warning disable 169
 		float rot = 0f;
         bool LavaMerman = false;
-        int
-            skillCD = 0,
-            darkenMinimapCD = 0;
+        int skillCD = 0;
         readonly static int[] MUSIC_BOXES = new int[] { -1, 0, 1, 2, 4, 5, -1, 6, 7, 9, 8, 11, 10, 12 };
 #pragma warning restore 414
 #pragma warning restore 169
@@ -248,7 +244,7 @@ namespace Avalon.ModClasses
         }
         void U_HideDarkMatter ()
         {
-            if (Main.dedServ || player.whoAmI != Main.myPlayer || !AvalonMod.DarkMatter.Check(player) || ++darkenMinimapCD < DARKEN_MINIMAP_CD_MAX)
+            if (Main.dedServ || player.whoAmI != Main.myPlayer || !AvalonMod.DarkMatter.Check(player))
                 return;
 
             int
@@ -262,8 +258,6 @@ namespace Avalon.ModClasses
                 for (int x = startX; x < lenX; x++)
                     if (Main.map[x, y] != null)
                         Main.map[x, y].light = 0;
-
-            darkenMinimapCD = 0;
         }
         #endregion
 
