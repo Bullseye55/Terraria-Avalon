@@ -8,7 +8,7 @@
     "ratePick": 0.1,
     "minPick": 210,
     "breaksByPick": true,
-    "mergeDirt": false,
+    "mergeDirt": true,
     "solid": true,
     "blocksLight": true,
     "blocksSun": true,
