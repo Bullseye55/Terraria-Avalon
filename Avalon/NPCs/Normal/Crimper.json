@@ -17,7 +17,7 @@
 	"damage": 80,
 	"defense": 20,
 	"knockback": 10,
-	"knockBackResist": 1.0,
+	"knockbackResist": 1.0,
 	"value": [ 0, 0, 3, 21 ],
 
 	"dontTakeDamage": false,

@@ -16,7 +16,7 @@
 	"lifeMax": 1200,
 	"damage": 100,
 	"defense": 30,
-	"knockBackResist": 0.0,
+	"knockbackResist": 0.0,
 
 	"dontTakeDamage": false,
 	"lavaImmune": true,

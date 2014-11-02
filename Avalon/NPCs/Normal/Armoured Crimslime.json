@@ -16,7 +16,7 @@
 	"lifeMax": 100,
 	"damage": 75,
 	"defense": 60,
-	"knockBackResist": 0.9,
+	"knockbackResist": 0.9,
 	"value": [ 0, 0, 5, 0 ],
 
 	"dontTakeDamage": false,

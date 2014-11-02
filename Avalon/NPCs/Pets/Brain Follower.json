@@ -9,7 +9,7 @@
 	"friendly": true,
 	"noTileCollide": true,
 	"noGravity": true,
-	"knockBackResist": 0,
+	"knockbackResist": 0,
 	"dontTakeDamage": true,
 	"hostile": true
 }
