@@ -314,7 +314,7 @@ namespace Avalon
         {
             base.PreGameDraw(sb);
 
-            if (Main.dedServ)
+            if (Main.dedServ || Main.gameMenu)
                 return;
 
             Main.sunTexture = DarkMatter.Check(Main.localPlayer) ? DarkMatterSun : sunBak;
