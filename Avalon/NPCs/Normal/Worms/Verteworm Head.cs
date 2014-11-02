@@ -55,7 +55,7 @@ namespace Avalon.NPCs.Normal.Worms
         /// <returns></returns>
         public override bool CanSpawn(int x, int y, int type, Player p)
         {
-            return p.zoneBlood /*&& Main.rand.Next(13) == 0*/;
+            return p.zoneBlood && Main.rand.Next(13) == 0;
         }
     }
 }
