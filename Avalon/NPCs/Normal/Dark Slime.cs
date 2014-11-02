@@ -22,7 +22,7 @@ namespace Avalon.NPCs.Normal
         /// <returns></returns>
         public override bool CanSpawn(int x, int y, int type, Player p)
         {
-            return Biome.Biomes["Avalon:Dark Matter"].Check(p) && Main.hardMode && Main.rand.Next(7) == 1;
+            return AvalonMod.DarkMatter.Check(p) && Main.hardMode && Main.rand.Next(3) == 1;
         }
 
         /// <summary>

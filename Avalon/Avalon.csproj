@@ -83,6 +83,7 @@
     <Compile Include="ModClasses\MTileType.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
+    <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
     <Compile Include="World\DarkMatter.cs" />
     <Compile Include="Items\Accessories\Bag of Blood.cs" />
     <Compile Include="Items\Accessories\Bag of Fire.cs" />

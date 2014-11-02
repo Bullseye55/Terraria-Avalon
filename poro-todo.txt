@@ -1,7 +1,7 @@
 
 Dark Matter Biome:
 
-Dark Matter Ooze never spawns more than 250 in a given biome area of effect.
+Dark Matter Ooze never spawns more than 250 in a given biome area of effect (at WorldGen).
 If the number of  Dark Ooze goes above 350, the Dark Ooze turns reinforced, and can't be mined with a Picksaw.
 The Dark Matter then spreads throughout the world, but always starting first from the reinforced Dark Matter.
 Within 10 Terraria days time, all Dark Matter starts to spread in the world, starting a total conversion.
@@ -25,6 +25,15 @@ The whole Dark Matter biome should look like a black blob on the minimap, to mak
 (maybe ask for a hook/API for controlling the map, only possible to hack it in right now).
 Some tiles/walls should be animated, and/or partially transparent.
 
+All Dark Matter tiles spread it.
+
 [ --- ]
+
+For each day of not being able to spread, the Dark Matter increases its spread area by 1 tile.
+
+Once 350 are placed in one area, all of them are reinforced instantly.
+Only in the area where the 350 were placed.
+The tiles around that area will be turned into Dark Matter block types.
+Reinforced blocks do not spread over regular Dark Matter tiles, nor vice versa.
 
 More info coming later. I've gave you the basics, Poro.

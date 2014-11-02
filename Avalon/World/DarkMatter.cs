@@ -12,6 +12,11 @@ namespace Avalon.World
     public sealed class DarkMatter : Biome
     {
         /// <summary>
+        /// Gets the required amount of Dark Matter tiles to have a Dark Matter biome.
+        /// </summary>
+        public const int MINIMUM_TILES = 350;
+
+        /// <summary>
         /// Creates a new instance of the <see cref="DarkMatter" /> class.
         /// </summary>
         public DarkMatter()
@@ -19,7 +24,7 @@ namespace Avalon.World
             {
                 TileDef.byName["Avalon:Dark Matter Ooze"],
                 TileDef.byName["Avalon:Dark Matter Soil"]
-            }, AvalonMod.EmptyIntList, 100 /* temp value */)
+            }, AvalonMod.EmptyIntList, MINIMUM_TILES)
         {
             biomeMusic = "Avalon:Resources/Music/Dark Matter (temp).ogg";
             biomeMusicPriority = MusicPriority.Med;

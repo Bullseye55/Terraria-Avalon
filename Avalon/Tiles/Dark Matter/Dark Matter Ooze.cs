@@ -10,13 +10,13 @@ namespace Avalon.Tiles.DarkMatter
     /// <summary>
     /// The Dark Matter Ooze tile.
     /// </summary>
-    public sealed class DarkMatterOoze : SpreadingTile
+    public sealed class DarkMatterOoze : DarkMatterTile
     {
         /// <summary>
         /// Creates a new instance of the <see cref="DarkMatterOoze" /> class.
         /// </summary>
         public DarkMatterOoze()
-            : base(TileCategory.Dirt | TileCategory.Stone)
+            : base(TileCategory.Dirt | TileCategory.Stone, TileDef.byName["Avalon:Dark Matter Ooze"])
         {
 
         }
@@ -28,21 +28,7 @@ namespace Avalon.Tiles.DarkMatter
         {
             base.Initialize();
 
-            ToSpread = TileDef.byName["Avalon:Dark Matter Ooze"];
-            SpreadOn += pt => AvalonMod.DarkMatter.CountNum() < 350;
-            PlaceStyle = 0;
             SpreadRatio = 120; // temp, obviously
         }
-
-        ///// <summary>
-        ///// Updates the tile.
-        ///// </summary>
-        //public override void Update()
-        //{
-        //    base.Update();
-
-        //    if (AvalonMod.DarkMatter.CountNum() >= 350)
-        //        World.DarkMatter.Reinforce();
-        //}
     }
 }

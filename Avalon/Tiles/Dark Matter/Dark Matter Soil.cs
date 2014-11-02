@@ -10,13 +10,13 @@ namespace Avalon.Tiles.DarkMatter
     /// <summary>
     /// The Dark Matter Soil tile.
     /// </summary>
-    public sealed class DarkMatterSoil : SpreadingTile
+    public sealed class DarkMatterSoil : DarkMatterTile
     {
         /// <summary>
         /// Creates a new instance of the <see cref="DarkMatterSoil" /> class.
         /// </summary>
         public DarkMatterSoil()
-            : base(TileCategory.Grass)
+            : base(TileCategory.Dirt | TileCategory.Grass, TileDef.byName["Avalon:Dark Matter Soil"])
         {
 
         }
@@ -28,21 +28,7 @@ namespace Avalon.Tiles.DarkMatter
         {
             base.Initialize();
 
-            ToSpread = TileDef.byName["Avalon:Dark Matter Soil"];
-            SpreadOn += pt => AvalonMod.DarkMatter.CountNum() < 350;
-            PlaceStyle = 0;
             SpreadRatio = 120; // temp, obviously
         }
-
-        ///// <summary>
-        ///// Updates the tile.
-        ///// </summary>
-        //public override void Update()
-        //{
-        //    base.Update();
-
-        //    if (AvalonMod.DarkMatter.CountNum() >= 350)
-        //        World.DarkMatter.Reinforce();
-        //}
     }
 }
