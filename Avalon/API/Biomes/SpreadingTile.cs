@@ -151,6 +151,14 @@ namespace Avalon.API.Biomes
             return SpreadOn == null ? _CanSpreadOn(pt) : SpreadOn(pt);
         }
 
+        void Spread(Point pt)
+        {
+            int type = Main.tile[pt.X, pt.Y].type;
+            WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
+            WorldGen.TileFrame(pt.X, pt.Y, true);
+            OnSpread(pt, type);
+        }
+
         /// <summary>
         /// Updates the <see cref="ModTile" />.
         /// </summary>
@@ -164,19 +172,26 @@ namespace Avalon.API.Biomes
 
             // up
             if      (CanSpreadOn(pt = new Point(position.X    , position.Y - 1)) && Main.rand.Next(2) == 0)
-                WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
+                Spread(pt);
 
             // down
             else if (CanSpreadOn(pt = new Point(position.X    , position.Y + 1)) && Main.rand.Next(2) == 0)
-                WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
+                Spread(pt);
 
             // left
             else if (CanSpreadOn(pt = new Point(position.X - 1, position.Y    )) && Main.rand.Next(2) == 0)
-                WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
+                Spread(pt);
 
             // right
-            else if (CanSpreadOn(pt = new Point(position.X + 1, position.Y   )) && Main.rand.Next(2) == 0)
-                WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
+            else if (CanSpreadOn(pt = new Point(position.X + 1, position.Y    )))
+                Spread(pt);
         }
+
+        /// <summary>
+        /// Called when the <see cref="SpreadingTile" /> spreads on a tile.
+        /// </summary>
+        /// <param name="pt">The position of the tile where the <see cref="SpreadingTile" /> spread on.</param>
+        /// <param name="oldType">The type of the tile before it was changed.</param>
+        protected virtual void OnSpread(Point pt, int oldType) { }
     }
 }

@@ -42,7 +42,7 @@ namespace Avalon
     namespace ModClasses
     {
         /// <summary>
-        /// Networking stuff.
+        /// The <see cref="ModNet" /> class of the Avalon mod.
         /// </summary>
         public sealed class MNet : ModNet
         {

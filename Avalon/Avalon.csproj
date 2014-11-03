@@ -80,6 +80,7 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
+    <Compile Include="ModClasses\MNPC.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
@@ -108,7 +109,7 @@
     <Compile Include="ModClasses\MNet.cs" />
     <Compile Include="ModClasses\MPlayer_AccEffects.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Soil.cs" />
-    <Compile Include="UI\MUI.cs" />
+    <Compile Include="ModClasses\MUI.cs" />
     <Compile Include="NPCs\Baits\Lava Mite.cs" />
     <Compile Include="NPCs\Normal\Armoured Crimslime.cs" />
     <Compile Include="NPCs\Normal\Black Lancer.cs" />

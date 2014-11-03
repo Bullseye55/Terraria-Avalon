@@ -12,7 +12,7 @@ using Avalon.World;
 namespace Avalon.ModClasses
 {
     /// <summary>
-    /// Global world stuff
+    /// The <see cref="ModWorld" /> class of the Avalon mod.
     /// </summary>
     public sealed class MWorld : ModWorld
     {
@@ -132,6 +132,15 @@ namespace Avalon.ModClasses
         /// Gets the layer containing the Mystical Tome slot.
         /// </summary>
         public static TomeSlotLayer      TomeSlotLayer
+        {
+            get;
+            internal set;
+        }
+
+        /// <summary>
+        /// Gets the amount of Dark Matter tiles that have spreaded this (Terrarian) day.
+        /// </summary>
+        public static int DarkMatterSpreaded
         {
             get;
             internal set;
@@ -269,11 +278,13 @@ namespace Avalon.ModClasses
         {
             base.PostUpdate();
 
-            if (!AvalonMod.IsInSuperHardmode && !UltraOblivionDowned)
-                return;
-
             if (WraithsDowned >= 200)
                 AvalonMod.Wraiths.Stop();
+
+            if (Main.time == 0d && DarkMatterSpreaded == 0)
+            {
+                // spread somehow (need more info on this - put somewhere randomly a DM tile, or add a tile somewhere to an existing DM biome?)
+            }
         }
 
         /// <summary>
@@ -295,25 +306,17 @@ namespace Avalon.ModClasses
 
             base.Save(bb);
 
-            bb.WriteX(
-                AvalonMod.IsInSuperHardmode,
-                UltraOblivionDowned,
-                SpawnedBerserkerOre,
-                scanned);
+            bb.WriteX(AvalonMod.IsInSuperHardmode, scanned);
 
-            bb.WriteX(
-                CatarystDownedCount,
-                HallowAltarsBroken,
-                ArmageddonCount,
-                EverIceCount,
-                WraithsDowned);
+            bb.WriteX(WraithsDowned);
 
             CorrectJunglePos();
             CorrectOceanPos ();
             CorrectHellPos  ();
 
-            bb.WriteX(TropicsRect.X, TropicsRect.Y, TropicsRect.Width, TropicsRect.Height,
-                jungleX, jungleY, lOceanY, rOceanY, hellY);
+            bb.WriteX(jungleX, jungleY, lOceanY, rOceanY, hellY);
+
+            bb.Write(DarkMatterSpreaded);
         }
         /// <summary>
         /// Loads binary data from a world save file. Called when the world is loaded.
@@ -334,17 +337,9 @@ namespace Avalon.ModClasses
             }
 
             AvalonMod.IsInSuperHardmode = bb.ReadBool();
-            UltraOblivionDowned = bb.ReadBool();
-            SpawnedBerserkerOre = bb.ReadBool();
             scanned = bb.ReadBool();
 
-            CatarystDownedCount = bb.ReadInt();
-            HallowAltarsBroken = bb.ReadInt();
-            ArmageddonCount = bb.ReadInt();
-            EverIceCount = bb.ReadInt();
             WraithsDowned = bb.ReadInt();
-
-            TropicsRect = new Rectangle(bb.ReadInt(), bb.ReadInt(), bb.ReadInt(), bb.ReadInt());
 
             jungleX = bb.ReadInt();
             jungleY = bb.ReadInt();
@@ -357,6 +352,8 @@ namespace Avalon.ModClasses
             CorrectJunglePos();
             CorrectOceanPos ();
             CorrectHellPos  ();
+
+            DarkMatterSpreaded = bb.ReadInt();
         }
 
         /// <summary>

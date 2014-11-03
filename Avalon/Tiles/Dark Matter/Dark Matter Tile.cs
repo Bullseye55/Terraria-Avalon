@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Microsoft.Xna.Framework;
 using Avalon.API.Biomes;
-using TAPI;
-using Terraria;
+using Avalon.ModClasses;
 
 namespace Avalon.Tiles.DarkMatter
 {
@@ -33,6 +32,18 @@ namespace Avalon.Tiles.DarkMatter
 
             if (AvalonMod.DarkMatter.CountNum() >= World.DarkMatter.MINIMUM_TILES)
                 World.DarkMatter.Reinforce();
+        }
+
+        /// <summary>
+        /// Called when the <see cref="SpreadingTile" /> spreads on a tile.
+        /// </summary>
+        /// <param name="pt">The position of the tile where the <see cref="SpreadingTile" /> spread on.</param>
+        /// <param name="oldType">The type of the tile before it was changed.</param>
+        protected override void OnSpread(Point pt, int oldType)
+        {
+            base.OnSpread(pt, oldType);
+
+            MWorld.DarkMatterSpreaded++;
         }
     }
 }

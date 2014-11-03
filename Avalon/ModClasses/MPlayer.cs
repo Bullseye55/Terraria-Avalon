@@ -11,7 +11,7 @@ using Avalon.API.StarterSets;
 namespace Avalon.ModClasses
 {
     /// <summary>
-    /// Global player stuff.
+    /// The <see cref="ModPlayer" /> class of the Avalon mod.
     /// </summary>
     public sealed partial class MPlayer : ModPlayer
 	{
@@ -49,23 +49,6 @@ namespace Avalon.ModClasses
             //hellfireChestId = TileDef.type["Avalon:Hellfire Chest"];
         }
 
-        ///// <summary>
-        ///// Called before the Player is updated.
-        ///// </summary>
-        //public override void PreUpdate()
-        //{
-        //    if (player.whoAmI == Main.myPlayer && !Main.dedServ && AvalonMod.DarkMatter.Check(player))
-        //    {
-        //        Lighting.brightness = 0.3f;
-
-        //        //Main.tileColor = new Color(52, 0, 91);
-        //        //Main.bgColor = new Color(52, 0, 91);
-        //        //Main.backColor = new Color(52, 0, 91);
-        //        //Main.trueBackColor = new Color(52, 0, 91);
-        //    }
-
-        //    base.PreUpdate();
-        //}
         /// <summary>
         /// Called when the Player is updated.
         /// </summary>

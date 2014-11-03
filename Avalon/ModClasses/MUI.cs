@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using TAPI;
-using Avalon.ModClasses;
+using Avalon.UI;
 
-namespace Avalon.UI
+namespace Avalon.ModClasses
 {
     /// <summary>
     /// The <see cref="ModInterface" /> class of the Avalon mod.

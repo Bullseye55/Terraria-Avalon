@@ -36,9 +36,9 @@ namespace Avalon.NPCs
 
                     bool keepAlive = false;
 
-                    object[] attr = Main.npc[i].subClass.GetType().GetCustomAttributes(typeof(WraithInvasionNPCAttribute), true);
+                    object[] attr = Main.npc[i].subClass.GetType().GetCustomAttributes(typeof(WraithInvasionNpcAttribute), true);
                     for (int j = 0; j < attr.Length; j++)
-                        if (attr[j] is WraithInvasionNPCAttribute)
+                        if (attr[j] is WraithInvasionNpcAttribute)
                             keepAlive = true;
 
                     Main.npc[i].active &= keepAlive;
