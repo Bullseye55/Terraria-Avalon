@@ -12,7 +12,6 @@ namespace Avalon.NPCs.Normal.Worms
     public sealed class VertewormHead : ModNPC
     {
         bool TailSpawned = false;
-        int Counter = 0;
         /// <summary>
         /// 
         /// </summary>
@@ -24,7 +23,7 @@ namespace Avalon.NPCs.Normal.Worms
                 for (int Counter = 0; Counter < 14; Counter++)
                 {
                     int spawn = 0;
-                    if (Counter >= 0 && Counter < 13)
+                    if (Counter < 13)
                     {
                         spawn = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), NPCDef.byName["Avalon:Verteworm Body"].type, npc.whoAmI);
                     }

@@ -126,7 +126,7 @@ namespace Avalon.API.Biomes
         {
             int type = Main.tile[pt.X, pt.Y].type;
             return Main.tile[pt.X, pt.Y].active() && type != TileToSpread(pt)
-                && !TileDef.breaksByCut[type] && TileDef.solid     [type] && !TileDef.door    [type] && !TileDef.alchemyFlower[type]
+                && !TileDef.breaksByCut[type] &&  TileDef.solid    [type] && !TileDef.door    [type] && !TileDef.alchemyFlower[type]
                 && !TileDef.chair      [type] && !TileDef.noAttach [type] && !TileDef.platform[type] && !TileDef.rope         [type]
                 && !TileDef.table      [type] && !TileDef.tileFlame[type]
                 && BelongsToCategory(Category, pt);
@@ -154,7 +154,8 @@ namespace Avalon.API.Biomes
         void Spread(Point pt)
         {
             int type = Main.tile[pt.X, pt.Y].type;
-            WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
+            //WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
+            Main.tile[pt.X, pt.Y].type = (ushort)(GetToSpread == null ? ToSpread : GetToSpread(pt));
             WorldGen.TileFrame(pt.X, pt.Y, true);
             OnSpread(pt, type);
         }

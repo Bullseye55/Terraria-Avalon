@@ -28,7 +28,7 @@ namespace Avalon.Tiles.DarkMatter
         {
             base.Initialize();
 
-            SpreadRatio = 120; // temp, obviously
+            SpreadRatio = 1200; // temp, obviously
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Avalon.API.Biomes;
 using Avalon.ModClasses;
 
@@ -21,6 +22,17 @@ namespace Avalon.Tiles.DarkMatter
             : base(category)
         {
             ToSpread = type;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            // don't spread on other DM tiles
+            SpreadOn += pt => !AvalonMod.DarkMatter.typesIncrease.Contains(Main.tile[pt.X, pt.Y].type);
         }
 
         /// <summary>

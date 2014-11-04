@@ -271,15 +271,13 @@ namespace Avalon.ModClasses
             if (Main.dedServ)
                 return;
         }
+
         /// <summary>
         /// Called after the world is updated
         /// </summary>
         public override void PostUpdate()
         {
             base.PostUpdate();
-
-            if (WraithsDowned >= 200)
-                AvalonMod.Wraiths.Stop();
 
             if (Main.time == 0d && DarkMatterSpreaded == 0)
             {

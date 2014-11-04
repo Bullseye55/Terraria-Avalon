@@ -125,7 +125,7 @@
     <Compile Include="NPCs\Normal\Worms\Verteworm Body.cs" />
     <Compile Include="NPCs\Normal\Worms\Verteworm Head.cs" />
     <Compile Include="NPCs\Normal\Worms\Verteworm Tail.cs" />
-    <Compile Include="NPCs\VanillaDrop.cs" />
+    <Compile Include="API\NPCs\VanillaDrop.cs" />
     <Compile Include="Projectiles\FromPlayer\Bullets\Binge Eater.cs" />
     <Compile Include="Projectiles\FromPlayer\Spears\Black Lance.cs" />
     <Compile Include="Projectiles\FromPlayer\Bullets\Blood Ball.cs" />
@@ -165,11 +165,9 @@
     <Compile Include="UI\TomeSlotLayer.cs" />
     <Compile Include="World\DynamicTask.cs" />
     <Compile Include="World\Gen.cs" />
-    <Compile Include="World\Wraiths.cs" />
     <Compile Include="_MCTImport\Content\ObjectLoader.cs" />
     <Compile Include="_MCTImport\Invasion.cs" />
     <Compile Include="_MCTImport\Net\NetHelper.cs" />
-    <Compile Include="NPCs\MNPC.cs" />
     <Compile Include="AvalonMod.cs" />
     <Compile Include="ModClasses\MPlayer.cs" />
     <Compile Include="ModClasses\MWorld.cs" />

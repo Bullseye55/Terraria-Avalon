@@ -12,38 +12,37 @@ namespace Avalon.NPCs.Normal.Worms
     public sealed class DMSpearwormHead : ModNPC
     {
         bool TailSpawned = false;
-        int Counter = 0;
         /// <summary>
         /// 
         /// </summary>
-    public override void AI()
-    {
-    if (!TailSpawned)
-    {
-        int Previous = npc.whoAmI;
-        for (int Counter = 0; Counter < 14; Counter++)
+        public override void AI()
         {
-            int spawn = 0;
-            if (Counter >= 0 && Counter < 10) //Leaves four segments for a tail, for the unique look.
+            if (!TailSpawned)
             {
-                spawn = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), NPCDef.byName["Avalon:Dark Matter Spearworm Body"].type, npc.whoAmI);
-            }
-            else
-            {
-                spawn = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), NPCDef.byName["Avalon:Dark Matter Spearworm Tail"].type, npc.whoAmI);
-            }
-            Main.npc[spawn].realLife = npc.whoAmI;
-            Main.npc[spawn].ai[2] = (float)npc.whoAmI;
-            Main.npc[spawn].ai[1] = (float)Previous;
-            Main.npc[Previous].ai[0] = (float)spawn;
-            NetMessage.SendData(23, -1, -1, "", spawn, 0f, 0f, 0f, 0);
-            Previous = spawn;
-            }
+                int Previous = npc.whoAmI;
+                for (int Counter = 0; Counter < 14; Counter++)
+                {
+                    int spawn = 0;
+                    if (Counter < 10) //Leaves four segments for a tail, for the unique look.
+                    {
+                        spawn = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), NPCDef.byName["Avalon:Dark Matter Spearworm Body"].type, npc.whoAmI);
+                    }
+                    else
+                    {
+                        spawn = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), NPCDef.byName["Avalon:Dark Matter Spearworm Tail"].type, npc.whoAmI);
+                    }
+                    Main.npc[spawn].realLife = npc.whoAmI;
+                    Main.npc[spawn].ai[2] = (float)npc.whoAmI;
+                    Main.npc[spawn].ai[1] = (float)Previous;
+                    Main.npc[Previous].ai[0] = (float)spawn;
+                    NetMessage.SendData(23, -1, -1, "", spawn, 0f, 0f, 0f, 0);
+                    Previous = spawn;
+                }
 
-        TailSpawned = true;
+                TailSpawned = true;
+            }
         }
-    }
-    
+
         /// <summary>
         /// 
         /// </summary>

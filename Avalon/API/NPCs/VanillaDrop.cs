@@ -4,7 +4,7 @@ using System.Linq;
 using Terraria;
 using TAPI;
 
-namespace Avalon.NPCs
+namespace Avalon.API.NPCs
 {
     /// <summary>
     /// A structure used to 

@@ -12,9 +12,9 @@ using PoroCYon.MCT.Content;
 using Avalon.API.Audio;
 using Avalon.API.Events;
 using Avalon.API.Items.MysticalTomes;
+using Avalon.API.NPCs;
 using Avalon.API.World;
 using Avalon.ModClasses;
-using Avalon.NPCs;
 using Avalon.UI.Menus;
 using Avalon.World;
 
@@ -44,8 +44,6 @@ namespace Avalon
 			tomeSkillHotkey   ,
 			shadowMirrorHotkey;
 
-		bool addedWings = false;
-
 		internal static List<BossSpawn> spawns = new List<BossSpawn>();
         internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
 
@@ -67,29 +65,7 @@ namespace Avalon
 				Instance.tomeSkillHotkey.Value = value;
 			}
 		}
-		/// <summary>
-		/// Gets or sets the <!--<see cref="ShadowMirror" />--> hotkey.
-		/// </summary>
-		public static Keys ShadowMirrorHotkey
-		{
-			get
-			{
-				return (Keys)Instance.shadowMirrorHotkey.Value;
-			}
-			set
-			{
-				Instance.shadowMirrorHotkey.Value = value;
-			}
-		}
 
-		/// <summary>
-		/// Gets the Wraiths <see cref="Invasion" /> instance.
-		/// </summary>
-		public static Invasion Wraiths
-        {
-            get;
-            internal set;
-        }
         /// <summary>
         /// Gets whether the game is in superhardmode or not.
         /// </summary>
@@ -123,15 +99,6 @@ namespace Avalon
             get;
             private set;
         }
-
-		/// <summary>
-		/// Gets the ID of the Golden Wings texture.
-		/// </summary>
-		public static int GoldenWings
-		{
-			get;
-			private set;
-		}
 
 		/// <summary>
 		/// Creates a new instance of the <see cref="AvalonMod" /> class.
@@ -181,21 +148,6 @@ namespace Avalon
             sunBak = Main.sunTexture;
             DarkMatterSun = textures["Resources/Dark Matter/Sun"];
 
-			Texture2D gWings = textures["Resources/Wings/Golden Wings"];
-			foreach (Texture2D t in Main.wingsTexture.Values)
-				if (gWings == t)
-				{
-					addedWings = true;
-					break;
-				}
-
-			if (!addedWings)
-			{
-				GoldenWings = Main.dedServ ? Main.wingsTexture.Count : ObjectLoader.AddWingsToGame(gWings);
-
-				addedWings = true;
-            }
-
             VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (temp).ogg", this);
 
             StarterSetSelectionHandler.Init();
@@ -229,11 +181,8 @@ namespace Avalon
         {
             Instance = null;
 
-            Wraiths    = null;
             DarkMatter = null;
             IsInSuperHardmode = false;
-
-            GoldenWings = 0;
 
             spawns.Clear();
 
@@ -378,7 +327,7 @@ namespace Avalon
         }
         static void LoadInvasions()
         {
-            Invasion.Load(Instance, "Wraiths", Wraiths = new WraithInvasion());
+
         }
         static void LoadSpawns   ()
         {
@@ -397,24 +346,6 @@ namespace Avalon
                 CanSpawn = (r, p) => !Main.dayTime && Main.rand.Next(40000 * r / 5) == 0,
                 Type = 127 // probably The Twins or Skeletron Prime
             });
-
-            //RegisterBossSpawn(new BossSpawn()
-            //{
-            //    CanSpawn = (r, p) => Main.dayTime && Main.sandTiles >= 100 && Main.rand.Next(30000 * r / 5) == 0,
-            //    NpcInternalName = "Avalon:Desert Beak"
-            //});
-            //RegisterBossSpawn(new BossSpawn()
-            //{
-            //    CanSpawn = (r, p) => Main.dayTime && p.zoneJungle          && Main.rand.Next(30000 * r / 5) == 0,
-            //    NpcInternalName = "Avalon:King Sting"
-            //});
-            //RegisterBossSpawn(new BossSpawn()
-            //{
-            //    CanSpawn = (r, p) => Main.dayTime && p.zoneHoly            && Main.rand.Next(42000 * r / 5) == 0,
-            //    NpcInternalName = "Avalon:Cataryst"
-            //});
-
-            RegisterBossSpawn(new WraithSpawn());
         }
 
         /// <summary>

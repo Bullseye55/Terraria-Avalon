@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using System.Linq;
 using Terraria;
 using TAPI;
+using Avalon.API.World;
 
 namespace Avalon.NPCs.Normal
 {
     /// <summary>
     /// The Dark Slime spawning procedure, used by Dark Slimes 1 and 2.
     /// </summary>
+    [DarkMatterNpc]
     public sealed class DarkSlime : ModNPC
     {
         /// <summary>
