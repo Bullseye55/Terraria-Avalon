@@ -22,6 +22,15 @@ namespace Avalon.Items.Armour.DarkMatter
 
             p.setBonus = "The Dark Matter has spread";
             p.invis = true;
+
+               for (int i = 0; i < Main.gore.Length; i++)
+                   if (Vector2.DistanceSquared(Main.gore[i].position, p.Centre) < 7 * 7 && Main.gore[i].active = true)
+                   {
+                       int x = (int)(Main.gore[i].position.X / 16f), y = (int)(Main.gore[i].position.Y / 16f);
+                       Item.NewItem((int)p.position.X,(int)p.position.Y,(int)p.width,(int)p.height,ItemDef.byName["Avalon:Dark Matter Ooze"].type, 1, false, 0 );
+                       Main.gore[i].active = false;
+
+                   }
         }
 	}
 }
