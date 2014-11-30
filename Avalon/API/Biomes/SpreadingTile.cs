@@ -67,7 +67,7 @@ namespace Avalon.API.Biomes
         /// <summary>
         /// Gets the place style of the tile to spread.
         /// </summary>
-        [Obsolete("This property is currently not used.")]
+        //[Obsolete("This property is currently not used.")]
         public int PlaceStyle
         {
             get;
@@ -138,7 +138,7 @@ namespace Avalon.API.Biomes
         /// </summary>
         /// <param name="pt">The coordinates of the tile to check.</param>
         /// <returns>The type of the tile to spread at the given point.</returns>
-        public int TileToSpread(Point pt)
+        public int  TileToSpread(Point pt)
         {
             return GetToSpread == null ? ToSpread : GetToSpread(pt);
         }
@@ -147,17 +147,35 @@ namespace Avalon.API.Biomes
         /// </summary>
         /// <param name="pt">The coordinates of the tile to check.</param>
         /// <returns>true if the tile can spread on the given tile, false otherwise.</returns>
-        public bool CanSpreadOn(Point pt)
+        public bool CanSpreadOn (Point pt)
         {
             return SpreadOn == null ? _CanSpreadOn(pt) : SpreadOn(pt);
         }
 
         void Spread(Point pt)
         {
-            int type = Main.tile[pt.X, pt.Y].type;
-            //WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true, true, style: PlaceStyle);
-            Main.tile[pt.X, pt.Y].type = (ushort)(GetToSpread == null ? ToSpread : GetToSpread(pt));
-            WorldGen.TileFrame(pt.X, pt.Y, true);
+            if (!Main.tile[pt.X, pt.Y].active())
+                return; // TODO: fix this bug in _CanSpreadOn
+
+            int  type  = Main.tile[pt.X, pt.Y].type   ;
+            byte slope = Main.tile[pt.X, pt.Y].slope();
+
+            Main.tile[pt.X, pt.Y].active(false);
+            WorldGen.PlaceTile(pt.X, pt.Y, GetToSpread == null ? ToSpread : GetToSpread(pt), true/*, true*/, style: PlaceStyle);
+            //Main.tile[pt.X, pt.Y].type = (ushort)(GetToSpread == null ? ToSpread : GetToSpread(pt));
+
+            for (int i = -1; i <= 1; i++)
+                for (int j = -1; j <= 1; j++)
+                {
+                    if (pt.X + i < 0 || pt.X + i >= Main.maxTilesX
+                            || pt.Y + i < 0 || pt.Y + i >= Main.maxTilesY)
+                        continue;
+
+                    WorldGen.TileFrame(pt.X + i, pt.Y + j/*, true*/, noBreak: true);
+                }
+
+            Main.tile[pt.X, pt.Y].slope(slope);
+
             OnSpread(pt, type);
         }
 

@@ -16,9 +16,9 @@ namespace Avalon.Tiles.DarkMatter
         /// Creates a new instance of the <see cref="DarkMatterSoil" /> class.
         /// </summary>
         public DarkMatterSoil()
-            : base(TileCategory.Dirt | TileCategory.Grass, TileDef.byName["Avalon:Dark Matter Soil"])
+            : base(TileCategory.Dirt | TileCategory.Grass | TileCategory.Stone, TileDef.byName["Avalon:Dark Matter Soil"])
         {
-
+            GetToSpread = pt => TileDef.grass[Main.tile[pt.X, pt.Y].type] ? TileDef.byName["Avalon:Dark Matter Soil"] : TileDef.byName["Avalon:Dark Matter Ooze"];
         }
 
         /// <summary>

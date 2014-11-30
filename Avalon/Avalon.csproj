@@ -82,6 +82,7 @@
     <Compile Include="Buffs\Brain Follower.cs" />
     <Compile Include="ModClasses\MNPC.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
+    <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
     <Compile Include="World\DarkMatter.cs" />
@@ -332,7 +333,7 @@
     <Content Include="Resources\Backpacks\Ichorthrower Backpack.png" />
     <Content Include="Sounds\Electronic 1.wav" />
     <Content Include="Sounds\Vertebrae Cannon.wav" />
-    <Content Include="Tiles\Bricks\Dark Matter Brick.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Brick.png" />
     <Content Include="Tiles\Dark Matter\Dark Matter Bush 2.png" />
     <Content Include="Tiles\Dark Matter\Dark Matter Bush.png" />
     <Content Include="Tiles\Dark Matter\Dark Matter Soil.png" />
@@ -571,7 +572,7 @@
     <None Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
     <None Include="NPCs\Normal\Dark Slime 1.json" />
     <None Include="NPCs\Normal\Dark Slime 2.json" />
-    <None Include="Tiles\Bricks\Dark Matter Brick.json" />
+    <None Include="Tiles\Dark Matter\Dark Matter Brick.json" />
     <None Include="Tiles\Ores\Heartstone.json" />
     <None Include="Walls\Heartstone Brick Wall.json" />
   </ItemGroup>
