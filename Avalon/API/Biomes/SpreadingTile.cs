@@ -29,10 +29,10 @@ namespace Avalon.API.Biomes
         /// The tile is a dungeon tile (like blue, green and purple dungeon bricks).
         /// </summary>
         Dungeon = 0x08,
-        /// <summary>
-        /// The tile is a regular (non-dungeon) brick (like red brick, hellstone brick, obsidian brick, ...)
-        /// </summary>
-        Brick   = 0x10
+        ///// <summary>
+        ///// The tile is a regular (non-dungeon) brick (like red brick, hellstone brick, obsidian brick, ...)
+        ///// </summary>
+        //Brick   = 0x10
     }
 
     /// <summary>
@@ -67,6 +67,7 @@ namespace Avalon.API.Biomes
         /// <summary>
         /// Gets the place style of the tile to spread.
         /// </summary>
+        [Obsolete("This property is currently not used.")]
         public int PlaceStyle
         {
             get;
@@ -110,19 +111,19 @@ namespace Avalon.API.Biomes
             SpreadOn = _CanSpreadOn;
         }
 
-        static bool BelongsToCategory(TileCategory category, Point pt)
+        internal static bool BelongsToCategory(TileCategory category, Point pt)
         {
             int type = Main.tile[pt.X, pt.Y].type;
 
-            return ((category & TileCategory.Grass  ) != 0 && TileDef.grass      [type])
-                || ((category & TileCategory.Stone  ) != 0 && TileDef.stone      [type])
-                || ((category & TileCategory.Dungeon) != 0 && TileDef.tileDungeon[type])
-                || ((category & TileCategory.Brick  ) != 0 && TileDef.brick      [type])
+            return ((category & TileCategory.Grass  ) != 0 &&  TileDef.grass      [type])
+                || ((category & TileCategory.Stone  ) != 0 && (TileDef.stone      [type]) || type == 1 || TileDef.brick[type])
+                || ((category & TileCategory.Dungeon) != 0 &&  TileDef.tileDungeon[type])
+              //|| ((category & TileCategory.Brick  ) != 0 &&  TileDef.brick      [type])
                 || ((category & TileCategory.Dirt   ) != 0
-                    && !TileDef.grass[type] && !TileDef.stone[type] && !TileDef.tileDungeon[type] && !TileDef.brick[type]
+                    && !TileDef.grass[type] && !TileDef.stone[type] && !TileDef.tileDungeon[type] && !TileDef.brick[type] && TileDef.solid[type]
                     );
         }
-        bool _CanSpreadOn(Point pt)
+        internal bool _CanSpreadOn(Point pt)
         {
             int type = Main.tile[pt.X, pt.Y].type;
             return Main.tile[pt.X, pt.Y].active() && type != TileToSpread(pt)
@@ -165,27 +166,32 @@ namespace Avalon.API.Biomes
         /// </summary>
         public override void Update()
         {
-            // hook not called .__.
-
             base.Update();
+
+            if (Main.rand.Next(SpreadRatio) != 0)
+                return;
 
             Point pt;
 
-            // up
-            if      (CanSpreadOn(pt = new Point(position.X    , position.Y - 1)) && Main.rand.Next(2) == 0)
-                Spread(pt);
-
-            // down
-            else if (CanSpreadOn(pt = new Point(position.X    , position.Y + 1)) && Main.rand.Next(2) == 0)
-                Spread(pt);
-
-            // left
-            else if (CanSpreadOn(pt = new Point(position.X - 1, position.Y    )) && Main.rand.Next(2) == 0)
-                Spread(pt);
-
-            // right
-            else if (CanSpreadOn(pt = new Point(position.X + 1, position.Y    )))
-                Spread(pt);
+            switch (Main.rand.Next(4))
+            {
+                case 0: // up
+                    if (CanSpreadOn(pt = new Point(position.X    , position.Y - 1)))
+                        Spread(pt);
+                    break;
+                case 1: // down
+                    if (CanSpreadOn(pt = new Point(position.X    , position.Y + 1)))
+                        Spread(pt);
+                    break;
+                case 2: // left
+                    if (CanSpreadOn(pt = new Point(position.X - 1, position.Y    )))
+                        Spread(pt);
+                    break;
+                default: /*case 3:*/ // right
+                    if (CanSpreadOn(pt = new Point(position.X + 1, position.Y    )))
+                        Spread(pt);
+                    break;
+            }
         }
 
         /// <summary>
