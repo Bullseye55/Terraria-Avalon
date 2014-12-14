@@ -18,7 +18,7 @@ namespace Avalon.Items.Weapons.Ranged.Guns
         /// <returns></returns>
         public override bool CanUse(Player p)
         {
-            return p.inventory.Any(i => !i.IsBlank() && i.type == 1332);
+            return p.inventory.Any(i => !i.IsBlank() && i.type == 23);
         }
         /// <summary>
         /// 
