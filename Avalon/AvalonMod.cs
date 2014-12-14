@@ -40,14 +40,16 @@ namespace Avalon
         /// </summary>
         public const int ExtraSlots = 3;
 
-		Option
+        readonly static Color DM_BG_COLOUR = new Color(26, 0, 46);
+
+        Option
 			tomeSkillHotkey   ,
 			shadowMirrorHotkey;
 
-		internal static List<BossSpawn> spawns = new List<BossSpawn>();
-        internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
+        float dmness;
 
-        bool setBg = false;
+        internal static List<BossSpawn> spawns = new List<BossSpawn>();
+        internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
 
         internal static Texture2D sunBak;
 
@@ -268,6 +270,44 @@ namespace Avalon
         }
 
         /// <summary>
+        /// Called before the screen is cleared.
+        /// </summary>
+        /// <param name="sb">The <see cref="SpriteBatch" /> used to draw things.</param>
+        public override void PreScreenClear(SpriteBatch sb)
+        {
+            const float BG_COLOUR_CHANGE_SPEED = 0.025f;
+
+            base.PreScreenClear(sb);
+
+            if (DarkMatter.Check(Main.localPlayer))
+            {
+                if (dmness < 1f)
+                    dmness += BG_COLOUR_CHANGE_SPEED;
+
+                // + DM bg drawing?
+            }
+            else if (dmness > 0f)
+                dmness -= BG_COLOUR_CHANGE_SPEED;
+
+            if (dmness <= 0f)
+                return;
+
+            if (dmness == 1f)
+            {
+                // faster than calling lerp
+                Lighting.brightness = Main.dayTime ? 0.3f : 0.1f;
+
+                Main.bgColor = DM_BG_COLOUR;
+            }
+            else
+            {
+                Lighting.brightness = MathHelper.Lerp(Lighting.brightness, Main.dayTime ? 0.3f : 0.1f, dmness);
+
+                Main.bgColor = Color.Lerp(Main.bgColor, DM_BG_COLOUR, dmness);
+            }
+        }
+
+        /// <summary>
         /// Called before the game is drawn.
         /// </summary>
         /// <param name="sb">The <see cref="SpriteBatch" /> used to draw the game.</param>
@@ -277,18 +317,6 @@ namespace Avalon
 
             if (Main.dedServ || Main.gameMenu)
                 return;
-
-            // doesn't work .__.
-            if (!setBg && !Main.dedServ && AvalonMod.DarkMatter.Check(Main.localPlayer))
-            {
-                //Lighting.brightness = 0.3f;
-
-                Main.bgColor = new Color(52, 0, 91);
-
-                // + DM bg drawing?
-
-                setBg = true;
-            }
 
             Main.sunTexture = DarkMatter.Check(Main.localPlayer) ? DarkMatterSun : sunBak;
         }

@@ -279,10 +279,10 @@ namespace Avalon.ModClasses
         {
             base.PostUpdate();
 
-            if (Main.time == 0d && DarkMatterSpreaded == 0)
-            {
-                // spread somehow (need more info on this - put somewhere randomly a DM tile, or add a tile somewhere to an existing DM biome?)
-            }
+            //if (Main.time == 0d && DarkMatterSpreaded == 0)
+            //{
+            //    // spread somehow (need more info on this - put somewhere randomly a DM tile, or add a tile somewhere to an existing DM biome?)
+            //}
         }
 
         /// <summary>
