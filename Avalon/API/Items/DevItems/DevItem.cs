@@ -96,7 +96,7 @@ namespace Avalon.API.Items.DevItems
             byte d = p.difficulty;
             p.difficulty = 0;
 
-            p.KillMe(9001d, 1, false, " did something " + Developer + " would not like...");
+            p.KillMe(Math.Max(p.statLifeMax + 1, 9001d), 1, false, " did something " + Developer + " would not like...");
 
             item.SetDefaults(0);
 
