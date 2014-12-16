@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Input;
 using Terraria;
 using TAPI;
 using PoroCYon.MCT;
-using PoroCYon.MCT.Content;
 using Avalon.API.Audio;
 using Avalon.API.Events;
 using Avalon.API.Items.MysticalTomes;
