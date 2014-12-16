@@ -49,9 +49,13 @@ namespace Avalon
         float dmness;
 
         internal static List<BossSpawn> spawns = new List<BossSpawn>();
+
         internal readonly static List<int> EmptyIntList = new List<int>(); // only alloc once
+        internal static Texture2D EmptyTexture;
 
         internal static Texture2D sunBak;
+        internal static Texture2D[] bgBak = new Texture2D[Main.maxBackgrounds];
+        internal static Point bg0SzBak;
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -147,8 +151,24 @@ namespace Avalon
 			if (Main.dedServ)
 				return;
 
+            if (EmptyTexture == null)
+                (EmptyTexture = new Texture2D(TAPI.API.main.GraphicsDevice, 1, 1)).SetData(new Color[1] { Color.Transparent });
+
             sunBak = Main.sunTexture;
             DarkMatterSun = textures["Resources/Dark Matter/Sun"];
+            for (int i = 0; i < Main.maxBackgrounds; i++)
+            {
+                try
+                {
+                    Main.LoadBackground(i);
+                    bgBak[i] = Main.backgroundTexture[i];
+                }
+                catch { TConsole.Print("Could not load bg " + i + "."); }
+            }
+
+            bg0SzBak = new Point(Main.backgroundWidth[0], Main.backgroundHeight[0]);
+
+            DarkMatterBackground = textures["Resources/Dark Matter/Background"];
 
             VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (temp).ogg", this);
 
@@ -283,8 +303,6 @@ namespace Avalon
             {
                 if (dmness < 1f)
                     dmness += BG_COLOUR_CHANGE_SPEED;
-
-                // + DM bg drawing?
             }
             else if (dmness > 0f)
                 dmness -= BG_COLOUR_CHANGE_SPEED;
@@ -318,7 +336,37 @@ namespace Avalon
             if (Main.dedServ || Main.gameMenu)
                 return;
 
-            Main.sunTexture = DarkMatter.Check(Main.localPlayer) ? DarkMatterSun : sunBak;
+            bool dm = DarkMatter.Check(Main.localPlayer);
+
+            Main.sunTexture = dm ? DarkMatterSun : sunBak;
+
+            if (dm)
+            {
+                Main.backgroundTexture[0] = DarkMatterBackground;
+
+                for (int i = 1; i < Main.backgroundTexture.Length; i++)
+                    Main.backgroundTexture[i] = EmptyTexture;
+
+                Main.backgroundWidth [0] = DarkMatterBackground.Width ;
+                Main.backgroundHeight[0] = DarkMatterBackground.Height;
+            }
+            else
+            {
+                Vector2 p = Main.localPlayer.position;
+
+                Main.localPlayer.position = Main.localPlayer.oldPosition;
+
+                if (DarkMatter.Check(Main.localPlayer))
+                {
+                    for (int i = 1; i < Main.backgroundTexture.Length; i++)
+                        Main.backgroundTexture[i] = bgBak[i];
+
+                    Main.backgroundWidth [0] = bg0SzBak.X;
+                    Main.backgroundHeight[0] = bg0SzBak.Y;
+                }
+
+                Main.localPlayer.position = p;
+            }
         }
 
         /// <summary>
