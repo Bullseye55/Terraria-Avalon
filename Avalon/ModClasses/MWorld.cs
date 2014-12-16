@@ -301,6 +301,12 @@ namespace Avalon.ModClasses
 
             if (!Main.dedServ)
                 Main.sunTexture = AvalonMod.sunBak;
+            
+            for (int i = 0; i < Main.backgroundTexture.Length; i++)
+                Main.backgroundTexture[i] = AvalonMod.bgBak[i];
+
+            Main.backgroundWidth [0] = AvalonMod.bg0SzBak.X;
+            Main.backgroundHeight[0] = AvalonMod.bg0SzBak.Y;
 
             base.Save(bb);
 

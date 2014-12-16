@@ -17,6 +17,7 @@ using Avalon.API.World;
 using Avalon.ModClasses;
 using Avalon.UI.Menus;
 using Avalon.World;
+using System.Reflection;
 
 namespace Avalon
 {
@@ -40,13 +41,8 @@ namespace Avalon
         /// </summary>
         public const int ExtraSlots = 3;
 
-        readonly static Color DM_BG_COLOUR = new Color(26, 0, 46);
-
-        Option
-			tomeSkillHotkey   ,
-			shadowMirrorHotkey;
-
-        float dmness;
+        readonly static Color DM_BG_COLOUR = new Color(26, 0, 52);
+        readonly static FieldInfo Lighting_skyColour = typeof(Lighting).GetField("skyColor", BindingFlags.GetField | BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Static);
 
         internal static List<BossSpawn> spawns = new List<BossSpawn>();
 
@@ -56,6 +52,13 @@ namespace Avalon
         internal static Texture2D sunBak;
         internal static Texture2D[] bgBak = new Texture2D[Main.maxBackgrounds];
         internal static Point bg0SzBak;
+
+        Option
+			tomeSkillHotkey   ,
+			shadowMirrorHotkey;
+
+        float dmness;
+        bool oldDm;
 
         /// <summary>
         /// Gets or sets the Mystical Tomes skill hotkey.
@@ -295,7 +298,7 @@ namespace Avalon
         /// <param name="sb">The <see cref="SpriteBatch" /> used to draw things.</param>
         public override void PreScreenClear(SpriteBatch sb)
         {
-            const float BG_COLOUR_CHANGE_SPEED = 0.025f;
+            const float BG_COLOUR_CHANGE_SPEED = 0.05f;
 
             base.PreScreenClear(sb);
 
@@ -313,15 +316,16 @@ namespace Avalon
             if (dmness == 1f)
             {
                 // faster than calling lerp
+                Lighting_skyColour.SetValue(null, Main.dayTime ? 0.5f : 0.3f);
                 Lighting.brightness = Main.dayTime ? 0.3f : 0.1f;
 
-                Main.bgColor = DM_BG_COLOUR;
+                Main.tileColor = (Main.bgColor = DM_BG_COLOUR) * 3;
             }
             else
             {
-                Lighting.brightness = MathHelper.Lerp(Lighting.brightness, Main.dayTime ? 0.3f : 0.1f, dmness);
+                Lighting_skyColour.SetValue(null, MathHelper.Lerp((float)Lighting_skyColour.GetValue(null), Main.dayTime ? 0.5f : 0.3f, dmness));
 
-                Main.bgColor = Color.Lerp(Main.bgColor, DM_BG_COLOUR, dmness);
+                Main.tileColor = (Main.bgColor = Color.Lerp(Main.bgColor, DM_BG_COLOUR, dmness)) * 3;
             }
         }
 
@@ -350,23 +354,16 @@ namespace Avalon
                 Main.backgroundWidth [0] = DarkMatterBackground.Width ;
                 Main.backgroundHeight[0] = DarkMatterBackground.Height;
             }
-            else
+            else if (oldDm)
             {
-                Vector2 p = Main.localPlayer.position;
+                for (int i = 0; i < Main.backgroundTexture.Length; i++)
+                    Main.backgroundTexture[i] = bgBak[i];
 
-                Main.localPlayer.position = Main.localPlayer.oldPosition;
-
-                if (DarkMatter.Check(Main.localPlayer))
-                {
-                    for (int i = 1; i < Main.backgroundTexture.Length; i++)
-                        Main.backgroundTexture[i] = bgBak[i];
-
-                    Main.backgroundWidth [0] = bg0SzBak.X;
-                    Main.backgroundHeight[0] = bg0SzBak.Y;
-                }
-
-                Main.localPlayer.position = p;
+                Main.backgroundWidth [0] = bg0SzBak.X;
+                Main.backgroundHeight[0] = bg0SzBak.Y;
             }
+
+            oldDm = dm;
         }
 
         /// <summary>
