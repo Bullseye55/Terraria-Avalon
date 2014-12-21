@@ -1,13 +1,19 @@
 Do these steps in order:
 
-1. Get the black hole what I have commited in the Worlds Folder named "Dark Matter Background". Use this to code in the Dark Matter's background!
-    - No hook!
+1. Bullseye55: https://www.dropbox.com/home/Avalon/Star%20and%20Moon/Wastelands
+Bullseye55: Remember the old Wastelands project?
+PoroCYon: a little
+Bullseye55: I'm bringing this back not as the Burning World, but for the Dark Matter.
+Bullseye55: It grows over the Jungle.
+Bullseye55: Think you can do that?
+PoroCYon: after the DM, ok?
+Bullseye55: DM spreading blocks turn jungle grass and mud into polluted dirt and polluted grass.
+Bullseye55: All you need to do is code that. None of the enemies nor objects yet.
+PoroCYon: put that in poro_todo.txt, I don't want to be spammed when playing GW :P
+Bullseye55: I just want to see how it looks so I can make alterations to sprites as needed.
+Bullseye55: Ah. :P
 
-3. Take a gander at my Worm spawning code again, and see where you messed up on your formatting. (Kidding. :P )
 
-5. Anything else we talked about earlier.
-
-6. Wait for me to get online, and then we'll code and talk more. :P
 
 
 
