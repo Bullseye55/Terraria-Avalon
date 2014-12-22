@@ -18,14 +18,6 @@ Bullseye55: Ah. :P
 
 
 
-
-
-
-
-
-
-
-
 Dark Matter Biome:
 
 Dark Matter Ooze never spawns more than 250 in a given biome area of effect (at WorldGen).
@@ -51,9 +43,6 @@ They grow in the Womb.
 [ NOT COPIED DIRECTLY, EDIT THIS IF I USE THE WRONG WORDS, Bullseye55 ]
     - Poro
 
-The whole Dark Matter biome should look like a black blob on the minimap, to make it look like it is undiscoverable
-(maybe ask for a hook/API for controlling the map, only possible to hack it in right now).
-    - done
 Some tiles/walls should be animated, and/or partially transparent.
     -> need a temp tile/wall for animations
 
@@ -67,5 +56,6 @@ Once 350 are placed in one area, all of them are reinforced instantly.
 Only in the area where the 350 were placed.
 The tiles around that area will be turned into Dark Matter block types.
 Reinforced blocks do not spread over regular Dark Matter tiles, nor vice versa.
+Once a reinforced Dark Matter is completely mined away, another newly created DM biome can get reinforced.
 
 More info coming later. I've gave you the basics, Poro.

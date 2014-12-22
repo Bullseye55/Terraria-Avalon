@@ -229,11 +229,11 @@
     <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings_Legs.png" />
     <Content Include="Items\DevItems\Bullseye55\Hard Swap.png" />
     <Content Include="Items\Materials\Heartstone.png" />
-    <Content Include="Items\Placeables\Dark Matter Brick.png" />
-    <Content Include="Items\Placeables\Dark Matter Bush 2.png" />
-    <Content Include="Items\Placeables\Dark Matter Bush.png" />
-    <Content Include="Items\Placeables\Dark Matter Soil.png" />
-    <Content Include="Items\Placeables\Dark Matter Wood.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Brick.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Bush 2.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Bush.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Soil.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.png" />
     <Content Include="Items\Placeables\Flesh Tendril.png" />
     <Content Include="Items\Placeables\Crafting Stations\Vertebrae Workbench.png" />
     <Content Include="Items\Materials\Dark Matter\Dark Matter Bar.png" />
@@ -400,6 +400,7 @@
     <Content Include="_ForRevision\Flails\Berserker Nightmare.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Items\Placeables\Wastelands\" />
     <Folder Include="Items\Weapons\Melee\Broadswords\" />
     <Folder Include="Items\Weapons\Melee\Flails\" />
     <Folder Include="Items\Weapons\Melee\Shortswords\" />
@@ -408,6 +409,7 @@
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
     <Folder Include="Projectiles\FromPlayer\Pets\" />
+    <Folder Include="Tiles\Wastelands\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
@@ -495,7 +497,7 @@
     <Content Include="Items\DevItems\Bullseye55\Bullseye55 Helmet.json" />
     <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings.json" />
     <Content Include="Items\DevItems\Bullseye55\Hard Swap.json" />
-    <Content Include="Items\Placeables\Dark Matter Soil.json" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Soil.json" />
     <Content Include="Items\Placeables\Flesh Tendril.json" />
     <Content Include="Items\Placeables\Furniture\Vertebrae Bookshelf.json" />
     <Content Include="Items\Placeables\Vertebrae Platform.json" />
@@ -558,14 +560,14 @@
     <Content Include="Tiles\Dark Matter\Dark Matter Wood.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Items\Placeables\Dark Matter Wood.json" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Music\Dark Matter %28temp%29.ogg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Items\Materials\Heartstone.json" />
-    <None Include="Items\Placeables\Dark Matter Brick.json" />
+    <None Include="Items\Placeables\Dark Matter\Dark Matter Brick.json" />
     <None Include="Items\Placeables\Heartstone Brick.json" />
     <None Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
     <None Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
