@@ -42,7 +42,7 @@
     <DocumentationFile>bin\Release\Avalon.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -578,9 +578,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>rem Build the mod. The directory must be the one where the ModInfo.json file resides in. The directory to the csproj is given in the ModInfo.json file.
-mct -inv compile "Avalon-Bullseye55\Avalon"
-</PostBuildEvent>
+    <PostBuildEvent>mct -inv compile "Avalon-Bullseye55\Avalon"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
