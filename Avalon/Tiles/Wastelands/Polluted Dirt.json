@@ -1,8 +1,6 @@
 {
-	"instanceCode": "Tiles.DarkMatter.DarkMatterSoil",
-
-	"internalName": "Avalon:Dark Matter Soil",
-	"displayName": "Dark Matter Soil",
+	"internalName": "Avalon:Polluted Dirt",
+	"displayName": "Polluted Dirt",
 	"size": [ 1, 1 ],
 	"frameWidth": 16,
 	"frameHeight": 16,
@@ -16,9 +14,9 @@
 	"blocksSun": true,
 	"mergeDirt": true,
 	"placementConditions": "placeTouching",
-	"drop": "Avalon:Dark Matter Soil",
+	"drop": "Avalon:Polluted Dirt",
 	"breaksByPick": true,
-	"dust": 27,
+	"dust": 54,
 	"sound": 1,
-	"soundGroup": 14
+	"soundGroup": 19
 }
