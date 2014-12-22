@@ -14,7 +14,7 @@ Bullseye55: I just want to see how it looks so I can make alterations to sprites
 Bullseye55: Ah. :P
 
 =======
-3. Take a gander at my Worm spawning code again, and see where you messed up on your formatting. (Kidding. :P )-
+3. Take a gander at my Worm spawning code again, and see where you messed up on your formatting. (Kidding. :P )
 
 
 
