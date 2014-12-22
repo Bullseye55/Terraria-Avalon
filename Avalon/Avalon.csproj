@@ -248,6 +248,7 @@
     <Content Include="Items\Placeables\Walls\Dark Matter Wood Wall.png" />
     <Content Include="Items\Placeables\Walls\Heartstone Brick Wall.png" />
     <Content Include="Items\Placeables\Walls\Vertebrae Wall.png" />
+    <Content Include="Items\Placeables\Wastelands\Polluted Dirt.png" />
     <Content Include="Items\Potions\Brain in a Bottle.png" />
     <Content Include="Items\Potions\Frog Legs.png" />
     <Content Include="Items\Potions\Medicine Bottle.png" />
@@ -255,6 +256,8 @@
     <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
     <Content Include="Resources\Dark Matter\Background.png" />
     <Content Include="Resources\Dark Matter\Sun.png" />
+    <Content Include="Tiles\Wastelands\Polluted Dirt.png" />
+    <Content Include="Tiles\Wastelands\Polluted Grass.png" />
     <Content Include="Walls\Heartstone Brick Wall.png" />
     <Content Include="_ForRevision\Flails\Berserker Nightmare.png" />
     <Content Include="_ForRevision\Flails\Caesium Flail.json" />
@@ -400,7 +403,6 @@
     <Content Include="_ForRevision\Flails\Berserker Nightmare.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Items\Placeables\Wastelands\" />
     <Folder Include="Items\Weapons\Melee\Broadswords\" />
     <Folder Include="Items\Weapons\Melee\Flails\" />
     <Folder Include="Items\Weapons\Melee\Shortswords\" />
@@ -409,7 +411,6 @@
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
     <Folder Include="Projectiles\FromPlayer\Pets\" />
-    <Folder Include="Tiles\Wastelands\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
