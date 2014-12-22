@@ -1,6 +1,5 @@
 Do these steps in order:
 
-<<<<<<< HEAD
 1. Bullseye55: https://www.dropbox.com/home/Avalon/Star%20and%20Moon/Wastelands
 Bullseye55: Remember the old Wastelands project?
 PoroCYon: a little
@@ -15,8 +14,7 @@ Bullseye55: I just want to see how it looks so I can make alterations to sprites
 Bullseye55: Ah. :P
 
 =======
-3. Take a gander at my Worm spawning code again, and see where you messed up on your formatting. (Kidding. :P )
->>>>>>> origin/Recent
+3. Take a gander at my Worm spawning code again, and see where you messed up on your formatting. (Kidding. :P )-
 
 
 
