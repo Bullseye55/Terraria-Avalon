@@ -568,6 +568,7 @@
     <None Include="Items\Placeables\Dark Matter\Dark Matter Brick.json" />
     <None Include="Items\Placeables\Heartstone Brick.json" />
     <None Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
+    <None Include="Items\Placeables\Wastelands\Polluted Dirt.json" />
     <None Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
     <None Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
     <None Include="NPCs\Normal\Dark Slime 1.json" />
@@ -575,6 +576,8 @@
     <Content Include="Resources\Music\Dark Matter %28Overworld%29.ogg" />
     <None Include="Tiles\Dark Matter\Dark Matter Brick.json" />
     <None Include="Tiles\Ores\Heartstone.json" />
+    <None Include="Tiles\Wastelands\Polluted Dirt.json" />
+    <None Include="Tiles\Wastelands\Polluted Grass.json" />
     <None Include="Walls\Heartstone Brick Wall.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
