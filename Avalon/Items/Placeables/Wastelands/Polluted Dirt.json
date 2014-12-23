@@ -1,0 +1,15 @@
+{
+	"displayName": "Polluted Dirt",
+	"size": [ 16, 16 ],
+	"maxStack": 999,
+	"value": [ 0, 0, 0, 0 ],
+	"rare": 0,
+	"useStyle": 1,
+	"useAnimation": 15,
+	"useTime": 10,
+	"autoReuse": true,
+	"useTurn": true,
+	"createTile": "Avalon:Polluted Dirt",
+	"consumable": true,
+	"tileBoost": 0
+}

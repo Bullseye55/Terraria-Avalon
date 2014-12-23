@@ -1,24 +1,22 @@
 {
-	"instanceCode": "Tiles.DarkMatter.DarkMatterSoil",
-
-	"internalName": "Avalon:Dark Matter Soil",
-	"displayName": "Dark Matter Soil",
+	"internalName": "Avalon:Polluted Grass",
+	"displayName": "Polluted Grass",
 	"size": [ 1, 1 ],
 	"frameWidth": 16,
 	"frameHeight": 16,
 	"frameImportant": false,
 	"placementOrigin": [ 0, 0 ],
 	"sheetColumns": 16,
-	"sheetRows": 15,
+	"sheetRows": 22,
 	"solid": true,
 	"solidTop": false,
 	"blocksLight": true,
 	"blocksSun": true,
 	"mergeDirt": true,
 	"placementConditions": "placeTouching",
-	"drop": "Avalon:Dark Matter Soil",
+	"drop": "Avalon:Polluted Dirt",
 	"breaksByPick": true,
-	"dust": 27,
+	"dust": 54,
 	"sound": 1,
-	"soundGroup": 14
+	"soundGroup": 19
 }
