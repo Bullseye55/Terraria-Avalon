@@ -1,8 +1,8 @@
 ﻿{
 	"displayName": "Avalon",
 	"author": "Avalon Team",
-	"info": "tAPI Avalon mod",
-	"version": "0.0.0.0",
+	"info": "tAPI Avalon mod - preview version",
+	"version": "0.0.0.1",
 
 	"internalName": "Avalon",
 	"includePDB": true,
