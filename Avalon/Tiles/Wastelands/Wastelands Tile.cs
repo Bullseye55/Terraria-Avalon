@@ -22,7 +22,7 @@ namespace Avalon.Tiles.Wastelands
         {
             ToSpread = type;
 
-            SpreadOn += p => Biome.Biomes["Jungle"].typesIncrease.Contains(Main.tile[p.X, p.Y].type);
+            SpreadOn += p => Biome.Biomes["Jungle"].typesIncrease.Contains(Main.tile[p.X, p.Y].type) || Main.tile[p.X, p.Y].type == 59;
         }
 
         /// <summary>
