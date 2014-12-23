@@ -1,4 +1,6 @@
 {
+	"instanceCode": "Tiles.Wastelands.PollutedDirt",
+
 	"internalName": "Avalon:Polluted Dirt",
 	"displayName": "Polluted Dirt",
 	"size": [ 1, 1 ],

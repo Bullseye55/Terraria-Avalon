@@ -1,4 +1,6 @@
 {
+	"instanceCode": "Tiles.Wastelands.PollutedGrass",
+
 	"internalName": "Avalon:Polluted Grass",
 	"displayName": "Polluted Grass",
 	"size": [ 1, 1 ],

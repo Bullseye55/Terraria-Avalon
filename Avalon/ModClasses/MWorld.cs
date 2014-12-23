@@ -24,6 +24,8 @@ namespace Avalon.ModClasses
 
 		internal static bool oldNight = false;
 
+        TimeSpan oldTimeOfDay;
+
         /// <summary>
         /// Wether UltraOblivion has already been killed or not.
         /// </summary>
@@ -53,9 +55,14 @@ namespace Avalon.ModClasses
         /// How many times a wraith in the Wraith Invasion was killed.
         /// </summary>
         public static int WraithsDowned = 0;
+        /// <summary>
+        /// The spread ratio of the wastelands.
+        /// </summary>
+        /// <remarks>(s^-1)/Tile</remarks>
+        public static int WastelandsSpreadRatio = -1;
 
 #pragma warning disable 414
-		static int grassCounter = 0, jungleEx = 0, gCount = 0;
+        static int grassCounter = 0, jungleEx = 0, gCount = 0;
 #pragma warning restore 414
 		static int jungleX = -1, jungleY = -1, lOceanY = -1, rOceanY = -1, hellY;
 
@@ -279,7 +286,12 @@ namespace Avalon.ModClasses
         {
             base.PostUpdate();
 
-            //if (Main.time == 0d && DarkMatterSpreaded == 0)
+            if ((!Main.dayTime && PoroCYon.MCT.World.TimeAsTimeSpan < oldTimeOfDay) || WastelandsSpreadRatio <= -1)
+                WastelandsSpreadRatio = Main.rand.Next(6000, 14000);
+
+            oldTimeOfDay = PoroCYon.MCT.World.TimeAsTimeSpan;
+
+            //if (Main.dayTime && Main.time == 0d && DarkMatterSpreaded == 0)
             //{
             //    // spread somehow (need more info on this - put somewhere randomly a DM tile, or add a tile somewhere to an existing DM biome?)
             //}

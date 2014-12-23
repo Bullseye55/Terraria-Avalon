@@ -90,6 +90,14 @@ namespace Avalon
             get;
             private set;
         }
+        /// <summary>
+        /// Gets the Wastelands <see cref="Biome" /> instance.
+        /// </summary>
+        public static Biome Wastelands
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Gets the texture of the sun in the <see cref="World.DarkMatter" /> biome.
@@ -123,6 +131,8 @@ namespace Avalon
         /// </summary>
         public override void OnLoad()
         {
+            MWorld.WastelandsSpreadRatio = -1;
+
             Invasion .LoadVanilla();
             DateEvent.LoadVanilla();
 
@@ -203,9 +213,13 @@ namespace Avalon
         /// </summary>
         public override void OnUnload()
         {
+            MWorld.WastelandsSpreadRatio = -1;
+
             Instance = null;
 
             DarkMatter = null;
+            Wastelands = null;
+
             IsInSuperHardmode = false;
 
             spawns.Clear();
@@ -259,6 +273,8 @@ namespace Avalon
             VorbisPlayer.Music.origFade.Clear();
 
             base.OnUnload();
+
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
         }
 
         /// <summary>
@@ -397,6 +413,7 @@ namespace Avalon
 
             #region custom ones
             (DarkMatter = new DarkMatter()).AddToGame();
+            (Wastelands = new Wastelands()).AddToGame();
             #endregion
         }
         static void LoadInvasions()

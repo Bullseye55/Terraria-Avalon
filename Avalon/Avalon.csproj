@@ -85,6 +85,9 @@
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
+    <Compile Include="Tiles\Wastelands\Polluted Dirt.cs" />
+    <Compile Include="Tiles\Wastelands\Polluted Grass.cs" />
+    <Compile Include="Tiles\Wastelands\Wastelands Tile.cs" />
     <Compile Include="World\DarkMatter.cs" />
     <Compile Include="Items\Accessories\Bag of Blood.cs" />
     <Compile Include="Items\Accessories\Bag of Fire.cs" />
@@ -147,6 +150,7 @@
     <Compile Include="API\Items\Mystical Tomes\Attributes.cs" />
     <Compile Include="API\Items\Mystical Tomes\SkillManager.cs" />
     <Compile Include="API\World\BossSpawn.cs" />
+    <Compile Include="World\Wastelands.cs" />
     <Compile Include="_ForRevision\Flails\Mythril Flail.cs" />
     <Compile Include="_ForRevision\Flails\Heaven%27s Tear.cs" />
     <Compile Include="_ForRevision\Flails\Eclipse%27s Waning.cs" />
@@ -180,6 +184,7 @@
     <Compile Include="Projectiles\FromPlayer\Spells\Impulse Bolt.cs" />
     <Compile Include="Projectiles\FromPlayer\Spells\Impulse Trail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_MCTImport\World.cs" />
     <Compile Include="_XnaExtImport\Collections\Extensions.Collections.cs" />
   </ItemGroup>
   <ItemGroup>
