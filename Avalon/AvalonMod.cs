@@ -172,7 +172,7 @@ namespace Avalon
 
             DarkMatterBackground = textures["Resources/Dark Matter/Background"];
 
-            VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (temp).ogg", this);
+            VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
 
             StarterSetSelectionHandler.Init();
 		}
@@ -272,10 +272,9 @@ namespace Avalon
 
             base.ChooseTrack(ref current);
 
-            // temp, if not obvious enough
-            if (Main.gameMenu && WavebankDef.current == "Vanilla:Music_6"
-                    && Menu.currentPage == "Main Menu" && Menu.currentPage != "Crash Page")
-                current = "Avalon:Resources/Music/Dark Matter (temp).ogg";
+            // this is set in World\DarkMatter.cs:Avalon.World.DarkMatter::.ctor()
+            //if (!Main.gameMenu && DarkMatter.Check(Main.localPlayer))
+            //    current = "Avalon:Resources/Music/Dark Matter (Overworld).ogg";
 
             VorbisPlayer.Update(ref current);
         }
@@ -300,6 +299,9 @@ namespace Avalon
             const float BG_COLOUR_CHANGE_SPEED = 0.05f;
 
             base.PreScreenClear(sb);
+
+            if (Main.gameMenu)
+                return;
 
             if (DarkMatter.Check(Main.localPlayer))
             {

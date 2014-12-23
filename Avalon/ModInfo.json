@@ -14,7 +14,7 @@
 		"References/NVorbis.dll"
 	],
 	"include": [ 
-		"Resources/Music/Dark Matter (temp).ogg"
+		"Resources/Music/Dark Matter (Overworld).ogg"
 	],
 
     "outputName": "Avalon-Bullseye55"

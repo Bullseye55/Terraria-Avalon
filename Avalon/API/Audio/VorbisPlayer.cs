@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Xna.Framework.Audio;
@@ -201,6 +202,16 @@ namespace Avalon.API.Audio
         /// <returns>The <see cref="OggVorbis" /> track loaded from the resource.</returns>
         public static OggVorbis LoadTrack(string resourceName, ModBase @base = null)
         {
+            if (Main.gameMenu && Mods.Reloading)
+            {
+                Assembly ca = Assembly.GetCallingAssembly();
+
+                Mod m = Mods.mods.FirstOrDefault(_m => _m.modBase.GetType().Assembly == ca);
+
+                Main.statusText = (m == null ? ca.FullName : m.DisplayName) + Environment.NewLine
+                    + "Loading music " + Path.GetFileNameWithoutExtension(resourceName);
+            }
+
             Mod mod = Mods.mods.FirstOrDefault(m => m != null && m.Loaded && m.modBase != null && m.modBase.GetType().Assembly == Assembly.GetCallingAssembly());
             ModBase actualBase = (@base ?? (mod == null ? AvalonMod.Instance : mod.modBase));
 

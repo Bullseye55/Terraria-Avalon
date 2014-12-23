@@ -564,9 +564,6 @@
     <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Music\Dark Matter %28temp%29.ogg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Items\Materials\Heartstone.json" />
     <None Include="Items\Placeables\Dark Matter\Dark Matter Brick.json" />
     <None Include="Items\Placeables\Heartstone Brick.json" />
@@ -575,6 +572,7 @@
     <None Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
     <None Include="NPCs\Normal\Dark Slime 1.json" />
     <None Include="NPCs\Normal\Dark Slime 2.json" />
+    <Content Include="Resources\Music\Dark Matter %28Overworld%29.ogg" />
     <None Include="Tiles\Dark Matter\Dark Matter Brick.json" />
     <None Include="Tiles\Ores\Heartstone.json" />
     <None Include="Walls\Heartstone Brick Wall.json" />
