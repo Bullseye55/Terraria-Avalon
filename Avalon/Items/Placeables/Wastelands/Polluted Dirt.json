@@ -11,5 +11,17 @@
 	"useTurn": true,
 	"createTile": "Avalon:Polluted Dirt",
 	"consumable": true,
-	"tileBoost": 0
+	"tileBoost": 0,
+	"recipes": [
+		{
+			"items": {
+				"Vanilla:Dirt": 10
+			},
+			"tiles": [
+				"Work Bench"
+			],
+			"creates": 10
+		}
+
+	]
 }
