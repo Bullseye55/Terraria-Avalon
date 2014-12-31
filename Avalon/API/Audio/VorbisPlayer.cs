@@ -157,7 +157,7 @@ namespace Avalon.API.Audio
                 return Main.PlaySound(vorbis.Effect);
             }
         }
-        
+
         readonly static string OggExt = ".OGG";
 
         internal static Dictionary<string   , OggVorbis          > cache     = new Dictionary<string   , OggVorbis          >();
