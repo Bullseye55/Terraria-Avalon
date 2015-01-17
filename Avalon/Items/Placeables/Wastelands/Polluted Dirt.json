@@ -15,7 +15,7 @@
 	"recipes": [
 		{
 			"items": {
-				"Vanilla:Dirt": 10
+				"Vanilla:Dirt Block": 10
 			},
 			"tiles": [
 				"Work Bench"
