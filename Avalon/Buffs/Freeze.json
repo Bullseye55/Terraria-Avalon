@@ -1,0 +1,9 @@
+{
+	"code": "Buffs.Freeze",
+	"displayName": "Freeze",
+	"tip": "Unable to move",
+	"debuff": true,
+	"vanityPet": false,
+	"lightPet": false,
+	"enchantment": false
+}
