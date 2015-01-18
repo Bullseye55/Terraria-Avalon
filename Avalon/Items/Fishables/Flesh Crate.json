@@ -1,0 +1,8 @@
+{
+    "displayName": "Flesh Crate",
+    "size": [20, 20],
+    "maxStack": 99,
+    "value": [0,2,0,0],
+    "rare": 3,
+    "tooltip": "'A rotting crate fished up from the depths'"
+}
