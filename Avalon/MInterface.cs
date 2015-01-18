@@ -4,9 +4,6 @@ using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using TAPI;
-using PoroCYon.MCT.Net;
-using Avalon.API.Items;
-using Avalon.API.StarterSets;
 
 namespace Avalon
 {
