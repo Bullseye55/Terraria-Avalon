@@ -1,6 +1,6 @@
 {
     "displayName": "Flesh Crate",
-    "size": [20, 20],
+    "size": [20,20],
     "maxStack": 99,
     "value": [0,2,0,0],
     "rare": 3,
