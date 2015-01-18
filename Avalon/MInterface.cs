@@ -11,6 +11,10 @@ namespace Avalon
     {
         public override bool PreItemSlotRightClick(TAPI.UIKit.ItemSlot slot, ref bool release)
         {
+            if (slot.MyItem.type != ItemDef.byName["Flesh Crate"].type && slot.MyItem.type != ItemDef.byName["Corrupt Crate"].type)
+            {
+                return true;
+            }
             if (release)
             {
                 if (slot.MyItem.type == ItemDef.byName["Flesh Crate"].type)
@@ -59,7 +63,6 @@ namespace Avalon
                     {
                         slot.MyItem = ItemDef.byType[0];
                     }
-                    return false;
                 }
                 else if (slot.MyItem.type == ItemDef.byName["Corrupt Crate"].type)
                 {
@@ -103,10 +106,9 @@ namespace Avalon
                     {
                         slot.MyItem = ItemDef.byType[0];
                     }
-                    return false;
                 }
             }
-            return true;
+            return false;
         }
     }
 }
