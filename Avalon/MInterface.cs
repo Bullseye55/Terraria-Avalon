@@ -89,7 +89,7 @@ namespace Avalon
                     }
                     else if (Main.rand.Next(0, 6) == 0)
                     {
-                        Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Vanilla:Tissue Sample"].type, Main.rand.Next(3, 8));
+                        Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Bloodberry"].type, Main.rand.Next(3, 8));
                     }
                     else
                     {
