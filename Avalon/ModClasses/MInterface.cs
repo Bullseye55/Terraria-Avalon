@@ -11,13 +11,13 @@ namespace Avalon
     {
         public override bool PreItemSlotRightClick(TAPI.UIKit.ItemSlot slot, ref bool release)
         {
-            if (slot.MyItem.type != ItemDef.byName["Flesh Crate"].type && slot.MyItem.type != ItemDef.byName["Corrupt Crate"].type)
+            if (slot.MyItem.type != ItemDef.byName["Avalon:Flesh Crate"].type && slot.MyItem.type != ItemDef.byName["Avalon:Corrupt Crate"].type)
             {
                 return true;
             }
             if (release)
             {
-                if (slot.MyItem.type == ItemDef.byName["Flesh Crate"].type)
+                if (slot.MyItem.type == ItemDef.byName["Avalon:Flesh Crate"].type)
                 {
                     if (Main.hardMode && Main.rand.Next(0, 250) == 0)
                     {
@@ -49,7 +49,7 @@ namespace Avalon
                     }
                     else if (Main.rand.Next(0, 9) == 0)
                     {
-                        Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Rotten Eye"].type, Main.rand.Next(1, 3));
+                        Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Avalon:Rotten Eye"].type, Main.rand.Next(1, 3));
                     }
                     else
                     {
@@ -64,7 +64,7 @@ namespace Avalon
                         slot.MyItem = ItemDef.byType[0];
                     }
                 }
-                else if (slot.MyItem.type == ItemDef.byName["Corrupt Crate"].type)
+                else if (slot.MyItem.type == ItemDef.byName["Avalon:Corrupt Crate"].type)
                 {
                     if (Main.hardMode && Main.rand.Next(0, 250) == 0)
                     {
@@ -92,7 +92,7 @@ namespace Avalon
                     }
                     else if (Main.rand.Next(0, 6) == 0)
                     {
-                        Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Bloodberry"].type, Main.rand.Next(3, 8));
+                        Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Avalon:Bloodberry"].type, Main.rand.Next(3, 8));
                     }
                     else
                     {
