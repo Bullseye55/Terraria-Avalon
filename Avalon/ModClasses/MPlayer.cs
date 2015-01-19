@@ -369,11 +369,11 @@ namespace Avalon.ModClasses
     	{
             if (Main.player[Main.myPlayer].zone["Corruption"] && Main.rand.Next(0, (int)(Main.player[Main.myPlayer].crateChance * 100)) == 0)
             {
-            	caughtType = ItemDef.byName["Corrupt Crate"].type;
+            	caughtType = ItemDef.byName["Avalon:Corrupt Crate"].type;
             }
             else if (Main.player[Main.myPlayer].zone["Crimson"] && Main.rand.Next(0, (int)(Main.player[Main.myPlayer].crateChance * 100)) == 0)
             {
-            	caughtType = ItemDef.byName["Flesh Crate"].type;
+            	caughtType = ItemDef.byName["Avalon:Flesh Crate"].type;
             }
     	}
 
