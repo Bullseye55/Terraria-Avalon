@@ -4,5 +4,12 @@
     "maxStack": 99,
     "value": [0,2,0,0],
     "rare": 3,
-    "tooltip": "'A rotting crate fished up from the depths'"
+    "tooltip": "'A rotting crate fished up from the depths'",
+    "useTurn": true,
+    "autoReuse": true,
+    "createTile": "Avalon:Flesh Crate Tile",
+    "consumable": true,
+    "useStyle": 1,
+    "useTime": 10,
+    "useAnimation": 15
 }

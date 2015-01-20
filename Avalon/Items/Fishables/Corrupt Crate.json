@@ -4,5 +4,12 @@
     "maxStack": 99,
     "value": [0,2,0,0],
     "rare": 3,
-    "tooltip": "'A crate seemingly composed of evil'"
+    "tooltip": "'A crate seemingly composed of evil'",
+    "useTurn": true,
+    "autoReuse": true,
+    "createTile": "Avalon:Corrupt Crate Tile",
+    "consumable": true,
+    "useStyle": 1,
+    "useTime": 10,
+    "useAnimation": 15
 }

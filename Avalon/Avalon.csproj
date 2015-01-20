@@ -80,6 +80,7 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
+    <Compile Include="ModClasses\MInterface.cs" />
     <Compile Include="ModClasses\MNPC.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
@@ -233,6 +234,8 @@
     <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings.png" />
     <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings_Legs.png" />
     <Content Include="Items\DevItems\Bullseye55\Hard Swap.png" />
+    <Content Include="Items\Fishables\Corrupt Crate.png" />
+    <Content Include="Items\Fishables\Flesh Crate.png" />
     <Content Include="Items\Materials\Heartstone.png" />
     <Content Include="Items\Placeables\Dark Matter\Dark Matter Brick.png" />
     <Content Include="Items\Placeables\Dark Matter\Dark Matter Bush 2.png" />
@@ -261,6 +264,8 @@
     <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
     <Content Include="Resources\Dark Matter\Background.png" />
     <Content Include="Resources\Dark Matter\Sun.png" />
+    <Content Include="Tiles\Crates\Corrupt Crate Tile.png" />
+    <Content Include="Tiles\Crates\Flesh Crate Tile.png" />
     <Content Include="Tiles\Wastelands\Polluted Dirt.png" />
     <Content Include="Tiles\Wastelands\Polluted Grass.png" />
     <Content Include="Walls\Heartstone Brick Wall.png" />
@@ -569,6 +574,8 @@
     <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.json" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Items\Fishables\Corrupt Crate.json" />
+    <None Include="Items\Fishables\Flesh Crate.json" />
     <None Include="Items\Materials\Heartstone.json" />
     <None Include="Items\Placeables\Dark Matter\Dark Matter Brick.json" />
     <None Include="Items\Placeables\Heartstone Brick.json" />
@@ -579,6 +586,8 @@
     <None Include="NPCs\Normal\Dark Slime 1.json" />
     <None Include="NPCs\Normal\Dark Slime 2.json" />
     <Content Include="Resources\Music\Dark Matter %28Overworld%29.ogg" />
+    <None Include="Tiles\Crates\Corrupt Crate Tile.json" />
+    <None Include="Tiles\Crates\Flesh Crate Tile.json" />
     <None Include="Tiles\Dark Matter\Dark Matter Brick.json" />
     <None Include="Tiles\Ores\Heartstone.json" />
     <None Include="Tiles\Wastelands\Polluted Dirt.json" />

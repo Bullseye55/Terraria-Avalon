@@ -1,0 +1,14 @@
+﻿{ 
+    "displayName": "Corrupt Crate",
+    "size": [2, 2],
+    "placementOrigin": [0, 1],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt":  false,
+    "placementConditions": "flatGround",
+    "drop": "Avalon:Corrupt Crate",
+    "breaksByPick": true,
+    "soundGroup":  21
+}

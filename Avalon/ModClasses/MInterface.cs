@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using TAPI;
+using Microsoft.Xna.Framework;
 
 namespace Avalon
 {
@@ -17,7 +18,7 @@ namespace Avalon
             }
             if (release)
             {
-                if (slot.MyItem.type == ItemDef.byName["Avalon:Flesh Crate"].type)
+                if (slot.MyItem.type == ItemDef.byName["Avalon:Corrupt Crate"].type)
                 {
                     if (Main.hardMode && Main.rand.Next(0, 250) == 0)
                     {
@@ -47,10 +48,13 @@ namespace Avalon
                     {
                         Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Vanilla:Deathweed"].type, Main.rand.Next(3, 7));
                     }
+                    //Uncomment this when the item is implemented
+                    /*
                     else if (Main.rand.Next(0, 9) == 0)
                     {
                         Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Avalon:Rotten Eye"].type, Main.rand.Next(1, 3));
                     }
+                    */
                     else
                     {
                         Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Vanilla:Rotten Chunk"].type, Main.rand.Next(2, 6));
@@ -64,7 +68,7 @@ namespace Avalon
                         slot.MyItem = ItemDef.byType[0];
                     }
                 }
-                else if (slot.MyItem.type == ItemDef.byName["Avalon:Corrupt Crate"].type)
+                else if (slot.MyItem.type == ItemDef.byName["Avalon:Flesh Crate"].type)
                 {
                     if (Main.hardMode && Main.rand.Next(0, 250) == 0)
                     {
@@ -90,10 +94,13 @@ namespace Avalon
                     {
                         Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Vanilla:Soul of Night"].type, Main.rand.Next(3, 7));
                     }
+                    //Uncomment this when the item is implemented
+                    /*
                     else if (Main.rand.Next(0, 6) == 0)
                     {
                         Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Avalon:Bloodberry"].type, Main.rand.Next(3, 8));
                     }
+                    */
                     else
                     {
                         Item.NewItem(Main.player[Main.myPlayer].position, Vector2.Zero, ItemDef.byName["Vanilla:Vertebrae"].type, Main.rand.Next(2, 6));
