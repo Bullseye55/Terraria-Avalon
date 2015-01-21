@@ -182,7 +182,7 @@ namespace Avalon
 
             DarkMatterBackground = textures["Resources/Dark Matter/Background"];
 
-            //VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
+            VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
 
             StarterSetSelectionHandler.Init();
 		}
@@ -229,7 +229,7 @@ namespace Avalon
 
             DateEvent.events.Clear();
 
-            //VorbisPlayer.Dispose(); // some things should also be cleared on a ded server, because reasons.
+            VorbisPlayer.Dispose(); // some things should also be cleared on a ded server, because reasons.
 
             // insert all audio/graphical/UI-related stuff AFTER this check! (as in, after the content of this if-block)
             if (Main.dedServ)
@@ -261,7 +261,7 @@ namespace Avalon
             //if (!Main.gameMenu && DarkMatter.Check(Main.localPlayer))
             //    current = "Avalon:Resources/Music/Dark Matter (Overworld).ogg";
 
-            //VorbisPlayer.Update(ref current);
+            VorbisPlayer.Update(ref current);
         }
 
         /// <summary>

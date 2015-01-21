@@ -366,7 +366,7 @@ namespace Avalon.ModClasses
 #pragma warning restore 1591
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fishingRod"></param>
         /// <param name="bait"></param>
