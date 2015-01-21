@@ -365,6 +365,16 @@ namespace Avalon.ModClasses
         }
 #pragma warning restore 1591
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fishingRod"></param>
+        /// <param name="bait"></param>
+        /// <param name="liquidType"></param>
+        /// <param name="poolCount"></param>
+        /// <param name="worldLayer"></param>
+        /// <param name="questFish"></param>
+        /// <param name="caughtType"></param>
 	    public override void OnFishSelected(Item fishingRod, Item bait, int liquidType, int poolCount, int worldLayer, int questFish, ref int caughtType)
     	{
             if (Main.player[Main.myPlayer].zone["Corruption"] && Main.rand.Next(0, (int)(Main.player[Main.myPlayer].crateChance * 100)) == 0)

@@ -228,6 +228,49 @@ namespace Avalon.API.Audio
             return track;
         }
 
+        internal static void Dispose()
+        {
+            Music.overFade.Clear();
+
+            if (Main.dedServ)
+            {
+                cache.Clear();
+                instCache.Clear();
+
+                Music.music = null;
+
+                Music.origFade.Clear();
+
+                return;
+            }
+
+            Music.StopOgg(true);
+
+            foreach (OggVorbis track in cache.Values)
+                if (!track.IsDisposed)
+                    track.Dispose();
+
+            foreach (SoundEffectInstance inst in instCache.Values)
+            {
+                if (inst.IsDisposed)
+                    continue;
+
+                if (inst.State != SoundState.Stopped)
+                    inst.Stop();
+
+                inst.Dispose();
+            }
+
+            cache.Clear();
+            instCache.Clear();
+
+            foreach (KeyValuePair<string, float> kvp in Music.origFade)
+                if (WavebankDef.fade.ContainsKey(kvp.Key))
+                    WavebankDef.fade[kvp.Key] = kvp.Value;
+
+            Music.origFade.Clear();
+        }
+
         internal static RefAction<string> Update = Music.Update;
     }
 }

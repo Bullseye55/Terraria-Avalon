@@ -80,6 +80,8 @@
     <Compile Include="API\Items\DevItems\DevItem.cs" />
     <Compile Include="API\StarterSets\StarterSet.cs" />
     <Compile Include="Buffs\Brain Follower.cs" />
+    <Compile Include="Buffs\Freeze.cs" />
+    <Compile Include="Buffs\Shadows.cs" />
     <Compile Include="ModClasses\MInterface.cs" />
     <Compile Include="ModClasses\MNPC.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
@@ -190,6 +192,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buffs\Brain Follower.png" />
+    <Content Include="Buffs\Freeze.png" />
+    <Content Include="Buffs\Shadows.png" />
     <Content Include="Gores\Armoured Crimslime Gore 1.png" />
     <Content Include="Gores\Armoured Crimslime Gore 2.png" />
     <Content Include="Gores\Black Lancer Gore 1.png" />
@@ -574,6 +578,8 @@
     <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.json" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Buffs\Freeze.json" />
+    <None Include="Buffs\Shadows.json" />
     <None Include="Items\Fishables\Corrupt Crate.json" />
     <None Include="Items\Fishables\Flesh Crate.json" />
     <None Include="Items\Materials\Heartstone.json" />

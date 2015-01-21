@@ -182,7 +182,7 @@ namespace Avalon
 
             DarkMatterBackground = textures["Resources/Dark Matter/Background"];
 
-            VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
+            //VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
 
             StarterSetSelectionHandler.Init();
 		}
@@ -196,13 +196,13 @@ namespace Avalon
 
             VanillaDrop.InitDrops();
 
-            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Soil"]][TileDef.byName["Avalon:Dark Matter Ooze"]] = true;
-            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Soil"]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
-            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Ooze"]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Soil" ]][TileDef.byName["Avalon:Dark Matter Ooze" ]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Soil" ]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Ooze" ]] = true;
 
-            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze"]][TileDef.byName["Avalon:Dark Matter Soil"]] = true;
-            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Soil"]] = true;
-            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze"]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze" ]][TileDef.byName["Avalon:Dark Matter Soil" ]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Soil" ]] = true;
+            TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze" ]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
 
             // insert all audio/graphical/UI-related stuff AFTER this check!
             if (Main.dedServ)
@@ -229,48 +229,17 @@ namespace Avalon
 
             DateEvent.events.Clear();
 
-            VorbisPlayer.Music.overFade.Clear();
+            //VorbisPlayer.Dispose(); // some things should also be cleared on a ded server, because reasons.
 
-            // insert all audio/graphical/UI-related stuff AFTER this check!
+            // insert all audio/graphical/UI-related stuff AFTER this check! (as in, after the content of this if-block)
             if (Main.dedServ)
             {
                 base.OnUnload();
 
-                VorbisPlayer.cache    .Clear();
-                VorbisPlayer.instCache.Clear();
-
-                VorbisPlayer.Music.music = null;
-
-                VorbisPlayer.Music.origFade.Clear();
+                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
 
                 return;
             }
-
-            VorbisPlayer.Music.StopOgg(true);
-
-            foreach (OggVorbis track in VorbisPlayer.cache.Values)
-                if (!track.IsDisposed)
-                    track.Dispose();
-
-            foreach (SoundEffectInstance inst in VorbisPlayer.instCache.Values)
-            {
-                if (inst.IsDisposed)
-                    continue;
-
-                if (inst.State != SoundState.Stopped)
-                    inst.Stop();
-
-                inst.Dispose();
-            }
-
-            VorbisPlayer.cache    .Clear();
-            VorbisPlayer.instCache.Clear();
-
-            foreach (KeyValuePair<string, float> kvp in VorbisPlayer.Music.origFade)
-                if (WavebankDef.fade.ContainsKey(kvp.Key))
-                    WavebankDef.fade[kvp.Key] = kvp.Value;
-
-            VorbisPlayer.Music.origFade.Clear();
 
             base.OnUnload();
 
@@ -292,7 +261,7 @@ namespace Avalon
             //if (!Main.gameMenu && DarkMatter.Check(Main.localPlayer))
             //    current = "Avalon:Resources/Music/Dark Matter (Overworld).ogg";
 
-            VorbisPlayer.Update(ref current);
+            //VorbisPlayer.Update(ref current);
         }
 
         /// <summary>
