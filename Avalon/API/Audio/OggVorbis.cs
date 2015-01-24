@@ -101,21 +101,21 @@ namespace Avalon.API.Audio
 
         static MemoryStream CreateWave(AudioChannels channels, int rate, float[] data)
         {
-            MemoryStream ms = new MemoryStream();
+            MemoryStream ms = new MemoryStream(data.Length + 44 /* wave header */);
 
             BinaryWriter w = new BinaryWriter(ms, Encoding.UTF8);
 
             unchecked // MEEP MOOP
             {
-                // --- RIFF header ---
+                // RIFF header
                 w.Write(new[] { 'R', 'I', 'F', 'F' });
-                w.Write(data.Length * sizeof(ushort) + 36); // chunck size (dword)
-                w.Write(new[] { 'W', 'A', 'V', 'E' });
+                w.Write(data.Length * sizeof(ushort) + 36);	// chunck size (dword)
+				w.Write(new[] { 'W', 'A', 'V', 'E' });
 
-                // --- format data ---
+                // format data
                 w.Write(new[] { 'f', 'm', 't', ' ' });
-                // 16-bit PCM (big endian) (dword)
-                w.Write(16);
+				// 16-bit PCM (big endian) (dword)
+				w.Write(16);
                 // format type (PCM=1) (big endian) (word)
                 w.Write((ushort)       1);
                 w.Write((ushort)channels);
@@ -127,7 +127,7 @@ namespace Avalon.API.Audio
                 w.Write((ushort)(       (int)channels * sizeof(ushort)));
                 w.Write((ushort)16);
 
-                // --- (actual) wave data ---
+                // (actual) wave data
                 w.Write(new[] { 'd', 'a', 't', 'a' });
 
                 w.Write(data.Length * sizeof(ushort)); // data length
@@ -148,18 +148,25 @@ namespace Avalon.API.Audio
         /// <returns>The <see cref="SoundEffect" /> created from <paramref name="vorbisData" />.</returns>
         public static SoundEffect CreateEffect(Stream vorbisData, bool disposeStream = true)
         {
-            using (VorbisReader r = new VorbisReader(vorbisData, disposeStream))
-            {
-                float[] data = new float[r.TotalSamples];
+			try
+			{
+				using (VorbisReader r = new VorbisReader(vorbisData, disposeStream))
+				{
+					float[] data = new float[r.TotalSamples];
 
-                r.ReadSamples(data, 0, (int)r.TotalSamples);
+					r.ReadSamples(data, 0, (int)r.TotalSamples);
 
-                using (MemoryStream ms = CreateWave((AudioChannels)r.Channels, r.SampleRate, data))
-                {
-                    return SoundEffect.FromStream(ms);
-                }
-            }
-        }
+					using (MemoryStream ms = CreateWave((AudioChannels)r.Channels, r.SampleRate, data))
+					{
+						return SoundEffect.FromStream(ms);
+					}
+				}
+			}
+			finally
+			{
+				GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced); // this might not be a bad idea
+			}
+		}
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

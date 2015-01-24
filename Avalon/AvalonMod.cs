@@ -161,7 +161,11 @@ namespace Avalon
 
 			// insert all audio/graphical/UI-related stuff AFTER this check!
 			if (Main.dedServ)
+			{
+				GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
 				return;
+			}
 
             if (EmptyTexture == null)
                 (EmptyTexture = new Texture2D(TAPI.API.main.GraphicsDevice, 1, 1)).SetData(new Color[1] { Color.Transparent });
@@ -204,8 +208,10 @@ namespace Avalon
             TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Soil" ]] = true;
             TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze" ]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
 
-            // insert all audio/graphical/UI-related stuff AFTER this check!
-            if (Main.dedServ)
+			GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
+			// insert all audio/graphical/UI-related stuff AFTER this check!
+			if (Main.dedServ)
                 return;
         }
         /// <summary>
