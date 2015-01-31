@@ -84,6 +84,7 @@
     <Compile Include="Buffs\Shadows.cs" />
     <Compile Include="ModClasses\MInterface.cs" />
     <Compile Include="ModClasses\MNPC.cs" />
+    <Compile Include="ModClasses\MTileType.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
