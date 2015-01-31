@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using TAPI;
 
 namespace Avalon.ModClasses
@@ -47,6 +48,8 @@ namespace Avalon.ModClasses
         /// <param name="noItem"></param>
         public override void Kill(int x, int y, bool fail, bool effectsOnly, bool noItem)
         {
+            return;
+
             if (slingshotTypes == null)
                 slingshotTypes = new List<int>()
                 {
@@ -62,7 +65,7 @@ namespace Avalon.ModClasses
             Vector2 tp = new Vector2(x, y) * 16f;
 
             if (!noItem && GetMostNearby(tp).inventory.Any(i => slingshotTypes.Any(t => t == i.type)))
-                Item.NewItem(tp, Vector2.Zero, Terraria.ID.ItemID.Seed, Main.rand.Next(1, 6), noGrabDelay: true);
+                Item.NewItem(tp, Vector2.Zero, ItemID.Seed, Main.rand.Next(1, 6), noGrabDelay: true);
         }
     }
 }

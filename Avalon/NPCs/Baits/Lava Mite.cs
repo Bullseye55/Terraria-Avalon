@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using Terraria;
 using TAPI;
 
@@ -11,6 +12,11 @@ namespace Avalon.NPCs.Baits
 	/// </summary>
 	public sealed class LavaMite : ModNPC
 	{
+        const int FRAME_DELAY = 3;
+
+        int frame = 0;
+        int frameCD = FRAME_DELAY;
+
 		/// <summary>
 		/// Checks whether the spawning mechanism should spawn an <see cref="NPC" /> or not.
 		/// </summary>
@@ -23,5 +29,23 @@ namespace Avalon.NPCs.Baits
 		{
 			return Biome.Biomes["Hell"].Check(spawnedOn) && Main.rand.Next(13) == 0;
 		}
-	}
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="frameSize"></param>
+        public override void SelectFrame(int frameSize)
+        {
+            if (--frameCD <= 0)
+            {
+                frame = 1 - frame;
+
+                frameCD = FRAME_DELAY;
+            }
+
+            npc.frame = new Rectangle(0, npc.height * frame, npc.width, npc.height);
+
+            base.SelectFrame(frameSize);
+        }
+    }
 }
