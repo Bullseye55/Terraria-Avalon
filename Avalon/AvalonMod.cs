@@ -51,6 +51,7 @@ namespace Avalon
         internal static Texture2D sunBak;
         internal static Texture2D[] bgBak = new Texture2D[Main.maxBackgrounds];
         internal static Point bg0SzBak;
+        internal static Texture2D ichorPack;
 
         Option
 			tomeSkillHotkey   ,
@@ -185,6 +186,8 @@ namespace Avalon
             //VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
 
             StarterSetSelectionHandler.Init();
+
+            ichorPack = textures["Resources/Backpacks/Ichorthrower Backpack"];
 		}
         /// <summary>
         /// Called when all mods are loaded.

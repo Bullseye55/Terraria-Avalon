@@ -460,5 +460,20 @@ namespace Avalon.ModClasses
             if (hurt)
                 p.Hurt(damage + (p.statDefense / 2), 0, false, false, deathText);
         }
+
+        public override void ModifyDrawLayerList(List<PlayerLayer> list)
+        {
+            if (player.heldItem.type == ItemDef.byName["Avalon:Ichorthrower"].type && (player.velocity.Y == 0 && player.oldVelocity.Y == 0 || player.position.Y == player.oldPosition.Y))
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].name == "TAPI:Wings")
+                    {
+                        list[i].visible = false;
+                    }
+                }
+                list.Add(Items.Weapons.Ranged.Guns.Ichorthrower.BackpackLayer);
+            }
+        }
     }
 }
