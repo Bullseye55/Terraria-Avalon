@@ -188,6 +188,22 @@ namespace Avalon
             StarterSetSelectionHandler.Init();
 
             ichorPack = textures["Resources/Backpacks/Ichorthrower Backpack"];
+
+            string[] vanillaCrates = new string[] { "Vanilla:Wooden Crate", "Vanilla:Iron Crate", "Vanilla:Golden Crate" };
+
+            ItemDef.byName["Vanilla:Wooden Crate"].createTile = TileDef.byName["Avalon:Wooden Crate Tile"];
+            ItemDef.byName["Vanilla:Iron Crate"].createTile = TileDef.byName["Avalon:Iron Crate Tile"];
+            ItemDef.byName["Vanilla:Golden Crate"].createTile = TileDef.byName["Avalon:Gold Crate Tile"];
+
+            foreach (string crate in vanillaCrates)
+            {
+                ItemDef.byName[crate].useStyle = 1;
+                ItemDef.byName[crate].autoReuse = true;
+                ItemDef.byName[crate].useTurn = true;
+                ItemDef.byName[crate].consumable = true;
+                ItemDef.byName[crate].useTime = 10;
+                ItemDef.byName[crate].useAnimation = 15;
+            }
 		}
         /// <summary>
         /// Called when all mods are loaded.

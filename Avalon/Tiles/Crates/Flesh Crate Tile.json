@@ -10,5 +10,6 @@
     "placementConditions": "flatGround",
     "drop": "Avalon:Flesh Crate",
     "breaksByPick": true,
-    "soundGroup":  21
+    "soundGroup": 21,
+    "solidTop": true
 }

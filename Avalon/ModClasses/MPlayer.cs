@@ -463,7 +463,7 @@ namespace Avalon.ModClasses
 
         public override void ModifyDrawLayerList(List<PlayerLayer> list)
         {
-            if (player.heldItem.type == ItemDef.byName["Avalon:Ichorthrower"].type && (player.velocity.Y == 0 && player.oldVelocity.Y == 0 || player.position.Y == player.oldPosition.Y))
+            if (player.heldItem.type == ItemDef.byName["Avalon:Ichorthrower"].type && (player.wings == 0 || (player.velocity.Y == 0 && player.oldVelocity.Y == 0 || player.position.Y == player.oldPosition.Y)))
             {
                 for (int i = 0; i < list.Count; i++)
                 {
