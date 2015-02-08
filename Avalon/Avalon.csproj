@@ -271,6 +271,9 @@
     <Content Include="Resources\Dark Matter\Sun.png" />
     <Content Include="Tiles\Crates\Corrupt Crate Tile.png" />
     <Content Include="Tiles\Crates\Flesh Crate Tile.png" />
+    <Content Include="Tiles\Crates\Gold Crate Tile.png" />
+    <Content Include="Tiles\Crates\Iron Crate Tile.png" />
+    <Content Include="Tiles\Crates\Wooden Crate Tile.png" />
     <Content Include="Tiles\Wastelands\Polluted Dirt.png" />
     <Content Include="Tiles\Wastelands\Polluted Grass.png" />
     <Content Include="Walls\Heartstone Brick Wall.png" />
@@ -593,6 +596,9 @@
     <None Include="NPCs\Normal\Dark Slime 1.json" />
     <None Include="NPCs\Normal\Dark Slime 2.json" />
     <Content Include="Resources\Music\Dark Matter %28Overworld%29.ogg" />
+    <None Include="Tiles\Crates\Wooden Crate Tile.json" />
+    <None Include="Tiles\Crates\Iron Crate Tile.json" />
+    <None Include="Tiles\Crates\Gold Crate Tile.json" />
     <None Include="Tiles\Crates\Corrupt Crate Tile.json" />
     <None Include="Tiles\Crates\Flesh Crate Tile.json" />
     <None Include="Tiles\Dark Matter\Dark Matter Brick.json" />

@@ -1,5 +1,5 @@
 ﻿{ 
-    "displayName": "Corrupt Crate",
+    "displayName": "Iron Crate",
     "size": [2, 2],
     "placementOrigin": [0, 1],
     "frameImportant": true,
@@ -8,7 +8,7 @@
     "blocksSun": false,
     "mergeDirt":  false,
     "placementConditions": "flatGround",
-    "drop": "Avalon:Corrupt Crate",
+    "drop": "Vanilla:Iron Crate",
     "breaksByPick": true,
     "soundGroup": 21,
     "solidTop":  true

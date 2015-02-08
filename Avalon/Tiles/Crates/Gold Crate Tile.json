@@ -1,5 +1,5 @@
 ﻿{ 
-    "displayName": "Corrupt Crate",
+    "displayName": "Golden Crate",
     "size": [2, 2],
     "placementOrigin": [0, 1],
     "frameImportant": true,
@@ -7,9 +7,9 @@
     "blocksLight": false,
     "blocksSun": false,
     "mergeDirt":  false,
-    "placementConditions": "flatGround",
-    "drop": "Avalon:Corrupt Crate",
+    "placementConditions": "flatGroundSolid",
+    "drop": "Vanilla:Golden Crate",
     "breaksByPick": true,
     "soundGroup": 21,
-    "solidTop":  true
+    "solidTop": true
 }

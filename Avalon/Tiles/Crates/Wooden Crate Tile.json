@@ -1,5 +1,5 @@
 ﻿{ 
-    "displayName": "Corrupt Crate",
+    "displayName": "Wooden Crate",
     "size": [2, 2],
     "placementOrigin": [0, 1],
     "frameImportant": true,
@@ -8,8 +8,8 @@
     "blocksSun": false,
     "mergeDirt":  false,
     "placementConditions": "flatGround",
-    "drop": "Avalon:Corrupt Crate",
+    "drop": "Vanilla:Wooden Crate",
     "breaksByPick": true,
     "soundGroup": 21,
-    "solidTop":  true
+    "solidTop": true
 }
