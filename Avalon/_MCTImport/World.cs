@@ -80,11 +80,30 @@ namespace PoroCYon.MCT
                     time += 24d;
 
                 int
-                    hour = (int)time,
-                    minute = (int)( (time - hour) * 60d),
-                    second = (int)(((time - hour) * 60d - minute) * 60d);
+                    hour   = (int)time % 24,
+                    minute = (int)( (time - hour) * 60d) % 60,
+                    second = (int)(((time - hour) * 60d - minute) * 60d) % 60,
+                    day    = Main.moonPhase * 4 + 1;
 
-                return new DateTime(DateTime.Now.Year, DateTime.Now.Month, Main.moonPhase * 4 + 1, hour % 24, minute % 60, second % 60);
+                try
+                {
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, day, hour, minute, second);
+                }
+                catch (Exception)
+                {
+                    Main.NewText("Error in TimeAsDataTime, invalid day value: " + day + ", please report this (the 'day' value is needed!).");
+
+                    try
+                    {
+                        return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, second);
+                    }
+                    catch (Exception)
+                    {
+                        Main.NewText("Error in TimeAsDataTime, invalid time of day value: " + hour + ":" + minute + ":" + second + ", please report this (the time value is needed!)");
+
+                        return DateTime.Now;
+                    }
+                }
             }
         }
         /// <summary>
