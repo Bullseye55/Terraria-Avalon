@@ -266,7 +266,15 @@
     <Content Include="Items\Potions\Frog Legs.png" />
     <Content Include="Items\Potions\Medicine Bottle.png" />
     <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
+    <Content Include="Items\Weapons\Melee\Broadswords\Elemental Blade.png" />
+    <Content Include="Items\Weapons\Minion\Elemental Summonstaff.png" />
+    <Content Include="Items\Weapons\Ranged\Bows\Elemental Bow.png" />
     <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Ebonwood.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Mahogony.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Pearlwood.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Shadewood.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Wood.png" />
     <Content Include="Resources\Dark Matter\Background.png" />
     <Content Include="Resources\Dark Matter\Sun.png" />
     <Content Include="Tiles\Crates\Corrupt Crate Tile.png" />
@@ -421,10 +429,8 @@
     <Content Include="_ForRevision\Flails\Berserker Nightmare.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Items\Weapons\Melee\Broadswords\" />
     <Folder Include="Items\Weapons\Melee\Flails\" />
     <Folder Include="Items\Weapons\Melee\Shortswords\" />
-    <Folder Include="Items\Weapons\Minion\" />
     <Folder Include="Items\Weapons\Ranged\Crossbows\" />
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
