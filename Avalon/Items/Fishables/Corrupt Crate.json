@@ -7,9 +7,10 @@
     "tooltip": "'A crate seemingly composed of evil'",
     "useTurn": true,
     "autoReuse": true,
-    "createTile": "Avalon:Corrupt Crate Tile",
+    "createTile": 21,
     "consumable": true,
     "useStyle": 1,
     "useTime": 10,
-    "useAnimation": 15
+    "useAnimation": 15,
+    "placeStyle":  48
 }
