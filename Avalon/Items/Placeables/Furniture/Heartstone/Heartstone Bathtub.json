@@ -13,7 +13,7 @@
     "recipes": [
         {
             "items": {
-                "Heartstone": 14
+                "Avalon:Heartstone": 14
             },
             "tiles": [
                 "Furnace"
