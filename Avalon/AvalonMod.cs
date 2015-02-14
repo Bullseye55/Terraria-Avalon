@@ -191,18 +191,47 @@ namespace Avalon
 
             string[] vanillaCrates = new string[] { "Vanilla:Wooden Crate", "Vanilla:Iron Crate", "Vanilla:Golden Crate" };
 
-            ItemDef.byName["Vanilla:Wooden Crate"].createTile = TileDef.byName["Avalon:Wooden Crate Tile"];
-            ItemDef.byName["Vanilla:Iron Crate"].createTile = TileDef.byName["Avalon:Iron Crate Tile"];
-            ItemDef.byName["Vanilla:Golden Crate"].createTile = TileDef.byName["Avalon:Gold Crate Tile"];
-
-            foreach (string crate in vanillaCrates)
+            for (int i = 0; i < vanillaCrates.Length; i++)
             {
+                string crate = vanillaCrates[i];
+                ItemDef.byName[crate].createTile = 21;
                 ItemDef.byName[crate].useStyle = 1;
                 ItemDef.byName[crate].autoReuse = true;
                 ItemDef.byName[crate].useTurn = true;
                 ItemDef.byName[crate].consumable = true;
                 ItemDef.byName[crate].useTime = 10;
                 ItemDef.byName[crate].useAnimation = 15;
+                ItemDef.byName[crate].placeStyle = 50 + i;
+            }
+
+            Main.tileTexture[21] = textures["Resources/Misc/Tiles_21"];
+            Main.tileSetsLoaded[21] = true;
+
+
+            if (Chest.typeToIcon.Length == 48)
+            {
+                Array.Resize(ref Chest.typeToIcon, 54);
+                Array.Resize(ref Lang.chestType, 54);
+                Array.Resize(ref Chest.itemSpawn, 54);
+                Chest.typeToIcon[48] = ItemDef.byName["Avalon:Corrupt Crate"].type;
+                Lang.chestType[48] = ItemDef.byName["Avalon:Corrupt Crate"].displayName;
+                Chest.itemSpawn[48] = ItemDef.byName["Avalon:Corrupt Crate"].type;
+                Chest.typeToIcon[49] = ItemDef.byName["Avalon:Flesh Crate"].type;
+                Lang.chestType[49] = ItemDef.byName["Avalon:Flesh Crate"].displayName;
+                Chest.itemSpawn[49] = ItemDef.byName["Avalon:Flesh Crate"].type;
+                Chest.typeToIcon[50] = ItemDef.byName["Vanilla:Wooden Crate"].type;
+                Lang.chestType[50] = ItemDef.byName["Vanilla:Wooden Crate"].displayName;
+                Chest.itemSpawn[50] = ItemDef.byName["Vanilla:Wooden Crate"].type;
+                Chest.typeToIcon[51] = ItemDef.byName["Vanilla:Iron Crate"].type;
+                Lang.chestType[51] = ItemDef.byName["Vanilla:Iron Crate"].displayName;
+                Chest.itemSpawn[51] = ItemDef.byName["Vanilla:Iron Crate"].type;
+                Chest.typeToIcon[52] = ItemDef.byName["Vanilla:Golden Crate"].type;
+                Lang.chestType[52] = ItemDef.byName["Vanilla:Golden Crate"].displayName;
+                Chest.itemSpawn[52] = ItemDef.byName["Vanilla:Golden Crate"].type;
+                Chest.typeToIcon[53] = ItemDef.byName["Avalon:Heartstone Chest"].type;
+                Lang.chestType[53] = ItemDef.byName["Avalon:Heartstone Chest"].displayName;
+                Chest.itemSpawn[53] = ItemDef.byName["Avalon:Heartstone Chest"].type;
+
             }
 		}
         /// <summary>

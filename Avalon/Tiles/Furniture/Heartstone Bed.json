@@ -1,0 +1,17 @@
+{
+    "code":  "Tiles.Furniture.Bed",
+    "displayName": "Heartstone Bed",
+    "mapHoverText":  "Heartstone Bed",
+    "size": [ 4, 2 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 1, 1 ],
+    "drop": "Avalon:Heartstone Bed",
+    "breaksByPick": true,
+    "chair": true,
+    "spawn":  true
+}

@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Candle",
+    "rare": 4,
+    "size": [ 16, 20 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Candle",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 4
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}

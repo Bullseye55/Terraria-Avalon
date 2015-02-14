@@ -1,0 +1,16 @@
+﻿{
+    "code": "Tiles.Furniture.Lightsource",
+    "torch": true,
+    "displayName": "Heartstone Chandelier",
+    "size": [ 3, 3 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatCeilingSolid",
+    "placementOrigin": [ 1, 0 ],
+    "drop": "Avalon:Heartstone Chandelier",
+    "breaksByPick": true,
+    "glows": true
+}

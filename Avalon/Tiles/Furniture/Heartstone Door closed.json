@@ -1,0 +1,13 @@
+﻿{
+    "code": "Tiles.Furniture.Door",
+    "displayName": "Heartstone Door",
+    "size": [ 1, 3 ],
+    "frameImportant": true,
+    "solid": true,
+    "blocksLight": true,
+    "blocksSun": true,
+    "mergeDirt": false,
+    "placementOrigin": [ 0, 2 ],
+    "drop": "Avalon:Heartstone Door",
+    "breaksByPick": true
+}

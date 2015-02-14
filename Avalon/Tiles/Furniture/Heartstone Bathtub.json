@@ -1,0 +1,14 @@
+﻿{
+    "table": true,
+    "displayName": "Heartstone Bathtub",
+    "size": [ 4, 2 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 1, 1 ],
+    "drop": "Avalon:Heartstone Bathtub",
+    "breaksByPick": true
+}

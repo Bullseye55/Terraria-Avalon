@@ -1,0 +1,16 @@
+﻿{
+    "chair": true,
+    "displayName": "Heartstone Chair",
+    "size": [ 1, 3 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 0, 2 ],
+    "drop": "Avalon:Heartstone Chair",
+    "breaksByPick": true,
+    "directional": true,
+    "adjTile": [ 15 ]
+}

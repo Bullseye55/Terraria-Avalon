@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Table",
+    "rare": 4,
+    "size": [ 48, 34 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Table",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 8
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}

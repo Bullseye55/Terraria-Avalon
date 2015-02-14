@@ -1,0 +1,25 @@
+﻿{
+    "displayName": "Heartstone Clock",
+    "rare": 4,
+    "size": [ 32, 76 ],
+    "mapHoverText": "Heartstock Clock",
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Clock",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 10
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ]
+}

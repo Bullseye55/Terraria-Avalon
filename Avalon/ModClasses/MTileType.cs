@@ -67,5 +67,42 @@ namespace Avalon.ModClasses
             if (!noItem && GetMostNearby(tp).inventory.Any(i => slingshotTypes.Any(t => t == i.type)))
                 Item.NewItem(tp, Vector2.Zero, ItemID.Seed, Main.rand.Next(1, 6), noGrabDelay: true);
         }
+
+        public override bool PreKill(int x, int y, bool fail, bool effectsOnly, bool noItem)
+        {
+            if (WorldGen.destroyObject)
+                return true;
+            //If the we are destroying the tile and it's one of our custom chests
+            if (!fail && Main.tile[x, y].type == 21 && Main.tile[x, y].frameX >= 1728)
+            {
+                int chestId = Main.tile[x, y].frameX % 1728 / 36 + 48;
+
+                int k = 0;
+                k += (int)(Main.tile[x, y].frameX / 18);
+                int num = y + (int)(Main.tile[x, y].frameY / 18 * -1);
+                while (k > 1)
+                {
+                    k -= 2;
+                }
+                k *= -1;
+                k += x;
+
+                if (Main.chest[Chest.FindChest(k, num)].item.ToList().Where(i => i.type > 0).Count() == 0)
+                    Item.NewItem(new Vector2(x, y) * 16, Vector2.Zero, Chest.itemSpawn[chestId]);
+
+                WorldGen.destroyObject = true;
+
+                Chest.DestroyChest(k, num);
+                WorldGen.KillTile(k, num);
+                WorldGen.KillTile(k + 1, num);
+                WorldGen.KillTile(k, num + 1);
+                WorldGen.KillTile(k + 1, num + 1);
+
+                WorldGen.destroyObject = false;
+
+                return false;
+            }
+            return true;
+        }
     }
 }

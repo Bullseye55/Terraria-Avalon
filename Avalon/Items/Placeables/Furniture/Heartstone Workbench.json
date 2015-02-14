@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Workbench",
+    "rare": 4,
+    "size": [ 32, 16 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Workbench",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 10
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}

@@ -1,0 +1,16 @@
+﻿{
+    "code": "Tiles.Furniture.Lightsource",
+    "torch": true,
+    "displayName": "Heartstone Candle",
+    "size": [ 1, 2 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 0, 1 ],
+    "drop": "Avalon:Heartstone Candle",
+    "breaksByPick": true,
+    "glows": true
+}

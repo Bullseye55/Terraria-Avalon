@@ -1,0 +1,25 @@
+﻿{
+    "displayName": "Heartstone Candelabra",
+    "rare": 4,
+    "size": [ 30, 26 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Candelabra",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 5
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ],
+    "torch":  true
+}

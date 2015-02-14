@@ -1,0 +1,16 @@
+﻿{
+    "code": "Tiles.Furniture.Lightsource",
+    "torch": true,
+    "displayName": "Heartstone Lantern",
+    "size": [ 1, 2 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 0, 1 ],
+    "drop": "Avalon:Heartstone Lantern",
+    "breaksByPick": true,
+    "glows": true
+}

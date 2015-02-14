@@ -1,0 +1,25 @@
+﻿{
+    "displayName": "Heartstone Chest",
+    "size": [ 32, 28 ],
+    "maxStack": 99,
+    "rare": 4,
+    "useTurn": true,
+    "autoReuse": true,
+    "createTile": 21,
+    "consumable": true,
+    "useStyle": 1,
+    "useTime": 10,
+    "useAnimation": 15,
+    "placeStyle": 53,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 8
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}
