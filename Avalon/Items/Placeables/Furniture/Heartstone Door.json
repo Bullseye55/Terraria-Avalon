@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Door",
+    "rare": 4,
+    "size": [ 28, 48 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Door closed",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 6
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}

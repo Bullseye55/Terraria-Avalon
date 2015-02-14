@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Lamp",
+    "rare": 4,
+    "size": [ 16, 48 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Lamp",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 3
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}

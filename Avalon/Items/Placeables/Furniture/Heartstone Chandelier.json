@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Chandelier",
+    "rare": 4,
+    "size": [ 46, 46 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Chandelier",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 4
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}

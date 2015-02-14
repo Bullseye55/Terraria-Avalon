@@ -1,0 +1,14 @@
+﻿{
+    "displayName": "Heartstone Bookshelf",
+    "size": [ 3, 4 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 1, 3 ],
+    "drop": "Avalon:Heartstone Bookshelf",
+    "breaksByPick": true,
+    "adjTile": [101]
+}

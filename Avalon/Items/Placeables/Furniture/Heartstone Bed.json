@@ -1,0 +1,24 @@
+{
+    "displayName": "Heartstone Bed",
+    "rare": 4,
+    "size": [ 64, 34 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Bed",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Heartstone": 15
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ]
+}
