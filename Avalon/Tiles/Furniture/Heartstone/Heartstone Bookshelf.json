@@ -5,6 +5,7 @@
     "solid": false,
     "blocksLight": false,
     "blocksSun": false,
+    "solidTop":  true,
     "mergeDirt": false,
     "placementConditions": "flatGround",
     "placementOrigin": [ 1, 3 ],

@@ -7,6 +7,7 @@
     "blocksLight": false,
     "blocksSun": false,
     "mergeDirt": false,
+    "solidTop":  true,
     "placementConditions": "flatGround",
     "placementOrigin": [ 0, 0 ],
     "drop": "Avalon:Heartstone Workbench",

@@ -17,10 +17,10 @@ namespace Avalon.Items.Accessories
         /// <param name="p"></param>
         public override void Effects(Player p) 
         {
-            if (p.wet)
+            if (p.wet && !p.lavaWet)
                 p.lifeRegen = -32;
 
-            if (p.lavaWet)
+            if (p.lavaWet && !p.wet)
             {
                 p.lifeRegen += 3;
                 p.lavaImmune = true;
