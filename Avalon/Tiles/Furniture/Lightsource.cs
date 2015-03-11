@@ -38,6 +38,8 @@ namespace Avalon.Tiles.Furniture
         public override void HitWire(int x, int y, int wireType)
         {
             //Upper-left corner of tile
+            Point p = TileDef.FindTopLeftPoint(x, y);
+            /*
             int i = Main.tile[x, y].frameX / 18, j = y + (int)(Main.tile[x, y].frameY / 18 * -1);
 
             if (!lightOn)
@@ -58,6 +60,8 @@ namespace Avalon.Tiles.Furniture
             }
             i *= -1;
             i += x;
+            */
+            int i = p.X, j = p.Y;
 
             if (Main.tile[i, j].type == TileDef.byName["Avalon:Heartstone Candelabra"])
             {

@@ -90,8 +90,9 @@
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
     <Compile Include="Tiles\Furniture\Bed.cs" />
-    <Compile Include="Tiles\Furniture\Door.cs" />
+    <Compile Include="Tiles\Furniture\ClosedDoor.cs" />
     <Compile Include="Tiles\Furniture\Lightsource.cs" />
+    <Compile Include="Tiles\Furniture\OpenDoor.cs" />
     <Compile Include="Tiles\Wastelands\Polluted Dirt.cs" />
     <Compile Include="Tiles\Wastelands\Polluted Grass.cs" />
     <Compile Include="Tiles\Wastelands\Wastelands Tile.cs" />
@@ -661,6 +662,7 @@
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Lamp.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Lantern.json" />
     <None Include="Tiles\Furniture\Heartstone\Heartstone Clock.json" />
+    <None Include="Tiles\Furniture\Heartstone\Heartstone Door.json" />
     <None Include="Tiles\Furniture\Heartstone\Heartstone Door closed.json" />
     <None Include="Tiles\Furniture\Heartstone\Heartstone Dresser.json" />
     <None Include="Tiles\Furniture\Heartstone\Heartstone Lamp.json" />

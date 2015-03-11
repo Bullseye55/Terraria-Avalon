@@ -6,7 +6,6 @@
     "useStyle": 1,
     "useAnimation": 15,
     "useTime": 10,
-    "autoReuse": true,
     "useTurn": true,
     "createTile": "Avalon:Heartstone Door closed",
     "consumable": true,
