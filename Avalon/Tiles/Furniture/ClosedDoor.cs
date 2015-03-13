@@ -10,8 +10,6 @@ namespace Avalon.Tiles.Furniture
 {
     public class ClosedDoor : ModTileType
     {
-        private string tileName;
-
         public override bool CanPlace(int x, int y)
         {
             if (WorldGen.SolidTile(x, y + 1) && WorldGen.SolidTile(x, y - 3))
@@ -21,11 +19,6 @@ namespace Avalon.Tiles.Furniture
                 return true;
             }
             return WorldGen.SolidTile(x, y - 1) && WorldGen.SolidTile(x, y + 3);
-        }
-
-        public override void PlaceTile(int x, int y)
-        {
-            tileName = TileDef.byType[Main.tile[x, y].type];
         }
 
         public override bool RightClick(int x, int y)
