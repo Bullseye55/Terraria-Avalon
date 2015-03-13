@@ -28,9 +28,12 @@ namespace Avalon.Tiles.Furniture
                 string tileName = TileDef.byType[Main.tile[i, j].type] + " closed";
                 Main.PlaySound(9, x * 16, j * 16, 1);
 
-                Wiring.SkipWire(i + direction, j);
-                Wiring.SkipWire(i + direction, j + 1);
-                Wiring.SkipWire(i + direction, j + 2);
+                if (Wiring.running)
+                {
+                    Wiring.SkipWire(i + direction, j);
+                    Wiring.SkipWire(i + direction, j + 1);
+                    Wiring.SkipWire(i + direction, j + 2);
+                }
 
                 //Open to the right 
                 if (Main.tile[i, j].frameX == 36)

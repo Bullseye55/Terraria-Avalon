@@ -10,6 +10,8 @@ namespace Avalon.Tiles.Furniture
 {
     public class ClosedDoor : ModTileType
     {
+        private string tileName;
+
         public override bool CanPlace(int x, int y)
         {
             if (WorldGen.SolidTile(x, y + 1) && WorldGen.SolidTile(x, y - 3))
@@ -21,51 +23,73 @@ namespace Avalon.Tiles.Furniture
             return WorldGen.SolidTile(x, y - 1) && WorldGen.SolidTile(x, y + 3);
         }
 
+        public override void PlaceTile(int x, int y)
+        {
+            tileName = TileDef.byType[Main.tile[x, y].type];
+        }
+
         public override bool RightClick(int x, int y)
         {
             string tileName = TileDef.byType[Main.tile[x, y].type].Replace(" closed", "");
             Point p = TileDef.FindTopLeftPoint(x, y);
             int j = p.Y;
 
-            if (!Main.tile[x + Main.localPlayer.direction, j].active() && !Main.tile[x + Main.localPlayer.direction, j + 1].active() && !Main.tile[x + Main.localPlayer.direction, j + 2].active())
+            if ((!Main.tile[x + Main.localPlayer.direction, j].active() || TileDef.breaksByCut[Main.tile[x + Main.localPlayer.direction, j].type]) && (!Main.tile[x + Main.localPlayer.direction, j + 1].active() || TileDef.breaksByCut[Main.tile[x + Main.localPlayer.direction, j + 1].type]) && (!Main.tile[x + Main.localPlayer.direction, j + 2].active() || TileDef.breaksByCut[Main.tile[x + Main.localPlayer.direction, j + 2].type]))
             {
                 Main.PlaySound(8, x * 16, j * 16, 1);
                 //Colors for paint
                 byte color1 = Main.tile[x, j].color(), color2 = Main.tile[x, j + 1].color(), color3 = Main.tile[x, j + 2].color();
 
-                Wiring.SkipWire(x, j);
+                if (Wiring.running)
+                {
+                    Wiring.SkipWire(x, j);
+                    Wiring.SkipWire(x, j + 1);
+                    Wiring.SkipWire(x, j + 2);
+                    Wiring.SkipWire(x + Main.localPlayer.direction, j);
+                    Wiring.SkipWire(x + Main.localPlayer.direction, j + 1);
+                    Wiring.SkipWire(x + Main.localPlayer.direction, j + 2);
+                }
+
+                if (TileDef.breaksByCut[Main.tile[x + Main.localPlayer.direction, j].type])
+                {
+                    WorldGen.KillTile(x + Main.localPlayer.direction, j);
+                }
+                if (TileDef.breaksByCut[Main.tile[x + Main.localPlayer.direction, j + 1].type])
+                {
+                    WorldGen.KillTile(x + Main.localPlayer.direction, j + 1);
+                }
+                if (TileDef.breaksByCut[Main.tile[x + Main.localPlayer.direction, j + 2].type])
+                {
+                    WorldGen.KillTile(x + Main.localPlayer.direction, j + 2);
+                }
+
                 Main.tile[x, j].type = TileDef.byName[tileName];
                 Main.tile[x, j].frameX = (short)((Main.localPlayer.direction == -1)?18:36);
                 Main.tile[x, j].frameY = 0;
                 Main.tile[x, j].color(color1);
 
-                Wiring.SkipWire(x, j + 1);
                 Main.tile[x, j + 1].type = TileDef.byName[tileName];
                 Main.tile[x, j + 1].frameX = (short)((Main.localPlayer.direction == -1) ? 18 : 36);
                 Main.tile[x, j + 1].frameY = 18;
                 Main.tile[x, j + 1].color(color2);
 
-                Wiring.SkipWire(x, j + 2);
                 Main.tile[x, j + 2].type = TileDef.byName[tileName];
                 Main.tile[x, j + 2].frameX = (short)((Main.localPlayer.direction == -1) ? 18 : 36);
                 Main.tile[x, j + 2].frameY = 36;
                 Main.tile[x, j + 2].color(color3);
 
-                Wiring.SkipWire(x + Main.localPlayer.direction, j);
                 Main.tile[x + Main.localPlayer.direction, j].active(true);
                 Main.tile[x + Main.localPlayer.direction, j].type = TileDef.byName[tileName];
                 Main.tile[x + Main.localPlayer.direction, j].frameX = (short)((Main.localPlayer.direction == -1) ? 0 : 54);
                 Main.tile[x + Main.localPlayer.direction, j].frameY = 0;
                 Main.tile[x + Main.localPlayer.direction, j].color(color1);
 
-                Wiring.SkipWire(x + Main.localPlayer.direction, j + 1);
                 Main.tile[x + Main.localPlayer.direction, j + 1].active(true);
                 Main.tile[x + Main.localPlayer.direction, j + 1].type = TileDef.byName[tileName];
                 Main.tile[x + Main.localPlayer.direction, j + 1].frameX = (short)((Main.localPlayer.direction == -1) ? 0 : 54);
                 Main.tile[x + Main.localPlayer.direction, j + 1].frameY = 18;
                 Main.tile[x + Main.localPlayer.direction, j + 1].color(color2);
 
-                Wiring.SkipWire(x + Main.localPlayer.direction, j + 2);
                 Main.tile[x + Main.localPlayer.direction, j + 2].active(true);
                 Main.tile[x + Main.localPlayer.direction, j + 2].type = TileDef.byName[tileName];
                 Main.tile[x + Main.localPlayer.direction, j + 2].frameX = (short)((Main.localPlayer.direction == -1) ? 0 : 54);

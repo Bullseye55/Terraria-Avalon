@@ -10,5 +10,6 @@
     "blocksSun": true,
     "mergeDirt": false,
     "drop": "Avalon:Heartstone Door",
-    "breaksByPick": true
+    "breaksByPick": true,
+    "noAttach": true
 }
