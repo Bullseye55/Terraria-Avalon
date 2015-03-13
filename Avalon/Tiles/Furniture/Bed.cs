@@ -17,12 +17,7 @@ namespace Avalon.Tiles.Furniture
 
         public override bool MouseOver(int x, int y, Microsoft.Xna.Framework.Graphics.SpriteBatch sb)
         {
-            int type = Main.tile[x, y].type;
-            int[] bedTypes = new int[] {TileDef.byName["Avalon:Heartstone Bed"]};
-            if (type == bedTypes[0])
-            {
-                sb.Draw(Main.itemTexture[ItemDef.byName["Avalon:Heartstone Bed"].type], Main.mouse, null, Color.White, 0f, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1f);
-            }
+            sb.Draw(Main.itemTexture[ItemDef.byName[TileDef.byType[Main.tile[x, y].type]]], Main.mouse + new Vector2(10, 10), null, Color.White, 0f, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1f);
             return true;
         }
     }
