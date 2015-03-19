@@ -1,15 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using TAPI;
-using Microsoft.Xna.Framework;
 
 namespace Avalon.Tiles.Furniture
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class ClosedDoor : ModTileType
     {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public override bool CanPlace(int x, int y)
         {
             if (WorldGen.SolidTile(x, y + 1) && WorldGen.SolidTile(x, y - 3))
@@ -21,6 +30,12 @@ namespace Avalon.Tiles.Furniture
             return WorldGen.SolidTile(x, y - 1) && WorldGen.SolidTile(x, y + 3);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public override bool RightClick(int x, int y)
         {
             string tileName = TileDef.byType[Main.tile[x, y].type].Replace(" closed", "");
@@ -92,20 +107,41 @@ namespace Avalon.Tiles.Furniture
             return false;
         }
 
-        public override bool MouseOver(int x, int y, Microsoft.Xna.Framework.Graphics.SpriteBatch sb)
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="sb"></param>
+        /// <returns></returns>
+        public override bool MouseOver(int x, int y, SpriteBatch sb)
         {
             string tileName = TileDef.byType[Main.tile[x, y].type].Replace(" closed", "");
             sb.Draw(Main.itemTexture[ItemDef.byName[tileName].type], Main.mouse + new Vector2(10, 10), null, Color.White, 0f, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1f);
             return true;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="wireType"></param>
         public override void HitWire(int x, int y, int wireType)
         {
             RightClick(x, y);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="sb"></param>
+        /// <param name="solidTiles"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         //This is a terrible place to put this, but I can't find a better hook- will ask about it later
-        public override bool PreDrawType(Microsoft.Xna.Framework.Graphics.SpriteBatch sb, bool solidTiles, int x, int y)
+        public override bool PreDrawType(SpriteBatch sb, bool solidTiles, int x, int y)
         {
             if (!Main.tile[x, y - 1].active())
             {

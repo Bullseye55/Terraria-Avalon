@@ -4,10 +4,8 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using TAPI;
-using PoroCYon.MCT.Net;
 using Avalon.API.Items.MysticalTomes;
 using Avalon.UI;
-using Avalon.World;
 
 namespace Avalon.ModClasses
 {

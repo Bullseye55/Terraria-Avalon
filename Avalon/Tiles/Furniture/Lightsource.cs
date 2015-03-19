@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Microsoft.Xna.Framework;
 using Terraria;
 using TAPI;
-using Microsoft.Xna.Framework;
 
 namespace Avalon.Tiles.Furniture
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Lightsource : ModTileType
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="wireType"></param>
         public override void HitWire(int x, int y, int wireType)
         {
             //Upper-left corner of tile
@@ -30,6 +38,14 @@ namespace Avalon.Tiles.Furniture
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="r"></param>
+        /// <param name="g"></param>
+        /// <param name="b"></param>
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
             Point p = TileDef.FindTopLeftPoint(x, y);

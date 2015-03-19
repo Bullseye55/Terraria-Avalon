@@ -8,8 +8,18 @@ using TAPI;
 
 namespace Avalon.Tiles.Furniture
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class OpenDoor : ModTileType
     {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="sb"></param>
+        /// <returns></returns>
         public override bool MouseOver(int x, int y, Microsoft.Xna.Framework.Graphics.SpriteBatch sb)
         {
             string tileName = TileDef.byType[Main.tile[x, y].type];
@@ -17,6 +27,12 @@ namespace Avalon.Tiles.Furniture
             return true;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public override bool RightClick(int x, int y)
         {
             Point p = TileDef.FindTopLeftPoint(x, y);
@@ -35,7 +51,7 @@ namespace Avalon.Tiles.Furniture
                     Wiring.SkipWire(i + direction, j + 2);
                 }
 
-                //Open to the right 
+                //Open to the right
                 if (Main.tile[i, j].frameX == 36)
                 {
                     Main.tile[i + 1, j].active(false);
@@ -61,11 +77,25 @@ namespace Avalon.Tiles.Furniture
             return false;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="wireType"></param>
         public override void HitWire(int x, int y, int wireType)
         {
             RightClick(x, y);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="sb"></param>
+        /// <param name="solidTiles"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         //This is a terrible place to put this, but I can't find a better hook- will ask about it later
         public override bool PreDrawType(Microsoft.Xna.Framework.Graphics.SpriteBatch sb, bool solidTiles, int x, int y)
         {

@@ -14,7 +14,7 @@ namespace Avalon.Items.Weapons.Ranged.Guns
     public class Ichorthrower : ModItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -23,7 +23,7 @@ namespace Avalon.Items.Weapons.Ranged.Guns
             return p.inventory.Any(i => !i.IsBlank() && i.type == 23);
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -32,6 +32,9 @@ namespace Avalon.Items.Weapons.Ranged.Guns
             return Main.rand.Next(6) == 0;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
         public static readonly PlayerLayer BackpackLayer = new PlayerLayer.Action("Avalon:Ichorpack", (layer, player, sb) =>
         {
             SpriteEffects e = (player.gravDir == 1 ? SpriteEffects.None : SpriteEffects.FlipVertically) | (player.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
