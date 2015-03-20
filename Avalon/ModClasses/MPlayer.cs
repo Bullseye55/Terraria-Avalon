@@ -461,6 +461,10 @@ namespace Avalon.ModClasses
                 p.Hurt(damage + (p.statDefense / 2), 0, false, false, deathText);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
         public override void ModifyDrawLayerList(List<PlayerLayer> list)
         {
             if (player.heldItem.type == ItemDef.byName["Avalon:Ichorthrower"].type && (player.wings == 0 || (player.velocity.Y == 0 && player.oldVelocity.Y == 0 || player.position.Y == player.oldPosition.Y)))

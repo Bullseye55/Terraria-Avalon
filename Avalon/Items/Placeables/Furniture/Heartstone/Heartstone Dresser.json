@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Dresser",
+    "rare": 4,
+    "size": [ 48, 32 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Dresser",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Avalon:Heartstone": 16
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}

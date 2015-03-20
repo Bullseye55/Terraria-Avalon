@@ -1,0 +1,16 @@
+﻿{
+    "table": true,
+    "displayName": "Heartstone Workbench",
+    "size": [ 2, 1 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "solidTop":  true,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 0, 0 ],
+    "drop": "Avalon:Heartstone Workbench",
+    "breaksByPick": true,
+    "adjTile": [18]
+}

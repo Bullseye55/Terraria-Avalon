@@ -36,7 +36,7 @@ namespace Avalon.ModClasses
             return closest == -1 ? Main.localPlayer /* you'll never know! */ : Main.player[closest];
         }
 
-        static List<int> slingshotTypes = null;
+        //static List<int> slingshotTypes = null;
 
         /// <summary>
         ///
@@ -48,26 +48,33 @@ namespace Avalon.ModClasses
         /// <param name="noItem"></param>
         public override void Kill(int x, int y, bool fail, bool effectsOnly, bool noItem)
         {
-            return;
+            //if (slingshotTypes == null)
+            //    slingshotTypes = new List<int>()
+            //    {
+            //        ItemDef.byName["Avalon:Slingshot"              ].type,
+            //        ItemDef.byName["Avalon:Ebonwood Slingshot"     ].type,
+            //        ItemDef.byName["Avalon:Pearlwood Slingshot"    ].type,
+            //        ItemDef.byName["Avalon:Shadewood Slingshot"    ].type,
+            //        ItemDef.byName["Avalon:Rich Mahogany Slingshot"].type
+            //    };
 
-            if (slingshotTypes == null)
-                slingshotTypes = new List<int>()
-                {
-                    ItemDef.byName["Avalon:Slingshot"              ].type,
-                    ItemDef.byName["Avalon:Ebonwood Slingshot"     ].type,
-                    ItemDef.byName["Avalon:Pearlwood Slingshot"    ].type,
-                    ItemDef.byName["Avalon:Shadewood Slingshot"    ].type,
-                    ItemDef.byName["Avalon:Rich Mahogany Slingshot"].type
-                };
+            //base.Kill(x, y, fail, effectsOnly, noItem);
 
-            base.Kill(x, y, fail, effectsOnly, noItem);
+            //Vector2 tp = new Vector2(x, y) * 16f;
 
-            Vector2 tp = new Vector2(x, y) * 16f;
-
-            if (!noItem && GetMostNearby(tp).inventory.Any(i => slingshotTypes.Any(t => t == i.type)))
-                Item.NewItem(tp, Vector2.Zero, ItemID.Seed, Main.rand.Next(1, 6), noGrabDelay: true);
+            //if (!noItem && GetMostNearby(tp).inventory.Any(i => slingshotTypes.Any(t => t == i.type)))
+            //    Item.NewItem(tp, Vector2.Zero, ItemID.Seed, Main.rand.Next(1, 6), noGrabDelay: true);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="fail"></param>
+        /// <param name="effectsOnly"></param>
+        /// <param name="noItem"></param>
+        /// <returns></returns>
         public override bool PreKill(int x, int y, bool fail, bool effectsOnly, bool noItem)
         {
             if (WorldGen.destroyObject)

@@ -1,0 +1,13 @@
+﻿{
+    "displayName": "Heartstone Dresser",
+    "size": [ 3, 2 ],
+    "frameImportant": true,
+    "solid": false,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 1, 1 ],
+    "drop": "Avalon:Heartstone Dresser",
+    "breaksByPick": true
+}

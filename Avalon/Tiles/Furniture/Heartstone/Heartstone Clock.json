@@ -1,0 +1,14 @@
+﻿{
+    "displayName": "Heartstone Clock",
+    "size": [ 2, 5 ],
+    "frameImportant": true,
+    "solid": false,
+    "solidTop": true,
+    "blocksLight": false,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 0, 4 ],
+    "drop": "Avalon:Heartstone Clock",
+    "breaksByPick": true
+}

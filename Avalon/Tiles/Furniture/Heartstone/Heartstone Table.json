@@ -1,0 +1,17 @@
+﻿{
+    "table": true,
+    "displayName": "Heartstone Table",
+    "size": [ 3, 2 ],
+    "frameImportant": true,
+    "solid": false,
+    "solidTop": true,
+    "blocksLight": false,
+    "solidTop": true,
+    "blocksSun": false,
+    "mergeDirt": false,
+    "placementConditions": "flatGround",
+    "placementOrigin": [ 1, 1 ],
+    "drop": "Avalon:Heartstone Table",
+    "breaksByPick": true,
+    "adjTile": [14]
+}

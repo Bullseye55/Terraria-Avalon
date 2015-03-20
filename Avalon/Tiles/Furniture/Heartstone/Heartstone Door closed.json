@@ -1,0 +1,15 @@
+﻿{
+    "code": "Tiles.Furniture.ClosedDoor",
+    "displayName": "Heartstone Door",
+    "size": [ 1, 3 ],
+    "placementOrigin": [ 0, 0 ],
+    "placementConditions": "flatCeilingSolid, flatGroundSolid",
+    "frameImportant": true,
+    "solid": true,
+    "blocksLight": true,
+    "blocksSun": true,
+    "mergeDirt": false,
+    "drop": "Avalon:Heartstone Door",
+    "breaksByPick": true,
+    "noAttach": true
+}

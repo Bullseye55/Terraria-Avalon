@@ -210,9 +210,9 @@ namespace Avalon
 
             if (Chest.typeToIcon.Length == 48)
             {
-                Array.Resize(ref Chest.typeToIcon, 53);
-                Array.Resize(ref Lang.chestType, 53);
-                Array.Resize(ref Chest.itemSpawn, 53);
+                Array.Resize(ref Chest.typeToIcon, 54);
+                Array.Resize(ref Lang.chestType, 54);
+                Array.Resize(ref Chest.itemSpawn, 54);
                 Chest.typeToIcon[48] = ItemDef.byName["Avalon:Corrupt Crate"].type;
                 Lang.chestType[48] = ItemDef.byName["Avalon:Corrupt Crate"].displayName;
                 Chest.itemSpawn[48] = ItemDef.byName["Avalon:Corrupt Crate"].type;
@@ -228,6 +228,10 @@ namespace Avalon
                 Chest.typeToIcon[52] = ItemDef.byName["Vanilla:Golden Crate"].type;
                 Lang.chestType[52] = ItemDef.byName["Vanilla:Golden Crate"].displayName;
                 Chest.itemSpawn[52] = ItemDef.byName["Vanilla:Golden Crate"].type;
+                Chest.typeToIcon[53] = ItemDef.byName["Avalon:Heartstone Chest"].type;
+                Lang.chestType[53] = ItemDef.byName["Avalon:Heartstone Chest"].displayName;
+                Chest.itemSpawn[53] = ItemDef.byName["Avalon:Heartstone Chest"].type;
+
             }
 		}
         /// <summary>

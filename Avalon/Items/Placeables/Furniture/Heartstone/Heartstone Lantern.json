@@ -1,0 +1,24 @@
+﻿{
+    "displayName": "Heartstone Lantern",
+    "rare": 4,
+    "size": [ 16, 32 ],
+    "maxStack": 999,
+    "useStyle": 1,
+    "useAnimation": 15,
+    "useTime": 10,
+    "autoReuse": true,
+    "useTurn": true,
+    "createTile": "Avalon:Heartstone Lantern",
+    "consumable": true,
+    "recipes": [
+        {
+            "items": {
+                "Avalon:Heartstone": 6
+            },
+            "tiles": [
+                "Furnace"
+            ],
+            "creates": 1
+        }
+    ] 
+}
