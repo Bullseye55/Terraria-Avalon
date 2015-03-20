@@ -88,6 +88,8 @@
     <Compile Include="ModClasses\MTile.cs" />
     <Compile Include="ModClasses\MTileType.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
+    <Compile Include="Projectiles\FromPlayer\Bullets\Net Bullet.cs" />
+    <Compile Include="Projectiles\FromPlayer\Bullets\Net.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
@@ -273,6 +275,8 @@
     <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Piano.png" />
     <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.png" />
     <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net Bullet.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net.png" />
     <Content Include="Tiles\Furniture\Heartstone\Heartstone Table.png" />
     <Content Include="Items\Placeables\Heartstone Brick.png" />
     <Content Include="Items\Placeables\Vertebrae Block.png" />
@@ -641,6 +645,8 @@
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Sofa.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.json" />
+    <None Include="Projectiles\FromPlayer\Bullets\Net Bullet.json" />
+    <None Include="Projectiles\FromPlayer\Bullets\Net.json" />
     <None Include="Tiles\Furniture\Heartstone\Heartstone Candle.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Bathtub.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Bookshelf.json" />
