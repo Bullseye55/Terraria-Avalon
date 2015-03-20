@@ -1,0 +1,12 @@
+{
+	"code": "Projectiles.FromPlayer.Bullets.NetBullet",
+	"size": [ 12, 12 ],
+	"scale": 1,
+	"timeLeft": 600,
+	"aiStyle": 47,
+	"friendly": true,
+	"penetrate": 1,
+	"tileCollide": true,
+	"ranged": true,
+	"frameCount": 1
+}
