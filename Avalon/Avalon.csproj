@@ -87,6 +87,7 @@
     <Compile Include="ModClasses\MTile.cs" />
     <Compile Include="ModClasses\MTileType.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
+    <Compile Include="Projectiles\FromPlayer\Pets\Critter Catcher.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
@@ -469,7 +470,6 @@
     <Folder Include="Items\Weapons\Ranged\Crossbows\" />
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
-    <Folder Include="Projectiles\FromPlayer\Pets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
