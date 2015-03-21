@@ -25,6 +25,8 @@ namespace Avalon.Projectiles.FromPlayer.Pets
 
             if (curTar != -1)
             {
+                projectile.velocity *= 0.85f;
+
                 NPC tar = Main.npc[curTar];
 
                 if (!tar.active || tar.life <= 0 || projectile.DistanceSQ(tar.Centre) > MAX_TARGET_DIST)
