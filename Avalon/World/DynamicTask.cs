@@ -8,7 +8,7 @@ namespace Avalon.World
     using Act = Action;
 
     /// <summary>
-    /// A <see cref="WorldGenTask" /> that executes an <see cref="Act" /> as <see cref="WorldGenTask.Generate" />.
+    /// A <see cref="WorldGenTask" /> that executes an <see cref="System.Action" /> as <see cref="WorldGenTask.Generate" />.
     /// </summary>
     public class DynamicTask : WorldGenTask
     {

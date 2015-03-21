@@ -12,9 +12,9 @@ namespace Avalon.Projectiles.FromPlayer.Pets
     /// </summary>
     public sealed class CritterCatcher : ModProjectile
     {
-        const float MAX_TARGET_DIST = 350f;
+        const float MAX_TARGET_DIST = 1638400f;
 
-        int curTar = -1;
+        int curTar = -1, dragItem = -1;
 
         /// <summary>
         ///
@@ -25,16 +25,16 @@ namespace Avalon.Projectiles.FromPlayer.Pets
 
             if (curTar != -1)
             {
-                projectile.velocity *= 0.85f;
-
                 NPC tar = Main.npc[curTar];
 
                 if (!tar.active || tar.life <= 0 || projectile.DistanceSQ(tar.Centre) > MAX_TARGET_DIST)
                     curTar = -1;
             }
 
-            if (curTar == -1)
+            if (curTar == -1 && dragItem == -1)
             {
+                projectile.velocity *= 0.85f;
+
                 float dmin = MAX_TARGET_DIST;
                 int sel = -1;
 
@@ -58,10 +58,30 @@ namespace Avalon.Projectiles.FromPlayer.Pets
 
                 if (projectile.Hitbox.Intersects(tar.Hitbox))
                 {
-                    Item.NewItem(tar.position, tar.Size, tar.catchItem);
+                    dragItem = Item.NewItem(tar.position, tar.Size, tar.catchItem);
                     tar.active = false;
                     curTar = -1;
                 }
+            }
+
+            if (dragItem != -1)
+            {
+                Item d = Main.item[dragItem];
+
+                if (!d.active || d.IsBlank())
+                {
+                    dragItem = -1;
+                    return;
+                }
+
+                Player o = Main.player[projectile.owner];
+
+                d.Centre = projectile.Centre;
+
+                projectile.velocity = Vector2.Normalize(o.Centre - projectile.Centre) * 5f;
+
+                if (projectile.Hitbox.Intersects(o.Hitbox))
+                    dragItem = -1;
             }
         }
     }
