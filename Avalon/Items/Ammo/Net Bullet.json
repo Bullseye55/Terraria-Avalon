@@ -1,0 +1,27 @@
+﻿{
+	"displayName": "Net Bullet",
+	"size": [ 12, 12 ],
+	"rare": 7,
+	"value": [ 0, 0, 0, 80 ],
+	"maxStack": 999,
+	"rare": 8,
+	"tooltip": "A bullet that expands into a net that captures critters.",
+	"shoot": "Avalon:Net Bullet",
+	"damage": 0,
+	"ammo": 14,
+	"ranged": true,
+	"consumable": true,
+	"shootSpeed": 2,
+
+	"recipes": [
+		{
+			"items": {
+				"Dirt Block": 1
+			},
+			"tiles": [
+				"Work Bench"
+			],
+			"creates": 150
+		}
+	]
+}

@@ -65,6 +65,7 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="tAPI">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\tAPI.exe</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -87,6 +88,8 @@
     <Compile Include="ModClasses\MTile.cs" />
     <Compile Include="ModClasses\MTileType.cs" />
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
+    <Compile Include="Projectiles\FromPlayer\Bullets\Net Bullet.cs" />
+    <Compile Include="Projectiles\FromPlayer\Bullets\Net.cs" />
     <Compile Include="Projectiles\FromPlayer\Pets\Critter Catcher.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
@@ -273,6 +276,8 @@
     <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Piano.png" />
     <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.png" />
     <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net Bullet.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net.png" />
     <Content Include="Tiles\Furniture\Heartstone\Heartstone Table.png" />
     <Content Include="Items\Placeables\Heartstone Brick.png" />
     <Content Include="Items\Placeables\Vertebrae Block.png" />
@@ -470,6 +475,7 @@
     <Folder Include="Items\Weapons\Ranged\Crossbows\" />
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
+    <Folder Include="Projectiles\FromPlayer\Pets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
@@ -640,6 +646,8 @@
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Sofa.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.json" />
+    <None Include="Projectiles\FromPlayer\Bullets\Net Bullet.json" />
+    <None Include="Projectiles\FromPlayer\Bullets\Net.json" />
     <None Include="Tiles\Furniture\Heartstone\Heartstone Candle.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Bathtub.json" />
     <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Bookshelf.json" />
