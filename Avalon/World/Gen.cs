@@ -11,16 +11,18 @@ namespace Avalon.World
     /// </summary>
     public static class Gen
     {
-        ///// <summary>
-        ///// Generates Heartstone ore.
-        ///// </summary>
-        //public static void GenerateHeartstone()
-        //{
-        //    for (int i = 0; i < Main.maxTilesX * Main.maxTilesY * 0.00012; i++)
-        //        WorldGen.OreRunner(
-        //            WorldGen.genRand.Next(100, Main.maxTilesX - 100),
-        //            WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 150),
-        //            WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(1, 5), TileDef.byName["Avalon:Heartstone"]);
-        //}
+        // see ModClasses/MWorld.cs!Avalon.ModClasses.MWorld.WorldGenModifyTaskList and ~.WorldGenModifyHardmodeTaskList for implementations
+
+        /// <summary>
+        /// Generates Heartstone ore.
+        /// </summary>
+        public static void GenerateHeartstone()
+        {
+            for (int i = 0; i < Main.maxTilesX * Main.maxTilesY * 0.00012; i++)
+                WorldGen.OreRunner(
+                    WorldGen.genRand.Next(100, Main.maxTilesX - 100),
+                    WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 150),
+                    WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(1, 5), TileDef.byName["Avalon:Heartstone"]);
+        }
     }
 }

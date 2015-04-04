@@ -6,6 +6,7 @@ using Terraria;
 using TAPI;
 using Avalon.API.Items.MysticalTomes;
 using Avalon.UI;
+using Avalon.World;
 
 namespace Avalon.ModClasses
 {
@@ -380,24 +381,24 @@ namespace Avalon.ModClasses
 
         }
         /// <summary>
-        /// Used to modify the worldgen task list (insert additional tasks)
+        /// Used to modify the worldgen task list (insert additional tasks).
         /// </summary>
         /// <param name="list">The task list to modify</param>
         public override void WorldGenModifyTaskList(List<WorldGenTask> list)
         {
             base.WorldGenModifyTaskList(list);
 
-
+            // ...?
         }
         /// <summary>
-        /// Used to modify the hardmode task list (when the WoF is defeated)
+        /// Used to modify the hardmode task list (when the WoF is defeated).
         /// </summary>
         /// <param name="list">The task list to modify</param>
         public override void WorldGenModifyHardmodeTaskList(List<WorldGenTask> list)
         {
             base.WorldGenModifyHardmodeTaskList(list);
 
-            //list.Add(new DynamicTask("Avalon:Heartstone", Gen.GenerateHeartstone));
+            list.Add(new DynamicTask("Avalon:Heartstone", Gen.GenerateHeartstone));
         }
 
         /// <summary>

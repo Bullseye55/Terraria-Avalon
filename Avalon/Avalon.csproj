@@ -64,9 +64,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="tAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="tAPI">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\tAPI.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\tAPI.exe</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -90,6 +90,8 @@
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Projectiles\FromPlayer\Bullets\Net Bullet.cs" />
     <Compile Include="Projectiles\FromPlayer\Bullets\Net.cs" />
+    <Compile Include="Projectiles\FromPlayer\Pets\Critter Catcher.cs" />
+    <Compile Include="Projectiles\FromPlayer\Pets\Fish Catcher.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Ooze.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Tile.cs" />
@@ -474,7 +476,6 @@
     <Folder Include="Items\Weapons\Ranged\Crossbows\" />
     <Folder Include="NPCs\Bosses\" />
     <Folder Include="Projectiles\FromNPC\" />
-    <Folder Include="Projectiles\FromPlayer\Pets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
