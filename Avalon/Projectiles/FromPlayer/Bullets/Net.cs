@@ -6,7 +6,7 @@ using Terraria;
 
 namespace Avalon.Tests.ProjectileTesting
 { 
-    class NetProjectile : ModProjectile
+    class Net : ModProjectile
     {
         public override void AI()
         {

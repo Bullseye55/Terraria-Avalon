@@ -7,18 +7,11 @@ using Terraria;
 
 namespace Avalon.Tests.ProjectileTesting
 {
-    class NetBulletProjectile : ModProjectile
+    class NetBullet : ModProjectile
     {
-        public override void AI()
+        public override void PostKill()
         {
-            int timer = 0;
-            if (timer <= 20)
-                timer++;
-            else
-            {
-                Projectile.NewProjectile(this.projectile.position, this.projectile.velocity, "Avalon:NetProjectile", 0, 0f);
-                this.projectile.Kill();
-            }
+            Projectile.NewProjectile(this.projectile.position, this.projectile.velocity, "Avalon:Net", 0, 0f);
         }
     }
 }
