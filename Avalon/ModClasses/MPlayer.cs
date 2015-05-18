@@ -232,7 +232,7 @@ namespace Avalon.ModClasses
 
             if (--skillCD <= 0)
                 skillCD = 0;
-			
+
             if (KState.Down(AvalonMod.TomeSkillHotkey) && skillCD <= 0)
             {
                 MWorld.localManager.Activate(player);
@@ -366,7 +366,7 @@ namespace Avalon.ModClasses
 #pragma warning restore 1591
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="fishingRod"></param>
         /// <param name="bait"></param>
@@ -462,7 +462,7 @@ namespace Avalon.ModClasses
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="list"></param>
         public override void ModifyDrawLayerList(List<PlayerLayer> list)

@@ -195,6 +195,12 @@ namespace Avalon.ModClasses
             }
         }
 
+        static MWorld()
+        {
+            // values must have default values, Player.DeepClone calls MPlayer.Save that accesses the MWorlds fields, which are null when Main.gameMenu is true.
+            Init();
+        }
+
         /// <summary>
         /// Corrects a Y position so the tile at the given position is inactive.
         /// </summary>
@@ -254,14 +260,19 @@ namespace Avalon.ModClasses
         {
             base.Initialize();
 
+            Init();
+        }
+
+        static void Init()
+        {
             CatarystDownedCount = EverIceCount = ArmageddonCount = HallowAltarsBroken = 0;
             AvalonMod.IsInSuperHardmode = UltraOblivionDowned = SpawnedBerserkerOre = false;
 
-			int plrs = Main.netMode == 0 ? 1 : Main.numPlayers;
+            int plrs = Main.netMode == 0 ? 1 : Main.numPlayers;
 
-			Array.Resize(ref managers   , plrs);
-			Array.Resize(ref accessories, plrs);
-			Array.Resize(ref tomes      , plrs);
+            Array.Resize(ref managers   , plrs);
+            Array.Resize(ref accessories, plrs);
+            Array.Resize(ref tomes      , plrs);
 
             for (int i = 1; i < accessories.Length; i++)
             {
@@ -312,7 +323,7 @@ namespace Avalon.ModClasses
 
             if (!Main.dedServ)
                 Main.sunTexture = AvalonMod.sunBak;
-            
+
             for (int i = 0; i < Main.backgroundTexture.Length; i++)
                 Main.backgroundTexture[i] = AvalonMod.bgBak[i];
 
@@ -423,7 +434,7 @@ namespace Avalon.ModClasses
                 {
                     Main.tile[xoff, yoff].active(true);
                     Main.tile[xoff, yoff].type = type;
-                    
+
                     WorldGen.SquareTileFrame(xoff, yoff);
                 }
 
