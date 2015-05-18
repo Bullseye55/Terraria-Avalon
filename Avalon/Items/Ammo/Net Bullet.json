@@ -16,7 +16,8 @@
 	"recipes": [
 		{
 			"items": {
-				"Dirt Block": 1
+				"Musket Ball": 50,
+				"Cobweb": 1
 			},
 			"tiles": [
 				"Work Bench"
