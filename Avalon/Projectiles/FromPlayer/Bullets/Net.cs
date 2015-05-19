@@ -14,7 +14,7 @@ namespace Avalon.Projectiles.FromPlayer.Bullets
         /// <summary>
         ///
         /// </summary>
-        public override void AI()
+        public override void PostKill()
         {
             for (int i = 0; i < Main.npc.Length; i++)
                 if (projectile.Hitbox.Intersects(NPCDef.byType[i].Hitbox))

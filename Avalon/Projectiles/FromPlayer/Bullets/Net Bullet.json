@@ -1,8 +1,9 @@
 {
 	"code": "Projectiles.FromPlayer.Bullets.NetBullet",
-	"size": [ 12, 12 ],
+    "size": [ 12, 12 ],
+    "damage": 0,
 	"scale": 1,
-	"timeLeft": 600,
+	"timeLeft": 60,
 	"aiStyle": 0,
 	"friendly": true,
 	"penetrate": 1,
