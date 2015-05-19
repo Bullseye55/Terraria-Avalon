@@ -44,16 +44,10 @@
   <PropertyGroup>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
+
+  <!-- Assembly references -->
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
-    <Reference Include="NVorbis, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\NVorbis.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -64,12 +58,26 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="tAPI">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\Common\Terraria\tAPI.exe</HintPath>
     </Reference>
-    <Reference Include="WindowsBase" />
+    <Reference Include="NVorbis, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\NVorbis.dll</HintPath>
+    </Reference>
   </ItemGroup>
+  <!-- Library binaries -->
+  <ItemGroup>
+    <Content Include="References\NVorbis.dll" />
+    <Content Include="References\NVorbis.xml" />
+  </ItemGroup>
+  <!-- C# source code -->
   <ItemGroup>
     <Compile Include="API\Audio\OggVorbis.cs" />
     <Compile Include="API\Audio\VorbisPlayer.cs" />
@@ -90,6 +98,8 @@
     <Compile Include="NPCs\Normal\Dark Slime.cs" />
     <Compile Include="Projectiles\FromPlayer\Bullets\Net Bullet.cs" />
     <Compile Include="Projectiles\FromPlayer\Bullets\Net.cs" />
+    <Compile Include="Projectiles\FromPlayer\Explosions\Cluster Bomb.cs" />
+    <Compile Include="Projectiles\FromPlayer\Explosions\Cluster Fragment.cs" />
     <Compile Include="Projectiles\FromPlayer\Pets\Critter Catcher.cs" />
     <Compile Include="Projectiles\FromPlayer\Pets\Fish Catcher.cs" />
     <Compile Include="Tiles\Dark Matter\Dark Matter Brick.cs" />
@@ -201,346 +211,37 @@
     <Compile Include="_MCTImport\World.cs" />
     <Compile Include="_XnaExtImport\Collections\Extensions.Collections.cs" />
   </ItemGroup>
+  <!-- JSON files -->
   <ItemGroup>
-    <Content Include="Buffs\Brain Follower.png" />
-    <Content Include="Buffs\Freeze.png" />
-    <Content Include="Buffs\Shadows.png" />
-    <Content Include="Gores\Armoured Crimslime Gore 1.png" />
-    <Content Include="Gores\Armoured Crimslime Gore 2.png" />
-    <Content Include="Gores\Black Lancer Gore 1.png" />
-    <Content Include="Gores\Black Lancer Gore 2.png" />
-    <Content Include="Gores\Black Lancer Gore 3.png" />
-    <Content Include="Gores\Crawleye Gore 1.png" />
-    <Content Include="Gores\Crawleye Gore 2.png" />
-    <Content Include="Gores\Crawleye Gore 3.png" />
-    <Content Include="Gores\Crimper Gore 1.png" />
-    <Content Include="Gores\Crimper Gore 2.png" />
-    <Content Include="Gores\Crimper Gore 3.png" />
-    <Content Include="Gores\Verteworm Body Gore.png" />
-    <Content Include="Gores\Verteworm Head Gore.png" />
-    <Content Include="Gores\Verteworm Tail Gore.png" />
-    <Content Include="Items\Accessories\Bag of Blood.png" />
-    <Content Include="Items\Accessories\Bag of Fire.png" />
-    <Content Include="Items\Accessories\Bag of Shadow.png" />
-    <Content Include="Items\Accessories\Shiver Heart.png" />
-    <Content Include="Items\Ammo\Zapper Bullet.png" />
-    <Content Include="Items\Armour\Dark Matter\Dark Matter Chest.png" />
-    <Content Include="Items\Armour\Dark Matter\Dark Matter Chest_Arm.png" />
-    <Content Include="Items\Armour\Dark Matter\Dark Matter Chest_Body.png" />
-    <Content Include="Items\Armour\Dark Matter\Dark Matter Clinger.png" />
-    <Content Include="Items\Armour\Dark Matter\Dark Matter Clinger_Head.png" />
-    <Content Include="Items\Armour\Dark Matter\Dark Matter Legs.png" />
-    <Content Include="Items\Armour\Dark Matter\Dark Matter Legs_Legs.png" />
-    <Content Include="Items\Armour\Mushroom\MushroomBreastplate.png" />
-    <Content Include="Items\Armour\Mushroom\MushroomBreastplate_Arm.png" />
-    <Content Include="Items\Armour\Mushroom\MushroomBreastplate_Body.png" />
-    <Content Include="Items\Armour\Mushroom\MushroomHelmet.png" />
-    <Content Include="Items\Armour\Mushroom\MushroomHelmet_Head.png" />
-    <Content Include="Items\Armour\Mushroom\MushroomLeggings.png" />
-    <Content Include="Items\Armour\Mushroom\MushroomLeggings_Legs.png" />
-    <Content Include="Items\Baits\Lava Mite.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Breastplate.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Breastplate_Arm.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Breastplate_Body.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Dev Pickaxe.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Dev Warhammer.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Helmet.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Helmet_Head.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings.png" />
-    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings_Legs.png" />
-    <Content Include="Items\DevItems\Bullseye55\Hard Swap.png" />
-    <Content Include="Items\Fishables\Corrupt Crate.png" />
-    <Content Include="Items\Fishables\Flesh Crate.png" />
-    <Content Include="Items\Materials\Heartstone.png" />
-    <Content Include="Items\Placeables\Dark Matter\Dark Matter Brick.png" />
-    <Content Include="Items\Placeables\Dark Matter\Dark Matter Bush 2.png" />
-    <Content Include="Items\Placeables\Dark Matter\Dark Matter Bush.png" />
-    <Content Include="Items\Placeables\Dark Matter\Dark Matter Soil.png" />
-    <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.png" />
-    <Content Include="Items\Placeables\Flesh Tendril.png" />
-    <Content Include="Items\Placeables\Crafting Stations\Vertebrae Workbench.png" />
-    <Content Include="Items\Materials\Dark Matter\Dark Matter Bar.png" />
-    <Content Include="Items\Materials\Dark Matter\Dark Matter Ooze.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bathtub.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bed.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bookshelf.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Candelabra.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Candle.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chair.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chandelier.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chest.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Clock.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Door.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Dresser.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Lamp.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Lantern.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Piano.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Net Bullet.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Net.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Table.png" />
-    <Content Include="Items\Placeables\Heartstone Brick.png" />
-    <Content Include="Items\Placeables\Vertebrae Block.png" />
-    <Content Include="Items\Placeables\Furniture\Vertebrae\Vertebrae Bookshelf.png" />
-    <Content Include="Items\Placeables\Furniture\Vertebrae\Vertebrae Chest.png" />
-    <Content Include="Items\Placeables\Vertebrae Platform.png" />
-    <Content Include="Items\Placeables\Furniture\Vertebrae\Vertebrae Tomb.png" />
-    <Content Include="Items\Placeables\Walls\Dark Matter Brick Wall.png" />
-    <Content Include="Items\Placeables\Walls\Dark Matter Wood Wall.png" />
-    <Content Include="Items\Placeables\Walls\Heartstone Brick Wall.png" />
-    <Content Include="Items\Placeables\Walls\Vertebrae Wall.png" />
-    <Content Include="Items\Placeables\Wastelands\Polluted Dirt.png" />
-    <Content Include="Items\Potions\Brain in a Bottle.png" />
-    <Content Include="Items\Potions\Frog Legs.png" />
-    <Content Include="Items\Potions\Medicine Bottle.png" />
-    <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
-    <Content Include="Items\Weapons\Melee\Broadswords\Elemental Blade.png" />
-    <Content Include="Items\Weapons\Minion\Elemental Summonstaff.png" />
-    <Content Include="Items\Weapons\Ranged\Bows\Elemental Bow.png" />
-    <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
-    <Content Include="Items\Weapons\Ranged\Other\Slingshot Ebonwood.png" />
-    <Content Include="Items\Weapons\Ranged\Other\Slingshot Mahogony.png" />
-    <Content Include="Items\Weapons\Ranged\Other\Slingshot Pearlwood.png" />
-    <Content Include="Items\Weapons\Ranged\Other\Slingshot Shadewood.png" />
-    <Content Include="Items\Weapons\Ranged\Other\Slingshot Wood.png" />
-    <Content Include="Resources\Dark Matter\Background.png" />
-    <Content Include="Resources\Dark Matter\Sun.png" />
-    <Content Include="Resources\Misc\Tiles_21.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Sofa.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bathtub.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bed.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bookshelf.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Candelabra.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Candle.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Chair.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Chandelier.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Clock.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Door closed.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Door.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Dresser.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Lamp.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Lantern.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Piano.png" />
-    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Sofa.png" />
-    <Content Include="Tiles\Furniture\Heartstone\Heartstone Workbench.png" />
-    <Content Include="Tiles\Wastelands\Polluted Dirt.png" />
-    <Content Include="Tiles\Wastelands\Polluted Grass.png" />
-    <Content Include="Walls\Heartstone Brick Wall.png" />
-    <Content Include="_ForRevision\Flails\Berserker Nightmare.png" />
-    <Content Include="_ForRevision\Flails\Caesium Flail.json" />
-    <Content Include="_ForRevision\Flails\Cobalt Flail.png" />
-    <Content Include="_ForRevision\Flails\Eclipse%27s Waning.png" />
-    <Content Include="_ForRevision\Flails\Heaven%27s Tear.png" />
-    <Content Include="_ForRevision\Flails\Meteor Masher.png" />
-    <Content Include="_ForRevision\Flails\Moonfury.png" />
-    <Content Include="_ForRevision\Flails\Mythril Flail.png" />
-    <Content Include="_ForRevision\Flails\Quad Sunfury.png" />
-    <Content Include="_ForRevision\Flails\Silver Flail.png" />
-    <Content Include="_ForRevision\Flails\Sporalash.png" />
-    <Content Include="Items\Weapons\Magic\Staffs\Vertebrae Staff.png" />
-    <Content Include="Items\Weapons\Melee\Throwable\Explosive Knife.png" />
-    <Content Include="Items\Weapons\Melee\Throwable\Ichor Grenade.png" />
-    <Content Include="Items\Weapons\Melee\Throwable\Spike Ball.png" />
-    <Content Include="Items\Weapons\Melee\Throwable\Sticky Spike Ball.png" />
-    <Content Include="Items\Weapons\Melee\Throwable\Throwing Paladin%27s Hammer.png" />
-    <Content Include="Items\Weapons\Ranged\Guns\Binge Eater.png" />
-    <Content Include="Items\Weapons\Ranged\Cannons\Hand Cannon.png" />
-    <Content Include="Items\Weapons\Ranged\Cannons\Vertebrae Cannon.png" />
-    <Content Include="Items\Weapons\Ranged\Bows\Vertebrae Bow.png" />
-    <Content Include="Items\Weapons\Ranged\Cannons\Ichor Gatling Cannon.png" />
-    <Content Include="Items\Weapons\Ranged\Guns\Cursed Flamethrower.png" />
-    <Content Include="Items\Weapons\Ranged\Guns\Gatlineater.png" />
-    <Content Include="Items\Weapons\Ranged\Guns\Ichorthrower.png" />
-    <Content Include="Items\Weapons\Ranged\Guns\Soul Eater.png" />
-    <Content Include="NPCs\Baits\Lava Mite.png" />
-    <Content Include="NPCs\Normal\Armoured Crimslime.png" />
-    <Content Include="NPCs\Normal\Black Lancer.png" />
-    <Content Include="NPCs\Pets\Brain Follower.png" />
-    <Content Include="NPCs\Normal\Bunny Bones.png" />
-    <Content Include="NPCs\Normal\corpt.png" />
-    <Content Include="NPCs\Normal\Crawleye.png" />
-    <Content Include="NPCs\Normal\Crimper.png" />
-    <Content Include="NPCs\Normal\Cursed Flamer.png" />
-    <Content Include="NPCs\Normal\Worms\Dark Matter Spearworm Body.png" />
-    <Content Include="NPCs\Normal\Worms\Dark Matter Spearworm Head.png" />
-    <Content Include="NPCs\Normal\Worms\Dark Matter Spearworm Tail.png" />
-    <Content Include="NPCs\Normal\Dark Slime 1.png" />
-    <Content Include="NPCs\Normal\Dark Slime 2.png" />
-    <Content Include="NPCs\Normal\Normal Barrel.png" />
-    <Content Include="NPCs\Normal\Worms\Verteworm Body.png" />
-    <Content Include="NPCs\Normal\Worms\Verteworm Head.png" />
-    <Content Include="NPCs\Normal\Worms\Verteworm Tail.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Binge Eater.png" />
-    <Content Include="Projectiles\FromPlayer\Spears\Black Lance.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Blood Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Cursed Flamethrower.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Cobalt Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Eclipse Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Heaven Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Mega Quad Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Meteor Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Moonfury Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Mythril Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Quad Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Silver Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Sporalash Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Spells\Freeze Bolt.png" />
-    <Content Include="Projectiles\FromPlayer\Explosions\Ichor Explosion.png" />
-    <Content Include="Projectiles\FromPlayer\Ichor Glob.png" />
-    <Content Include="Projectiles\FromPlayer\Throwables\Ichor Grenade.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Ichorthrower.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Soul Eater.png" />
-    <Content Include="Projectiles\FromPlayer\Spells\Impulse Bolt.png" />
-    <Content Include="Projectiles\FromPlayer\Spells\Impulse Trail.png" />
-    <Content Include="Projectiles\FromPlayer\Throwables\Spike Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Throwables\Sticky Spike Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Throwables\Throwing Paladin%27s Hammer.png" />
-    <Content Include="Projectiles\FromPlayer\Arrows\Vertebrae Rivet.png" />
-    <Content Include="Projectiles\FromPlayer\Bullets\Zapper Bullet.png" />
-    <Content Include="References\NVorbis.dll" />
-    <Content Include="References\NVorbis.xml" />
-    <Content Include="Resources\Backpacks\Ichorthrower Backpack.png" />
-    <Content Include="Sounds\Electronic 1.wav" />
-    <Content Include="Sounds\Vertebrae Cannon.wav" />
-    <Content Include="Tiles\Dark Matter\Dark Matter Brick.png" />
-    <Content Include="Tiles\Dark Matter\Dark Matter Bush 2.png" />
-    <Content Include="Tiles\Dark Matter\Dark Matter Bush.png" />
-    <Content Include="Tiles\Dark Matter\Dark Matter Soil.png" />
-    <Content Include="Tiles\Dark Matter\Dark Matter Wood.png" />
-    <Content Include="Tiles\Blocks\Flesh Tendril.png" />
-    <Content Include="Tiles\Bricks\Heartstone Brick.png" />
-    <Content Include="Tiles\Blocks\Vertebrae Block.png" />
-    <Content Include="Tiles\Blocks\Vertebrae Platform.png" />
-    <Content Include="Tiles\Crafting Stations\Vertebrae Workbench.png" />
-    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Bookshelf.png" />
-    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Chest.png" />
-    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Dresser.png" />
-    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Tomb Tile.png" />
-    <Content Include="Tiles\Dark Matter\Dark Matter Ooze.png" />
-    <Content Include="Tiles\Ores\Heartstone.png" />
-    <Content Include="Walls\Dark Matter Brick Wall.png" />
-    <Content Include="Walls\Dark Matter Wood Wall.png" />
-    <Content Include="Walls\Vertebrae Wall.png" />
     <Content Include="ModInfo.json" />
     <Content Include="Projectiles\FromPlayer\Flails\Adamantite Ball.json" />
     <Content Include="Projectiles\FromPlayer\Flails\Cursed Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="_ForRevision\Flails\Caesium Flail.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Adamantite Ball.png" />
-    <Content Include="Projectiles\FromPlayer\Flails\Cursed Ball.png" />
-    <Content Include="Resources\Chains\Adamantite Chain.png" />
-    <Content Include="Resources\Chains\Berserker Chain.png" />
-    <Content Include="Resources\Chains\Blue Moon Chain.png" />
-    <Content Include="Resources\Chains\Cobalt Chain.png" />
-    <Content Include="Resources\Chains\Cursed Chain.png" />
-    <Content Include="Resources\Chains\Eclipse Chain.png" />
-    <Content Include="Resources\Chains\Grapple Chain.png" />
-    <Content Include="Resources\Chains\Heaven Chain.png" />
-    <Content Include="Resources\Chains\Meteor Chain.png" />
-    <Content Include="Resources\Chains\Moonfury Chain.png" />
-    <Content Include="Resources\Chains\Mythril Chain.png" />
-    <Content Include="Resources\Chains\Quad Whip Chain.png" />
-    <Content Include="Resources\Chains\Silver Chain.png" />
-    <Content Include="Resources\Chains\Sporalash Chain.png" />
-    <Content Include="Resources\Misc\LavaMermanArm.png" />
-    <Content Include="Resources\Misc\LavaMermanBody.png" />
-    <Content Include="Resources\Misc\LavaMermanHead.png" />
-    <Content Include="Resources\Misc\LavaMermanLegs.png" />
-    <Content Include="Resources\Misc\MermanArm.png" />
-    <Content Include="Resources\Misc\MermanBody.png" />
-    <Content Include="Resources\Misc\MermanHead.png" />
-    <Content Include="Resources\Misc\MermanLegs.png" />
-    <Content Include="Resources\Wings\Golden Wings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="_ForRevision\Flails\Adamantite Flail.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Adamantite Flail.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Silver Flail.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Silver Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Berserker Nightmare.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Items\Weapons\Melee\Flails\" />
-    <Folder Include="Items\Weapons\Melee\Shortswords\" />
-    <Folder Include="Items\Weapons\Ranged\Crossbows\" />
-    <Folder Include="NPCs\Bosses\" />
-    <Folder Include="Projectiles\FromNPC\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="_ForRevision\Flails\Caesium Flail.json" />
     <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Cobalt Flail.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Cobalt Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Eclipse%27s Waning.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Eclipse Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Moonfury.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Moonfury Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Heaven%27s Tear.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Heaven Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Mythril Flail.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Mythril Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Sporalash.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Sporalash Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Meteor Masher.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Meteor Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="_ForRevision\Flails\Quad Sunfury.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Quad Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Projectiles\FromPlayer\Flails\Mega Quad Ball.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Items\Materials\Dark Matter\Dark Matter Bar.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Items\Materials\Dark Matter\Dark Matter Ooze.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Tiles\Dark Matter\Dark Matter Ooze.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Buffs\Brain Follower.json" />
     <Content Include="Projectiles\FromPlayer\Spells\Impulse Bolt.json" />
     <Content Include="Projectiles\FromPlayer\Spells\Impulse Trail.json" />
@@ -621,75 +322,333 @@
     <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Bookshelf.json" />
     <Content Include="Tiles\Blocks\Vertebrae Platform.json" />
     <Content Include="Walls\Vertebrae Wall.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Tiles\Dark Matter\Dark Matter Wood.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Buffs\Freeze.json" />
-    <None Include="Buffs\Shadows.json" />
-    <None Include="Items\Fishables\Corrupt Crate.json" />
-    <None Include="Items\Fishables\Flesh Crate.json" />
-    <None Include="Items\Materials\Heartstone.json" />
-    <None Include="Items\Placeables\Dark Matter\Dark Matter Brick.json" />
+    <Content Include="Buffs\Freeze.json" />
+    <Content Include="Buffs\Shadows.json" />
+    <Content Include="Items\Fishables\Corrupt Crate.json" />
+    <Content Include="Items\Fishables\Flesh Crate.json" />
+    <Content Include="Items\Materials\Heartstone.json" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Brick.json" />
     <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bed.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Chair.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Chandelier.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Chest.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Clock.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Door.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Dresser.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Piano.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Sofa.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.json" />
-    <None Include="Projectiles\FromPlayer\Bullets\Net Bullet.json" />
-    <None Include="Projectiles\FromPlayer\Bullets\Net.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Candle.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Bathtub.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Bookshelf.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Candelabra.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Candle.json" />
-    <None Include="Items\Placeables\Heartstone Brick.json" />
-    <None Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
-    <None Include="Items\Placeables\Wastelands\Polluted Dirt.json" />
-    <None Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
-    <None Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
-    <None Include="NPCs\Normal\Dark Slime 1.json" />
-    <None Include="NPCs\Normal\Dark Slime 2.json" />
-    <Content Include="Resources\Music\Dark Matter %28Overworld%29.ogg" />
-    <None Include="Tiles\Dark Matter\Dark Matter Brick.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chair.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chandelier.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chest.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Clock.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Door.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Dresser.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Piano.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Sofa.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.json" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net Bullet.json" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net.json" />
+    <Content Include="Projectiles\FromPlayer\Explosions\Cluster Bomb.json" />
+    <Content Include="Projectiles\FromPlayer\Explosions\Cluster Fragment.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Candle.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bathtub.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bookshelf.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Candelabra.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Candle.json" />
+    <Content Include="Items\Placeables\Heartstone Brick.json" />
+    <Content Include="Items\Placeables\Walls\Heartstone Brick Wall.json" />
+    <Content Include="Items\Placeables\Wastelands\Polluted Dirt.json" />
+    <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.json" />
+    <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.json" />
+    <Content Include="NPCs\Normal\Dark Slime 1.json" />
+    <Content Include="NPCs\Normal\Dark Slime 2.json" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Brick.json" />
     <Content Include="Tiles\Furniture\Heartstone\Heartstone Bed.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Bathtub.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Bookshelf.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Candelabra.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Chair.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Chandelier.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Lamp.json" />
-    <None Include="Items\Placeables\Furniture\Heartstone\Heartstone Lantern.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Clock.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Door.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Door closed.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Dresser.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Lamp.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Lantern.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Piano.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Sofa.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Table.json" />
-    <None Include="Tiles\Furniture\Heartstone\Heartstone Workbench.json" />
-    <None Include="Tiles\Ores\Heartstone.json" />
-    <None Include="Tiles\Wastelands\Polluted Dirt.json" />
-    <None Include="Tiles\Wastelands\Polluted Grass.json" />
-    <None Include="Walls\Heartstone Brick Wall.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bathtub.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bookshelf.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Candelabra.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Chair.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Chandelier.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Lamp.json" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Lantern.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Clock.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Door.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Door closed.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Dresser.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Lamp.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Lantern.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Piano.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Sofa.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Table.json" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Workbench.json" />
+    <Content Include="Tiles\Ores\Heartstone.json" />
+    <Content Include="Tiles\Wastelands\Polluted Dirt.json" />
+    <Content Include="Tiles\Wastelands\Polluted Grass.json" />
+    <Content Include="Walls\Heartstone Brick Wall.json" />
   </ItemGroup>
+  <!-- Images -->
+  <ItemGroup>
+    <Content Include="Buffs\Brain Follower.png" />
+    <Content Include="Buffs\Freeze.png" />
+    <Content Include="Buffs\Shadows.png" />
+    <Content Include="Gores\Armoured Crimslime Gore 1.png" />
+    <Content Include="Gores\Armoured Crimslime Gore 2.png" />
+    <Content Include="Gores\Black Lancer Gore 1.png" />
+    <Content Include="Gores\Black Lancer Gore 2.png" />
+    <Content Include="Gores\Black Lancer Gore 3.png" />
+    <Content Include="Gores\Crawleye Gore 1.png" />
+    <Content Include="Gores\Crawleye Gore 2.png" />
+    <Content Include="Gores\Crawleye Gore 3.png" />
+    <Content Include="Gores\Crimper Gore 1.png" />
+    <Content Include="Gores\Crimper Gore 2.png" />
+    <Content Include="Gores\Crimper Gore 3.png" />
+    <Content Include="Gores\Verteworm Body Gore.png" />
+    <Content Include="Gores\Verteworm Head Gore.png" />
+    <Content Include="Gores\Verteworm Tail Gore.png" />
+    <Content Include="Items\Accessories\Bag of Blood.png" />
+    <Content Include="Items\Accessories\Bag of Fire.png" />
+    <Content Include="Items\Accessories\Bag of Shadow.png" />
+    <Content Include="Items\Accessories\Shiver Heart.png" />
+    <Content Include="Items\Ammo\Zapper Bullet.png" />
+    <Content Include="Items\Armour\Dark Matter\Dark Matter Chest.png" />
+    <Content Include="Items\Armour\Dark Matter\Dark Matter Chest_Arm.png" />
+    <Content Include="Items\Armour\Dark Matter\Dark Matter Chest_Body.png" />
+    <Content Include="Items\Armour\Dark Matter\Dark Matter Clinger.png" />
+    <Content Include="Items\Armour\Dark Matter\Dark Matter Clinger_Head.png" />
+    <Content Include="Items\Armour\Dark Matter\Dark Matter Legs.png" />
+    <Content Include="Items\Armour\Dark Matter\Dark Matter Legs_Legs.png" />
+    <Content Include="Items\Armour\Mushroom\MushroomBreastplate.png" />
+    <Content Include="Items\Armour\Mushroom\MushroomBreastplate_Arm.png" />
+    <Content Include="Items\Armour\Mushroom\MushroomBreastplate_Body.png" />
+    <Content Include="Items\Armour\Mushroom\MushroomHelmet.png" />
+    <Content Include="Items\Armour\Mushroom\MushroomHelmet_Head.png" />
+    <Content Include="Items\Armour\Mushroom\MushroomLeggings.png" />
+    <Content Include="Items\Armour\Mushroom\MushroomLeggings_Legs.png" />
+    <Content Include="Items\Baits\Lava Mite.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Breastplate.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Breastplate_Arm.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Breastplate_Body.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Dev Pickaxe.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Dev Warhammer.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Helmet.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Helmet_Head.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings.png" />
+    <Content Include="Items\DevItems\Bullseye55\Bullseye55 Leggings_Legs.png" />
+    <Content Include="Items\DevItems\Bullseye55\Hard Swap.png" />
+    <Content Include="Items\Fishables\Corrupt Crate.png" />
+    <Content Include="Items\Fishables\Flesh Crate.png" />
+    <Content Include="Items\Materials\Heartstone.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Brick.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Bush 2.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Bush.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Soil.png" />
+    <Content Include="Items\Placeables\Dark Matter\Dark Matter Wood.png" />
+    <Content Include="Items\Placeables\Flesh Tendril.png" />
+    <Content Include="Items\Placeables\Crafting Stations\Vertebrae Workbench.png" />
+    <Content Include="Items\Materials\Dark Matter\Dark Matter Bar.png" />
+    <Content Include="Items\Materials\Dark Matter\Dark Matter Ooze.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bathtub.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bed.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Bookshelf.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Candelabra.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Candle.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chair.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chandelier.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Chest.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Clock.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Door.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Dresser.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Lamp.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Lantern.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Piano.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Table.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Workbench.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net Bullet.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Net.png" />
+    <Content Include="Projectiles\FromPlayer\Explosions\Cluster Fragment.png" />
+    <Content Include="Projectiles\FromPlayer\Explosions\Cluster Bomb.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Table.png" />
+    <Content Include="Items\Placeables\Heartstone Brick.png" />
+    <Content Include="Items\Placeables\Vertebrae Block.png" />
+    <Content Include="Items\Placeables\Furniture\Vertebrae\Vertebrae Bookshelf.png" />
+    <Content Include="Items\Placeables\Furniture\Vertebrae\Vertebrae Chest.png" />
+    <Content Include="Items\Placeables\Vertebrae Platform.png" />
+    <Content Include="Items\Placeables\Furniture\Vertebrae\Vertebrae Tomb.png" />
+    <Content Include="Items\Placeables\Walls\Dark Matter Brick Wall.png" />
+    <Content Include="Items\Placeables\Walls\Dark Matter Wood Wall.png" />
+    <Content Include="Items\Placeables\Walls\Heartstone Brick Wall.png" />
+    <Content Include="Items\Placeables\Walls\Vertebrae Wall.png" />
+    <Content Include="Items\Placeables\Wastelands\Polluted Dirt.png" />
+    <Content Include="Items\Potions\Brain in a Bottle.png" />
+    <Content Include="Items\Potions\Frog Legs.png" />
+    <Content Include="Items\Potions\Medicine Bottle.png" />
+    <Content Include="Items\Weapons\Magic\Spells\Freeze Bolt.png" />
+    <Content Include="Items\Weapons\Melee\Broadswords\Elemental Blade.png" />
+    <Content Include="Items\Weapons\Minion\Elemental Summonstaff.png" />
+    <Content Include="Items\Weapons\Ranged\Bows\Elemental Bow.png" />
+    <Content Include="Items\Weapons\Ranged\Guns\Reinforced Snowball Cannon.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Ebonwood.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Mahogony.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Pearlwood.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Shadewood.png" />
+    <Content Include="Items\Weapons\Ranged\Other\Slingshot Wood.png" />
+    <Content Include="Resources\Dark Matter\Background.png" />
+    <Content Include="Resources\Dark Matter\Sun.png" />
+    <Content Include="Resources\Misc\Tiles_21.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Sofa.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bathtub.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bed.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Bookshelf.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Candelabra.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Candle.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Chair.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Chandelier.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Clock.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Door closed.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Door.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Dresser.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Lamp.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Lantern.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Piano.png" />
+    <Content Include="Items\Placeables\Furniture\Heartstone\Heartstone Sofa.png" />
+    <Content Include="Tiles\Furniture\Heartstone\Heartstone Workbench.png" />
+    <Content Include="Tiles\Wastelands\Polluted Dirt.png" />
+    <Content Include="Tiles\Wastelands\Polluted Grass.png" />
+    <Content Include="Walls\Heartstone Brick Wall.png" />
+    <Content Include="_ForRevision\Flails\Berserker Nightmare.png" />
+    <Content Include="_ForRevision\Flails\Cobalt Flail.png" />
+    <Content Include="_ForRevision\Flails\Eclipse%27s Waning.png" />
+    <Content Include="_ForRevision\Flails\Heaven%27s Tear.png" />
+    <Content Include="_ForRevision\Flails\Meteor Masher.png" />
+    <Content Include="_ForRevision\Flails\Moonfury.png" />
+    <Content Include="_ForRevision\Flails\Mythril Flail.png" />
+    <Content Include="_ForRevision\Flails\Quad Sunfury.png" />
+    <Content Include="_ForRevision\Flails\Silver Flail.png" />
+    <Content Include="_ForRevision\Flails\Sporalash.png" />
+    <Content Include="Items\Weapons\Magic\Staffs\Vertebrae Staff.png" />
+    <Content Include="Items\Weapons\Melee\Throwable\Explosive Knife.png" />
+    <Content Include="Items\Weapons\Melee\Throwable\Ichor Grenade.png" />
+    <Content Include="Items\Weapons\Melee\Throwable\Spike Ball.png" />
+    <Content Include="Items\Weapons\Melee\Throwable\Sticky Spike Ball.png" />
+    <Content Include="Items\Weapons\Melee\Throwable\Throwing Paladin%27s Hammer.png" />
+    <Content Include="Items\Weapons\Ranged\Guns\Binge Eater.png" />
+    <Content Include="Items\Weapons\Ranged\Cannons\Hand Cannon.png" />
+    <Content Include="Items\Weapons\Ranged\Cannons\Vertebrae Cannon.png" />
+    <Content Include="Items\Weapons\Ranged\Bows\Vertebrae Bow.png" />
+    <Content Include="Items\Weapons\Ranged\Cannons\Ichor Gatling Cannon.png" />
+    <Content Include="Items\Weapons\Ranged\Guns\Cursed Flamethrower.png" />
+    <Content Include="Items\Weapons\Ranged\Guns\Gatlineater.png" />
+    <Content Include="Items\Weapons\Ranged\Guns\Ichorthrower.png" />
+    <Content Include="Items\Weapons\Ranged\Guns\Soul Eater.png" />
+    <Content Include="NPCs\Baits\Lava Mite.png" />
+    <Content Include="NPCs\Normal\Armoured Crimslime.png" />
+    <Content Include="NPCs\Normal\Black Lancer.png" />
+    <Content Include="NPCs\Pets\Brain Follower.png" />
+    <Content Include="NPCs\Normal\Bunny Bones.png" />
+    <Content Include="NPCs\Normal\corpt.png" />
+    <Content Include="NPCs\Normal\Crawleye.png" />
+    <Content Include="NPCs\Normal\Crimper.png" />
+    <Content Include="NPCs\Normal\Cursed Flamer.png" />
+    <Content Include="NPCs\Normal\Worms\Dark Matter Spearworm Body.png" />
+    <Content Include="NPCs\Normal\Worms\Dark Matter Spearworm Head.png" />
+    <Content Include="NPCs\Normal\Worms\Dark Matter Spearworm Tail.png" />
+    <Content Include="NPCs\Normal\Dark Slime 1.png" />
+    <Content Include="NPCs\Normal\Dark Slime 2.png" />
+    <Content Include="NPCs\Normal\Normal Barrel.png" />
+    <Content Include="NPCs\Normal\Worms\Verteworm Body.png" />
+    <Content Include="NPCs\Normal\Worms\Verteworm Head.png" />
+    <Content Include="NPCs\Normal\Worms\Verteworm Tail.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Binge Eater.png" />
+    <Content Include="Projectiles\FromPlayer\Spears\Black Lance.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Blood Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Cursed Flamethrower.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Berserker Sphere.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Cobalt Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Eclipse Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Heaven Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Mega Quad Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Meteor Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Moonfury Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Mythril Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Quad Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Silver Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Sporalash Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Spells\Freeze Bolt.png" />
+    <Content Include="Projectiles\FromPlayer\Explosions\Ichor Explosion.png" />
+    <Content Include="Projectiles\FromPlayer\Ichor Glob.png" />
+    <Content Include="Projectiles\FromPlayer\Throwables\Ichor Grenade.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Ichorthrower.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Soul Eater.png" />
+    <Content Include="Projectiles\FromPlayer\Spells\Impulse Bolt.png" />
+    <Content Include="Projectiles\FromPlayer\Spells\Impulse Trail.png" />
+    <Content Include="Projectiles\FromPlayer\Throwables\Spike Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Throwables\Sticky Spike Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Throwables\Throwing Paladin%27s Hammer.png" />
+    <Content Include="Projectiles\FromPlayer\Arrows\Vertebrae Rivet.png" />
+    <Content Include="Projectiles\FromPlayer\Bullets\Zapper Bullet.png" />
+    <Content Include="Resources\Backpacks\Ichorthrower Backpack.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Brick.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Bush 2.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Bush.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Soil.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Wood.png" />
+    <Content Include="Tiles\Blocks\Flesh Tendril.png" />
+    <Content Include="Tiles\Bricks\Heartstone Brick.png" />
+    <Content Include="Tiles\Blocks\Vertebrae Block.png" />
+    <Content Include="Tiles\Blocks\Vertebrae Platform.png" />
+    <Content Include="Tiles\Crafting Stations\Vertebrae Workbench.png" />
+    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Bookshelf.png" />
+    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Chest.png" />
+    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Dresser.png" />
+    <Content Include="Tiles\Furniture\Vertebrae\Vertebrae Tomb Tile.png" />
+    <Content Include="Tiles\Dark Matter\Dark Matter Ooze.png" />
+    <Content Include="Tiles\Ores\Heartstone.png" />
+    <Content Include="Walls\Dark Matter Brick Wall.png" />
+    <Content Include="Walls\Dark Matter Wood Wall.png" />
+    <Content Include="Walls\Vertebrae Wall.png" />
+    <Content Include="_ForRevision\Flails\Caesium Flail.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Adamantite Ball.png" />
+    <Content Include="Projectiles\FromPlayer\Flails\Cursed Ball.png" />
+    <Content Include="Resources\Chains\Adamantite Chain.png" />
+    <Content Include="Resources\Chains\Berserker Chain.png" />
+    <Content Include="Resources\Chains\Blue Moon Chain.png" />
+    <Content Include="Resources\Chains\Cobalt Chain.png" />
+    <Content Include="Resources\Chains\Cursed Chain.png" />
+    <Content Include="Resources\Chains\Eclipse Chain.png" />
+    <Content Include="Resources\Chains\Grapple Chain.png" />
+    <Content Include="Resources\Chains\Heaven Chain.png" />
+    <Content Include="Resources\Chains\Meteor Chain.png" />
+    <Content Include="Resources\Chains\Moonfury Chain.png" />
+    <Content Include="Resources\Chains\Mythril Chain.png" />
+    <Content Include="Resources\Chains\Quad Whip Chain.png" />
+    <Content Include="Resources\Chains\Silver Chain.png" />
+    <Content Include="Resources\Chains\Sporalash Chain.png" />
+    <Content Include="Resources\Misc\LavaMermanArm.png" />
+    <Content Include="Resources\Misc\LavaMermanBody.png" />
+    <Content Include="Resources\Misc\LavaMermanHead.png" />
+    <Content Include="Resources\Misc\LavaMermanLegs.png" />
+    <Content Include="Resources\Misc\MermanArm.png" />
+    <Content Include="Resources\Misc\MermanBody.png" />
+    <Content Include="Resources\Misc\MermanHead.png" />
+    <Content Include="Resources\Misc\MermanLegs.png" />
+    <Content Include="Resources\Wings\Golden Wings.png" />
+    <Content Include="_ForRevision\Flails\Adamantite Flail.png" />
+  </ItemGroup>
+  <!-- Audio files -->
+  <ItemGroup>
+    <Content Include="Resources\Music\Dark Matter %28Overworld%29.ogg" />
+    <Content Include="Sounds\Electronic 1.wav" />
+    <Content Include="Sounds\Vertebrae Cannon.wav" />
+  </ItemGroup>
+  <!-- Currently empty folders -->
+  <ItemGroup>
+    <Folder Include="Items\Weapons\Melee\Flails\" />
+    <Folder Include="Items\Weapons\Melee\Shortswords\" />
+    <Folder Include="Items\Weapons\Ranged\Crossbows\" />
+    <Folder Include="NPCs\Bosses\" />
+    <Folder Include="Projectiles\FromNPC\" />
+  </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mct -inv compile "Avalon-Bullseye55\Avalon"</PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

@@ -269,6 +269,12 @@ namespace Avalon.ModClasses
         {
             base.Save(bb);
 
+            if (bb == null)
+                return;
+
+            if (accessories == null)
+                MWorld.Init();
+
             for (int i = 0; i < accessories.Length; i++)
                 bb.Write(accessories[i]);
 

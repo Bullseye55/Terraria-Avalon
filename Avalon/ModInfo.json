@@ -1,21 +1,22 @@
 ﻿{
-	"displayName": "Avalon",
-	"author": "Avalon Team",
-	"info": "tAPI Avalon mod - preview version",
-	"version": "0.0.0.1",
+    "displayName": "Avalon",
+    "author": "Avalon Team",
+    "info": "tAPI Avalon mod - preview version",
+    "version": "0.0.0.1",
 
-	"internalName": "Avalon",
-	"includePDB": true,
+    "internalName": "Avalon",
+    "includePDB": true,
 
-	"MSBuild": true,
-	"msBuildFile": "Avalon.csproj",
+    "MSBuild": true,
+    "msBuildFile": "Avalon.csproj",
 
-	"dllReferences": [
-		"References/NVorbis.dll"
-	],
-	"include": [ 
-		"Resources/Music/Dark Matter (Overworld).ogg"
-	],
+    "dllReferences": [
+        "References/NVorbis.dll"
+    ],
+    "include": [
+        "Resources/Music/Dark Matter (Overworld).ogg"
+    ],
 
-    "outputName": "Avalon-Bullseye55"
+    "outputName": "Avalon-Bullseye55",
+    "includeFiles": false
 }

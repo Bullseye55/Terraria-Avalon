@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TAPI;
 using Terraria;
+using TAPI;
 
-namespace Avalon.Tests.ProjectileTesting
-{ 
-    class Net : ModProjectile
+namespace Avalon.Projectiles.FromPlayer.Bullets
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public sealed class Net : ModProjectile
     {
+        /// <summary>
+        ///
+        /// </summary>
         public override void AI()
         {
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                if (this.projectile.Hitbox.Intersects(NPCDef.byType[i].Hitbox))
+            for (int i = 0; i < Main.npc.Length; i++)
+                if (projectile.Hitbox.Intersects(NPCDef.byType[i].Hitbox))
                 {
                     NPC.CatchNPC(i);
                     break;
                 }
-            }
         }
     }
 }
- 

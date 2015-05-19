@@ -263,7 +263,7 @@ namespace Avalon.ModClasses
             Init();
         }
 
-        static void Init()
+        internal static void Init()
         {
             CatarystDownedCount = EverIceCount = ArmageddonCount = HallowAltarsBroken = 0;
             AvalonMod.IsInSuperHardmode = UltraOblivionDowned = SpawnedBerserkerOre = false;
