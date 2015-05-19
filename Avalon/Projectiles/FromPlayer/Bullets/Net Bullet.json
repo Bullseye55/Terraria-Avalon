@@ -2,7 +2,7 @@
 	"code": "Projectiles.FromPlayer.Bullets.NetBullet",
 	"size": [ 12, 12 ],
 	"scale": 1,
-	"timeLeft": 600,
+	"timeLeft": 40,
 	"aiStyle": 0,
 	"friendly": true,
 	"penetrate": 1,

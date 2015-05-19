@@ -14,6 +14,11 @@ namespace Avalon.Projectiles.FromPlayer.Bullets
         /// <summary>
         ///
         /// </summary>
+        /// 
+        public override void AI()
+        {
+            projectile.damage = 0;
+        }
         public override void PostKill()
         {
             Projectile.NewProjectile(this.projectile.position, this.projectile.velocity, "Avalon:Net", 0, 0f);
