@@ -162,7 +162,11 @@ namespace Avalon
 
 			// insert all audio/graphical/UI-related stuff AFTER this check!
 			if (Main.dedServ)
+			{
+				GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
 				return;
+			}
 
             if (EmptyTexture == null)
                 (EmptyTexture = new Texture2D(TAPI.API.main.GraphicsDevice, 1, 1)).SetData(new Color[1] { Color.Transparent });
@@ -183,7 +187,7 @@ namespace Avalon
 
             DarkMatterBackground = textures["Resources/Dark Matter/Background"];
 
-            //VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
+            VorbisPlayer.LoadTrack("Resources/Music/Dark Matter (Overworld).ogg", this);
 
             StarterSetSelectionHandler.Init();
 
@@ -252,8 +256,10 @@ namespace Avalon
             TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Brick"]][TileDef.byName["Avalon:Dark Matter Soil" ]] = true;
             TileDef.tileMerge[TileDef.byName["Avalon:Dark Matter Ooze" ]][TileDef.byName["Avalon:Dark Matter Brick"]] = true;
 
-            // insert all audio/graphical/UI-related stuff AFTER this check!
-            if (Main.dedServ)
+			GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
+			// insert all audio/graphical/UI-related stuff AFTER this check!
+			if (Main.dedServ)
                 return;
         }
         /// <summary>
@@ -277,7 +283,7 @@ namespace Avalon
 
             DateEvent.events.Clear();
 
-            //VorbisPlayer.Dispose(); // some things should also be cleared on a ded server, because reasons.
+            VorbisPlayer.Dispose(); // some things should also be cleared on a ded server, because reasons.
 
             // insert all audio/graphical/UI-related stuff AFTER this check! (as in, after the content of this if-block)
             if (Main.dedServ)
@@ -309,7 +315,7 @@ namespace Avalon
             //if (!Main.gameMenu && DarkMatter.Check(Main.localPlayer))
             //    current = "Avalon:Resources/Music/Dark Matter (Overworld).ogg";
 
-            //VorbisPlayer.Update(ref current);
+            VorbisPlayer.Update(ref current);
         }
 
         /// <summary>

@@ -350,7 +350,9 @@ namespace Avalon.ModClasses
         /// <param name="bb">The buffer containing the binary data.</param>
         public override void Load(BinBuffer bb)
         {
-            base.Load(bb);
+			GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
+			base.Load(bb);
 
             accessories = new Item[Main.netMode == 0 ? 1 : Main.numPlayers][];
 
